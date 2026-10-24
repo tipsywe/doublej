@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Little Things About J &amp; J</title>
+<style>
+:root{--page:#e9e9ee;--ink:#222;--bar:#fff;--line:#e5e5e5;--chat:#b2c7d9;--me:#fee500;--other:#fff;--sub:#8a8a8a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--page:#0e0e12}}
+:root[data-theme="dark"]{--page:#0e0e12}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{background:var(--page);font-family:-apple-system,"Apple SD Gothic Neo","Noto Sans KR","PingFang SC",sans-serif;display:flex;justify-content:center;align-items:center;color:var(--ink)}
+.phone{width:100%;max-width:420px;height:100%;max-height:820px;background:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column;border-radius:0}
+@media(min-width:500px){.phone{border-radius:28px;box-shadow:0 10px 40px #0005}}
+.screen{display:none;flex:1;flex-direction:column;min-height:0}
+.screen.on{display:flex}
+/* home */
+#home{background:linear-gradient(160deg,#2b3a67,#6b4f8f 60%,#c9708f);color:#fff;padding:48px 24px 24px;align-items:center}
+#clock{font-size:64px;font-weight:200;margin-top:20px}
+#date{opacity:.85;margin-top:4px;font-size:14px}
+#hint{margin-top:auto;font-size:13px;opacity:.85;text-align:center;line-height:1.6}
+.apps{display:flex;gap:20px;margin-top:60px}
+.app{width:64px;text-align:center;font-size:11px;cursor:pointer}
+.ico{width:60px;height:60px;border-radius:16px;background:#fee500;color:#3b1e1e;display:grid;place-items:center;font-weight:800;margin-bottom:6px;font-size:13px}
+.ico.g{background:#ffffff33;color:#fff}
+.badge{position:absolute;margin:-6px 0 0 44px;background:#f33;color:#fff;border-radius:10px;font-size:11px;padding:1px 6px}
+/* bars */
+.top{height:52px;background:var(--bar);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 14px;gap:10px;font-weight:700;color:#222}
+.top .sp{flex:1}
+.top button{background:none;border:0;font-size:18px;cursor:pointer;color:#222}
+.list{flex:1;overflow:auto;background:#fff}
+.row{display:flex;gap:12px;padding:12px 16px;align-items:center;cursor:pointer;color:#222}
+.row:active{background:#f3f3f3}
+.av{width:46px;height:46px;border-radius:18px;background:#ccd;display:grid;place-items:center;color:#fff;font-weight:700;flex:none}
+.row .m{flex:1;min-width:0}
+.row .n{font-weight:600;font-size:15px}
+.row .p{font-size:13px;color:var(--sub);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.row .t{font-size:11px;color:var(--sub);text-align:right}
+.row .c{background:#f33;color:#fff;border-radius:10px;font-size:11px;padding:1px 6px;display:inline-block;margin-top:4px}
+.locked{opacity:.55}
+/* chat */
+#chat{background:var(--chat)}
+#msgs{flex:1;overflow:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px}
+.day{align-self:center;background:#0003;color:#fff;font-size:11px;border-radius:12px;padding:3px 12px;margin:6px 0}
+.b{display:flex;gap:8px;align-items:flex-end;max-width:84%}
+.b.me{align-self:flex-end;flex-direction:row-reverse}
+.bub{padding:8px 11px;border-radius:14px;font-size:15px;line-height:1.4;background:var(--other);color:#222;white-space:pre-wrap;word-break:break-word}
+.me .bub{background:var(--me)}
+.zh{display:none;font-size:12px;color:#667;margin-top:4px;border-top:1px dashed #0002;padding-top:4px}
+body.tr .zh{display:block}
+.tm{font-size:10px;color:#445;opacity:.75;flex:none}
+.nm{font-size:12px;color:#223;margin:4px 0 -2px 4px}
+.dots span{display:inline-block;width:6px;height:6px;border-radius:50%;background:#999;margin:0 2px;animation:d 1s infinite}
+.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes d{50%{opacity:.2}}
+.bar{display:flex;gap:8px;padding:8px 10px;background:#fff;align-items:center}
+.bar input{flex:1;border:0;background:#f2f2f2;border-radius:20px;padding:10px 14px;font-size:15px;outline:none;color:#222;font-family:inherit}
+.bar button{border:0;background:#fee500;border-radius:16px;padding:9px 14px;font-weight:700;cursor:pointer;color:#3b1e1e}
+.bar button:disabled{opacity:.5}
+.note{font-size:11px;color:#667;text-align:center;padding:4px;background:#fff}
+#lock,#home{background:linear-gradient(160deg,#1f2a4d,#5a3f7e 60%,#c9708f);color:#fff;align-items:center}
+#lock{padding:56px 24px 28px}
+#lk1,#pad{flex:1;width:100%;flex-direction:column;align-items:center}
+#lk1{display:flex}
+.notif{margin-top:36px;width:100%;background:#ffffff2e;backdrop-filter:blur(12px);border-radius:18px;padding:12px 14px;font-size:13px;line-height:1.5;cursor:pointer}
+.unl{margin-top:auto;font-size:13px;opacity:.85;cursor:pointer}
+#pad .ttl{font-size:17px;margin-top:20px}
+.pdots{display:flex;gap:16px;margin:26px 0 34px}
+.pdots i{width:13px;height:13px;border-radius:50%;border:1.5px solid #fff}
+.pdots i.f{background:#fff}
+.shake{animation:sk .4s}
+@keyframes sk{25%{transform:translateX(-10px)}75%{transform:translateX(10px)}}
+.keys{display:grid;grid-template-columns:repeat(3,76px);gap:14px 22px}
+.key{width:76px;height:76px;border-radius:50%;background:#ffffff2e;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:30px;cursor:pointer;user-select:none}
+.key small{font-size:9px;letter-spacing:2px;margin-top:-2px;opacity:.9}
+.key:active{background:#ffffff66}
+.key.e{background:none}
+.key.t{font-size:15px;background:none}
+.cancel{margin-top:auto;font-size:15px;cursor:pointer}
+#lock,#home{background:radial-gradient(circle at 20% 15%,#7ec8ff 0,transparent 45%),radial-gradient(circle at 85% 35%,#b58cff 0,transparent 50%),radial-gradient(circle at 30% 90%,#ff8fb3 0,transparent 55%),linear-gradient(160deg,#3b6fe0,#7a4fd6);position:relative;overflow:hidden}
+
+
+#lock>*,#home>*{position:relative;z-index:1}
+.bub.meme{background:#111;color:#fff;border:2px solid #fff;font-weight:800;text-align:center;font-size:16px;padding:18px 14px;min-width:170px;line-height:1.5}
+.kc{background:#fff;border-radius:14px;padding:14px;margin-top:12px;font-size:14px}.kc input{width:100%;margin:8px 0;padding:10px;border:1px solid #ddd;border-radius:10px;font-size:14px;outline:none}.kc button{width:100%;padding:10px;border:0;border-radius:10px;background:#fee500;font-weight:700;color:#3b1e1e;cursor:pointer;margin-top:4px}.kc small{display:block;margin-top:8px;font-size:11.5px;line-height:1.6;color:#777}
+#choices{display:none;flex-direction:column;gap:8px;padding:10px 12px;background:#ffffffc8;max-height:46%;overflow:auto}
+.cho{border:0;background:#fff;border-radius:14px;padding:10px 12px;text-align:left;font-size:14px;color:#222;line-height:1.4;cursor:pointer;box-shadow:0 1px 3px #0002;font-family:inherit}
+.cho:active{background:#fff6a8}
+.cho .zh{margin-top:3px;font-size:12px;color:#667;border-top:1px dashed #0002;padding-top:3px}
+.day.nar{padding:8px 14px;border-radius:14px;text-align:center;max-width:88%;line-height:1.5}
+.day .zh{color:#e8eef5;border-top:1px dashed #fff5}
+.endcard{align-self:center;width:88%;background:#fff;border-radius:16px;padding:16px;text-align:center;margin:10px 0;box-shadow:0 2px 8px #0003;color:#222}
+.endcard b{font-size:16px}
+.endcard .zh{margin-top:4px}
+.endcard button{margin-top:10px;border:0;border-radius:12px;padding:8px 16px;font-weight:700;cursor:pointer;background:#fee500;color:#3b1e1e}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;padding:3px}
+.tile{position:relative;aspect-ratio:1;display:grid;place-items:center;cursor:pointer;overflow:hidden}
+.tile span{font-size:44px}
+.tile img,.big img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile small{position:absolute;left:0;right:0;bottom:0;background:#0006;color:#fff;font-size:10px;padding:3px 5px;text-align:left}
+#viewer{position:absolute;inset:0;background:#000d;display:none;flex-direction:column;align-items:center;justify-content:center;z-index:50;color:#fff;padding:20px;text-align:center}
+.big{position:relative;width:100%;max-width:340px;aspect-ratio:1;border-radius:14px;display:grid;place-items:center;overflow:hidden}
+.big span{font-size:110px}
+.bar{display:none!important}
+</style>
+</head>
+<body>
+<div class="phone">
+
+<div id="lock" class="screen on">
+  <div id="lk1">
+    <div style="font-size:20px">🔒</div>
+    <div id="clock">00:00</div><div id="date"></div>
+    <div class="notif" onclick="openPad()"><b>카카오톡 · 제제 ♡</b><br>오늘 몇 시에 끝나?</div>
+    <div class="unl" onclick="openPad()">탭하여 잠금 해제</div>
+  </div>
+  <div id="pad" style="display:none">
+    <div class="ttl" id="ptl">암호 입력</div>
+    <div class="pdots" id="pd"><i></i><i></i><i></i><i></i></div>
+    <div class="keys" id="keys"></div>
+    <div class="cancel" onclick="closePad()">취소</div>
+  </div>
+</div>
+
+<div id="home" class="screen">
+  <div class="apps">
+    <div class="app" onclick="show('list')"><span class="badge">1</span><div class="ico">TALK</div>카카오톡</div>
+    <div class="app" onclick="show('album')"><div class="ico" style="background:#fff;color:#333">📷</div>사진</div>
+    <div class="app" onclick="show('notes')"><div class="ico" style="background:#ffd60a;color:#fff">🗒</div>메모</div>
+  </div>
+  <div id="hint">카카오톡에 읽지 않은 메시지 1개<br>点 카카오톡 看看</div>
+</div>
+
+<div id="notes" class="screen" style="background:#f2f2f7">
+  <div class="top"><button onclick="show('home')">‹</button>메모<span class="sp"></span><button class="trb" onclick="toggleTr()" style="font-size:13px;background:#0001;border-radius:10px;padding:3px 9px">中 翻译</button></div>
+  <div class="list" id="nlist" style="background:#f2f2f7;padding:14px"></div>
+</div>
+<div id="note" class="screen" style="background:#fffdf3">
+  <div class="top" style="background:#fffdf3"><button onclick="show('notes')">‹ 메모</button><span class="sp"></span><button class="trb" onclick="toggleTr()" style="font-size:13px;background:#0001;border-radius:10px;padding:3px 9px">中 翻译</button></div>
+  <div class="list" id="nbody" style="background:#fffdf3;padding:20px"></div>
+</div>
+
+<div id="list" class="screen">
+  <div class="top"><button onclick="show('home')">‹</button>채팅<span class="sp"></span><span style="font-weight:400;font-size:12px;color:#888">제이크의 폰</span></div>
+  <div class="list">
+    <div class="row" onclick="show('chat')"><div class="av" style="background:#e48">제</div><div class="m"><div class="n">제제 ♡</div><div class="p" id="lastp">오늘 몇 시에 끝나?</div></div><div class="t">방금<br><span class="c" id="cnt">1</span></div></div>
+    <div class="row" onclick="openChat('grp')"><div class="av" style="background:#4a9">6</div><div class="m"><div class="n">나가지❌❌ <span style="color:#999;font-weight:400">6</span></div><div class="p">건우: 형들 오늘도 평화롭네요</div></div><div class="t">어제</div></div>
+    <div class="row" onclick="openChat('mom')"><div class="av" style="background:#e89">M</div><div class="m"><div class="n">Mom</div><div class="p">그래 서로 잘 챙겨주고 ❤️</div></div><div class="t">월요일</div></div>
+    <div class="row" onclick="openChat('mgr')"><div class="av" style="background:#79a">매</div><div class="m"><div class="n">매니저님</div><div class="p">오늘도 수고 많으셨습니다!</div></div><div class="t">월요일</div></div>
+  </div>
+</div>
+
+<div id="chat" class="screen">
+  <div class="top" style="background:#b2c7d9;border:0"><button onclick="show('list')">‹</button>제제 ♡<span class="sp"></span><button id="trbtn" onclick="toggleTr()" style="font-size:13px;background:#fff8;border-radius:10px;padding:3px 9px">中 翻译</button></div>
+  <div id="msgs"></div>
+  <div id="choices"></div>
+  <div class="note">虚构角色 · 点击下方选项推进剧情</div>
+  <div class="bar"><input id="inp" placeholder="자유 대화도 가능 · 직접 입력" autocomplete="off"><button id="send">전송</button></div>
+</div>
+
+
+<div id="view" class="screen" style="background:#b2c7d9">
+  <div class="top" style="background:#b2c7d9;border:0"><button onclick="show('list')">‹</button><span id="vname"></span><span class="sp"></span><button class="trb" onclick="toggleTr()" style="font-size:13px;background:#fff8;border-radius:10px;padding:3px 9px">中 翻译</button></div>
+  <div id="vmsgs" style="flex:1;min-height:0;overflow:auto;padding:14px 12px;display:flex;flex-direction:column;gap:6px"></div>
+  <div class="note">这个聊天室只能查看</div>
+</div>
+
+<div id="album" class="screen" style="background:#fff">
+  <div class="top"><button onclick="show('home')">‹</button>사진<span class="sp"></span><span style="font-weight:400;font-size:12px;color:#888">9</span></div>
+  <div class="list"><div class="grid" id="grid"></div></div>
+</div>
+
+<div id="viewer" onclick="this.style.display='none'"></div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const hist=[
+ {r:"o",ko:"제이크 자? 방금 웃긴 밈 봤는데 ㅋㅋㅋ 맥스 응원하다가 목 쉬었다 🏎️🔥",zh:"杰克睡了吗？刚看到个好笑的梗哈哈哈 给马克斯加油喊得嗓子都哑了"},
+ {r:"me",ko:"아직 안 자 ㅋㅋ 목 쉰 소리 들리는 것 같다 이웃한테 민폐 좀 그만 끼쳐라",zh:"还没睡哈哈 感觉能听到你哑掉的声音 少给邻居添麻烦吧"},
+ {r:"o",ko:"ㅋㅋㅋ 들켰다 너는 뭐 해?",zh:"哈哈哈被发现了 你在做什么？"},
+ {r:"me",ko:"스케줄 하는 중이야 좀 피곤하네",zh:"在忙行程 有点累"},
+ {r:"o",ko:"오늘 몇 시에 끝나?",zh:"今天几点结束？"}
+];
+const pad=n=>String(n).padStart(2,"0");
+function tick(){const d=new Date();$("clock").textContent=pad(d.getHours())+":"+pad(d.getMinutes());$("date").textContent=d.toLocaleDateString("ko-KR",{month:"long",day:"numeric",weekday:"long"})}
+tick();setInterval(tick,30000);
+function stamp(){const d=new Date();const h=d.getHours();return (h<12?"오전 ":"오후 ")+((h%12)||12)+":"+pad(d.getMinutes())}
+function show(id){document.querySelectorAll(".screen").forEach(s=>s.classList.remove("on"));$(id).classList.add("on");if(id==="chat"){$("cnt").style.display="none";if(!started){started=true;setTimeout(()=>play("menu"),500)}scrollDown()}}
+function toggleTr(){document.body.classList.toggle("tr");const s=document.body.classList.contains("tr")?"中 隐藏":"中 翻译";$("trbtn").textContent=s;document.querySelectorAll(".trb").forEach(b=>b.textContent=s)}
+function scrollDown(){const m=$("msgs");m.scrollTop=m.scrollHeight}
+function addMsg(r,ko,zh,t){
+  const w=document.createElement("div");w.className="b "+(r==="me"?"me":"");
+  const bub=document.createElement("div");bub.className="bub";
+  const k=document.createElement("div");k.textContent=ko;bub.appendChild(k);
+  if(zh){const z=document.createElement("div");z.className="zh";z.textContent=zh;bub.appendChild(z)}
+  const tm=document.createElement("span");tm.className="tm";tm.textContent=t||stamp();
+  w.appendChild(bub);w.appendChild(tm);$("msgs").appendChild(w);scrollDown();return w;
+}
+function addMeme(c,z){addMsg("o",c,z)}
+const d0=document.createElement("div");d0.className="day";d0.textContent="오늘";$("msgs").appendChild(d0);
+const nm=document.createElement("div");nm.className="nm";nm.textContent="제제 ♡";
+hist.forEach((h,i)=>{addMsg(h.r==="me"?"me":"o",h.ko,h.zh,"오전 1:"+pad(10+i*3))});
+
+const M=(ko,zh,q)=>({ko,zh,q});
+const MM=(meme,memezh)=>({ko:"",zh:"",meme,memezh});
+const SC={
+ hi:[[M("오 제이크 떴다 ㅋㅋㅋ 오늘 해 서쪽에서 뜸?","哦杰克上线了哈哈哈 今天太阳打西边出来了？")],[M("왔냐 ㅋㅋㅋ 나 방금 웃긴 영상 봤는데 들어볼래?","来啦哈哈哈 我刚看到个好笑的视频 要听吗"),M("아 일단 인사부터 하자 안녕!","啊先打个招呼 你好！")],[M("굿모닝~ 아니 지금 몇 시지 ㅋㅋㅋ 아무튼 안녕","早上好～不对现在几点了哈哈哈 总之你好")],[M("하이~ 나 오늘 알고리즘이 이상해서 고양이 영상만 나와 ㅋㅋㅋ","嗨～我今天的推荐算法很奇怪 全是猫视频哈哈哈")]],
+ who:[[M("…잠깐 너 제이크 아닌 것 같은데?? ㅋㅋㅋ 'ㅇㅇ'이 아니라 문장을 썼어","……等等你好像不是杰克？你居然打了完整的句子 不是“嗯”"),M("누구세요 ㅋㅋㅋ 자수하면 밈 하나 줄게","你是谁哈哈哈 自首的话送你一个梗")],[M("폰 주운 사람이면 그 폰 주인한테 잘해줘 걔 은근 까칠해 ㅋㅋㅋ","如果你是捡到手机的人 对手机主人好一点 他其实有点难搞哈哈哈"),M("근데 어디서 주웠어?? 궁금","不过你在哪捡到的？好奇")],[M("야 장난치지 마 ㅋㅋㅋ 제이크 폰으로 말 거는 건 반칙이야","喂别闹了哈哈哈 用杰克的手机跟我聊天犯规")]],
+ f1:[[M("레이스 얘기 나오면 나 못 참지 ㅋㅋㅋ 오늘도 새벽에 일어나서 봤다","一说到比赛我就忍不住哈哈哈 今天也是凌晨起来看的"),MM("알람: 출근 / 나: 5분만 / 레이스 시작: 눈 번쩍","闹钟：上班／我：再睡五分钟／比赛开始：瞬间睁眼")],[M("맥스 응원할 때 목소리 커지는 건 내 잘못 아니야 ㅋㅋㅋ 옆집이 항의함","给马克斯加油时嗓门变大不是我的错哈哈哈 邻居都来抗议了")],[M("제이크도 같이 보자 진짜 ㅠㅠ 규칙 몰라도 내가 설명해줄게 완전 쉬워","杰克也一起看嘛真的 不懂规则我给你讲 超简单"),M("타이어 얘기부터 하면 안 되겠지? ㅋㅋㅋ","一上来就讲轮胎的话不行吧哈哈哈")],[M("나 요즘 대화하다가 자꾸 '피트 들어와' 라고 말함 ㅋㅋㅋ 직업병임","我最近聊天总会说“进站”哈哈哈 职业病")]],
+ food:[[M("밥 먹었어? 먹었으면 뭐 먹었는지 말해 안 먹었으면 지금 당장 먹어 ㅋㅋㅋ","吃饭了吗？吃了就说吃了什么 没吃就现在去吃哈哈哈","ate")],[M("점메추 좀 해줘 ㅠㅠ 나 메뉴 고르는 데 20분 씀","帮我推荐一下午饭 我选菜单就花了二十分钟","menu"),MM("배고픔: 100% / 메뉴 정하기: 0%","饥饿度：100%／决定菜单：0%")],[M("치킨 먹고 싶다 갑자기 ㅋㅋㅋ 지금 시간이 몇 신데 ㅠㅠ","突然好想吃炸鸡哈哈哈 现在都几点了呜呜")],[M("아아 마시고 싶은데 오늘 벌써 세 잔째임 ㅋㅋㅋ 심장이 빨리 뜀","想喝冰美式 但今天已经第三杯了哈哈哈 心脏跳得好快")]],
+ love:[[M("갑자기 왜 그래 ㅋㅋㅋ 어디 아파? 열 재봐","突然怎么了哈哈哈 哪里不舒服？量一下体温")],[M("야 그런 말은 예고하고 해 ㅋㅋㅋ 나 놀라서 커피 쏟을 뻔","喂这种话先预告一声 我差点吓得把咖啡洒了哈哈哈"),M("…나도 뭐 좋아하긴 하지 친구로서 ㅇㅇ","……我也挺喜欢你的啦 当朋友的那种 嗯")],[M("아 뭐야 갑분싸 ㅋㅋㅋㅋ 이런 건 문자 말고 얼굴 보고 말해","什么啊突然冷场哈哈哈 这种话别发消息 当面说")],[M("잠깐 이거 단톡방에 보내려던 거 아니지?? 잘못 보낸 거 맞지 ㅋㅋㅋ","等一下这是不是要发到群里的？发错了对吧哈哈哈")],[M("나한테 이러지 말고 레이스나 보자 ㅋㅋㅋ 훨씬 건전해","别跟我说这些 来看比赛吧哈哈哈 健康多了")],[M("너 오늘 말투 이상해 ㅋㅋㅋ 누가 시킨 거야? 몰카야??","你今天说话方式好奇怪哈哈哈 谁让你说的？整蛊吗？？")]],
+ love2:[[M("아니 또 그러네?? 오늘 왜 이래 진짜 ㅋㅋㅋ","不是你又来？今天到底怎么了哈哈哈"),M("나 지금 좀 당황해서 말이 안 나옴…","我现在有点慌 说不出话……")],[M("야 두 번이면 장난 아니잖아 ㅋㅋㅋ 아 몰라 나 물 좀 마시고 올게","喂说两次就不是开玩笑了吧哈哈哈 啊不知道了我去喝口水")],[M("…귀 뜨거워진 거 나만 그런 거 아니지 ㅋㅋㅋ","……耳朵发烫的不只是我吧哈哈哈"),MM("나: 침착하자 / 심장: 레이스 시작","我：冷静点／心脏：比赛开始")],[M("아니 싫다는 건 아니고…… 그냥 갑자기라서 그래","不是说讨厌啦……只是太突然了"),M("아 이상한 말 했다 ㅋㅋㅋ 잊어줘","啊说了奇怪的话 忘了吧哈哈哈")]],
+ love3:[[M("…알겠어 알겠어 너 진심인 건 알겠다니까 ㅋㅋㅋ","……知道了知道了 我知道你是认真的啦哈哈哈"),M("근데 나 이런 거 어떻게 대답해야 되는지 몰라 ㅠㅠ 연습한 적이 없음","可是我不知道这种话该怎么回答 没练习过")],[M("나 사실 너랑 얘기하는 거 제일 편하긴 해 ㅇㅇ","其实跟你聊天是我最自在的 嗯"),M("이건 비밀로 해 알았지 ㅋㅋㅋ","这个保密 听到没哈哈哈")],[M("다음에 만나면 얘기하자 지금은 폰으로 못 하겠어 ㅋㅋㅋ 손이 떨림","下次见面再说吧 现在用手机说不出来 手在抖哈哈哈")],[M("…나도 모르겠어 이게 뭔지 ㅋㅋㅋ 근데 싫진 않음","……我也不知道这是什么感觉哈哈哈 但不讨厌"),M("레이스 보자 레이스 이 얘기 그만하고","看比赛吧看比赛 先别说这个了")]],
+ tired:[[M("피곤하면 자 ㅋㅋㅋ 근데 진짜 자는 거지? 폰 보다가 또 새벽 되는 거 아니지?","累了就睡哈哈哈 不过是真的睡吧？别刷着手机又到凌晨")],[M("나도 졸린데 지금 자면 오히려 더 피곤할 것 같음 ㅋㅋㅋ 이게 무슨 논리지","我也困 但现在睡好像反而更累哈哈哈 这是什么逻辑")],[M("바쁜 건 알겠는데 밥은 먹고 해 알았지? 형이 말하는 거야","知道你忙 但饭要吃 听到没？这是哥哥说的")]],
+ cold:[[M("ㅇㅇ?? 그게 다야 ㅋㅋㅋ 나 방금 밈 열 개 보냈는데 ㅠㅠ","嗯？就这样吗哈哈哈 我刚发了十个梗欸")],[M("오… 이 정도면 제이크 기준 장문인데?? 오늘 컨디션 좋네 ㅋㅋㅋ","哦……这对杰克来说算长篇大论了吧 今天状态不错嘛哈哈哈")],[M("단답 장인이다 진짜 ㅋㅋㅋ 존경스러울 정도","真的是简短回复大师哈哈哈 佩服")]],
+ meme:[[M("밈이면 내가 전문가지 ㅋㅋㅋ 오늘 제일 웃긴 거 보낸다","说到梗我可是专家哈哈哈 把今天最好笑的发你"),MM("나: 이건 진짜 안 웃길 듯 / 3초 뒤: 숨 못 쉬게 웃는 중","我：这个应该不好笑／三秒后：笑到喘不过气")],[M("ㅋㅋㅋㅋ 아 나 지금 혼자 웃고 있어 사람들이 이상하게 쳐다봄","哈哈哈哈 我现在一个人在笑 旁边的人都在奇怪地看我")],[M("웃기지?? 이거 제이크 보여주려고 저장해놨다 ㅋㅋㅋ","好笑吧？这个我存着就是为了给杰克看")]],
+ work:[[M("연습 힘들지 ㅠㅠ 그래도 끝나고 같이 치킨 먹자 내가 쏜다 (말뿐임)","练习很累吧……不过结束后一起吃炸鸡 我请客（只是说说）")],[M("스케줄 끝나면 연락 줘 나 기다리면서 레이스 다시보기 하고 있을게 ㅋㅋㅋ","行程结束后联系我 我边等边看比赛回放哈哈哈")],[M("오늘 일 많았어? 말해봐 들어줄게 해결은 못 해주지만 ㅋㅋㅋ","今天事情很多吗？说说看 我听着 虽然解决不了哈哈哈")]],
+ gym:[[M("오운완 했어?? 나는 스트레칭만 하고 오운완 올림 ㅋㅋㅋ","今天运动了吗？我只拉伸了一下就发“今日运动完成”了哈哈哈")],[M("운동 가자 같이 ㅋㅋㅋ 근데 먼저 말하는 건 너여야 함","一起去运动吧哈哈哈 不过得是你先提才算")]],
+ game:[[M("게임 같이 하자 ㅋㅋㅋ 나 요즘 실력 늘었다? 아님 말고","一起打游戏吧哈哈哈 我最近进步了？好吧可能没有")],[M("야 나 어제 진짜 억울하게 졌어 ㅠㅠ 렉 때문임 100%","喂我昨天输得好冤 百分之百是因为卡顿")]],
+ weather:[[M("날씨 진짜 미쳤다 ㅋㅋㅋ 옷 뭘 입어야 할지 모르겠음","天气真的离谱哈哈哈 不知道该穿什么")],[M("비 오는 날은 집에서 레이스 정주행이지 ㅋㅋㅋ 우산 챙겨 알았지?","下雨天就该在家追比赛哈哈哈 记得带伞 听到没")]],
+ cat:[[M("고양이 얘기다!! 나 고양이 밈 저장한 거 200개 넘음 ㅋㅋㅋ","说到猫了！我存的猫咪梗超过两百个哈哈哈")],[M("제이크는 고양이 같아 ㅋㅋㅋ 부르면 안 오고 밥 때만 나타남","杰克就像猫哈哈哈 叫你不来 吃饭时才出现")]],
+ sad:[[M("무슨 일인데? 말해봐 ㅠㅠ 나 이럴 땐 진지하다?","怎么了？说说看 这种时候我可是认真的","vent")],[M("일단 맛있는 거 먹고 생각하자 ㅋㅋㅋ 배고프면 생각도 우울해져","先吃点好吃的再想吧哈哈哈 饿着肚子想事情也会变得郁闷"),M("그래도 진짜 힘들면 말해 내가 들어줄게","不过真的难受就说出来 我听你说")]],
+ thanks:[[M("뭘 이런 걸로 고맙다고 ㅋㅋㅋ 나중에 치킨으로 갚아","这点事谢什么哈哈哈 以后用炸鸡还我")],[M("미안하면 밈 하나 보내 ㅋㅋㅋ 그럼 용서해줄게","觉得抱歉就发个梗给我哈哈哈 那我就原谅你")]],
+ bye:[[M("잘 자 ㅋㅋㅋ 꿈에서 레이스 보지 말고","晚安哈哈哈 别在梦里看比赛")],[M("굿나잇~ 내일은 'ㅇㅇ' 말고 두 글자 이상 보내기 도전!","晚安～明天挑战发两个字以上 不要只回“嗯”！")]],
+ doing:[[M("나? 침대에 누워서 폰 보다가 갑자기 웃음 터짐 ㅋㅋㅋ 너는?","我？躺在床上刷手机突然笑出声哈哈哈 你呢？")],[M("나 지금 레이스 클립 돌려보는 중 ㅋㅋㅋ 같이 볼래?","我在循环看比赛片段哈哈哈 要一起看吗？")]],
+ def:[[M("오 그래?? ㅋㅋㅋ 근데 갑자기 생각났는데","哦是吗？哈哈哈 不过我突然想到"),MM("나: 제이크한테 먼저 연락 안 해야지 / 3분 후의 나: 뭐 해?","我：不要先联系杰克／三分钟后的我：在干嘛？")],[M("제이크 오늘 좀 이상한데? 평소보다 말이 많아 ㅋㅋㅋ","杰克今天有点奇怪？话比平时多哈哈哈")],[M("아 맞다 이거 들어봐 ㅋㅋㅋ 아까 편의점 갔는데 어떤 아저씨가…","对了听我说哈哈哈 刚才去便利店 有个大叔……"),M("아 길어서 나중에 말해줄게 ㅋㅋㅋ","啊太长了 之后再讲哈哈哈")],[M("ㅋㅋㅋㅋ 인정 인정 완전 공감","哈哈哈哈 认同认同 完全共鸣")],[M("그거 진짜 레전드다 ㅋㅋㅋ 나중에 또 얘기해줘","那个真的是传奇哈哈哈 以后再讲给我听")]]
+};
+const MEMES=[MM("월요일의 나: 퇴근하고 운동해야지 / 퇴근 후의 나: 침대랑 한 몸","周一的我：下班要去运动／下班后的我：和床合为一体"),MM("친구: 지금 뭐 해? / 나: 아무것도 안 해 / (폰 3개 동시에 켜져 있음)","朋友：在干嘛？／我：什么都没干／（三台手机同时亮着）"),MM("일찍 자야지 하고 누웠는데 갑자기 10년 전 흑역사가 떠오름","想着早点睡 躺下后突然想起十年前的黑历史"),MM("다이어트 시작: 월요일부터 / 오늘은: 일요일","减肥从周一开始／今天：周日"),MM("나: 이번 달은 아껴 써야지 / 택배: 도착했습니다","我：这个月要省着花／快递：已送达"),MM("배터리 1%인데 충전기 안 꽂고 계속 하는 사람 = 나","电量1%还不插充电器继续玩的人＝我")];
+const RULES=[["who",["누구세요","누구야","你是谁","주웠","捡到","捡了","你是不是"]],["f1",["맥스","max","f1","레이스","赛车","verstappen","红牛","그랑프리"]],["sad",["슬퍼","힘들","难过","烦","짜증","心情","우울","伤心"]],["love",["보고싶","보고 싶","想你","喜欢你","爱你","좋아해","좋아한다","사랑","연애","뽀뽀"]],["thanks",["고마워","谢谢","미안","对不起","감사"]],["bye",["잘자","晚安","바이","拜拜","굿나잇"]],["fight",["때릴","때려","싸우","한판","붙자","레슬링","팔씨름","드잡","打架","打你","揍","摔跤","掰手腕","单挑","来打"]],["together",["같이 먹","같이 밥","밥 같이","一起吃","一起去吃","约饭","먹으러 가자","먹으러 갈래","吃饭去"]],["tease",["바보","멍청","놀리","약올","시끄","조용히","말 많","수다","귀찮","한심","어휴","话痨","吵","闭嘴","傻","笨","笑死","你又来","烦人","活该","逗你","逗我"]],["tired",["바빠","忙","피곤","累","잠","睡","졸려"]],["food",["밥","먹","吃","饿","배고","점심","저녁","치킨","라면","커피","아아","咖啡"]],["gym",["운동","헬스","健身","오운완","锻炼"]],["game",["게임","游戏","롤"]],["work",["연습","练习","일하","工作","스케줄","行程","회사","上班"]],["weather",["날씨","天气","추워","춥","덥","下雨","비가","비 오","雨"]],["cat",["고양이","猫"]],["meme",["밈","meme","梗","웃겨","웃기"]],["story",["뭐해","뭐 해","在干嘛","어디야","在哪","최근","요즘","最近","심심","无聊","发生","新鲜事","今天怎么样","오늘 어땠","分享","说说","聊聊","사진","照片","图片","얘기해"]],["hi",["안녕","하이","hi","hello","你好","嗨","굿모닝","早上好"]]];
+SC.story=[
+ [M("아까 편의점에서 컵라면 샀는데 계산대 아저씨가 '또 오셨네요' 함 ㅋㅋㅋ","刚才在便利店买杯面 收银大叔说“您又来了”哈哈哈"),M("나 이 동네 단골 된 듯","我好像成了这一带的常客")],
+ [M("연습실 앞에 길고양이 생김 ㅋㅋㅋ","练习室门口出现了一只流浪猫哈哈哈"),M("이름은 '타이어'로 지음 동글동글해서","我给它起名叫“轮胎” 因为圆滚滚的")],
+ [M("어젯밤 새벽까지 레이스 다시보기 했는데 소리 질러서 옆방 형이 벽 침 ㅠㅠ","昨晚看比赛回放到凌晨 喊得太大声 隔壁哥哥敲墙了"),M("근데 후회 없음 ㅋㅋㅋ","不过一点也不后悔哈哈哈")],
+ [M("아아 들고 가다가 넘어질 뻔했는데 커피는 지켜냄 ㅋㅋㅋ 나 반사신경 레전드","端着冰美式差点摔倒 但咖啡保住了哈哈哈 我的反应神经传奇")],
+ [M("헬스 갔는데 바벨 무게 잘못 걸어서 혼자 끙끙댐 ㅋㅋㅋ","去健身房把杠铃片装错了 一个人哼哧哼哧哈哈哈"),M("아무도 못 봤겠지?","应该没人看到吧？")],
+ [M("우산 챙겨 나왔는데 나오자마자 비가 그침 ㅋㅋㅋ","带着伞出门 结果一出门雨就停了哈哈哈"),M("우산이 내 하루를 망쳤어","这把伞毁了我的一天")],
+ [M("오늘 요리 도전했는데 계란말이가 스크램블이 됨 ㅋㅋㅋ","今天挑战做菜 结果厚蛋烧变成了炒蛋哈哈哈"),M("맛은 괜찮음 비주얼이 문제","味道还行 问题是颜值")],
+ [M("퇴근길에 하늘이 너무 예뻐서 찍었다","下班路上天空太美 拍了下来"),M("이런 건 제이크도 좋아할 듯? 아님 말고 ㅋㅋㅋ","这种杰克应该也会喜欢吧？不喜欢拉倒哈哈哈")],
+ [M("친구한테 게임 3연패함 ㅠㅠ 억울해서 연습 더 한다","被朋友连输三把 不服气 要多练练")],
+ [M("택배 왔는데 내가 뭘 시켰는지 기억이 안 남 ㅋㅋㅋ","快递到了 但我不记得自己买了什么哈哈哈"),M("개봉박두","即将开箱")],
+ [M("오늘 치킨 반반 시켰는데 결정장애 인증함 ㅋㅋㅋ","今天点了半半炸鸡 证明了自己的选择困难哈哈哈")],
+ [M("산책하다가 강아지 만났는데 나한테만 짖음 ㅋㅋㅋ","散步遇到一只小狗 只对我叫哈哈哈"),M("내가 이상한 사람인가?","难道我是奇怪的人吗？")],
+ [M("편의점 신상 아이스크림 먹어봤는데 생각보다 맛있음 ㅋㅋㅋ","试了便利店的新款冰淇淋 比想象中好吃哈哈哈"),M("제이크도 먹어봐 내가 추천함","杰克也尝尝 我推荐的")],
+ [M("버스에서 졸다가 종점까지 감 ㅋㅋㅋ 진짜 레전드","在公交上打瞌睡坐到了终点站哈哈哈 真是传奇"),M("걸어서 돌아오는 중 ㅠㅠ","正在走路回去呜呜")]
+];
+const ANS={
+ menu:[[M("오 {t}?? ㅋㅋㅋ 그거 괜찮은데? 근데 나 방금까지 다른 거 먹으려 했음","哦 {t}？？哈哈哈 这个不错耶 不过我刚才想吃别的")],[M("{t} ㅇㅋ 결정했다!! 20분 고민한 게 한 방에 끝났네 ㅋㅋㅋ 역시 제이크","{t} OK 决定了！纠结二十分钟的事一下子解决了哈哈哈 不愧是杰克"),M("나중에 같이 먹으러 가자 내가 쏠게 (말뿐)","以后一起去吃吧 我请客（只是说说）")],[M("{t}… 갑자기 나도 땡긴다 ㅋㅋㅋ 이거 완전 위험한 추천인데","{t}……我突然也想吃了哈哈哈 这个推荐太危险了")]],
+ ate:[[M("오 {t}?? ㅋㅋㅋ 맛있었어? 사진 좀 보내봐","哦 {t}？？哈哈哈 好吃吗？发张照片给我看看")],[M("{t} 먹었구나 잘했어 ㅋㅋㅋ 제대로 챙겨 먹어야 해","吃了{t}啊 真棒哈哈哈 要好好吃饭")],[M("{t}… 나도 먹고 싶다 ㅠㅠ 지금 배고파짐","{t}……我也想吃 呜呜 现在饿了")]],
+ today:[[M("아 {t} 그랬구나 ㅋㅋㅋ 오늘도 고생했네","啊 {t} 这样啊哈哈哈 今天也辛苦了")],[M("오 문장으로 말했다!! 성장했네 ㅋㅋㅋ","哦用句子说了！有进步哈哈哈"),M("근데 더 자세히 말해줘 궁금함","不过说详细点 我好奇")],[M("{t}… 평범한 하루 같지만 제이크가 말해주니까 좋네","{t}……看着是平凡的一天 但杰克愿意说给我听 挺好的")]],
+ vent:[[M("{t}… 진짜 힘들었겠다 ㅠㅠ 말해줘서 고마워","{t}……真的辛苦了 谢谢你告诉我")],[M("야 그건 좀 너무했다 ㅠㅠ 내가 대신 화내줄게","喂这也太过分了 我替你生气")],[M("일단 밥은 먹었어? 그다음에 더 얘기해 줘","先说你吃饭了吗？之后再多告诉我一点")]]
+};
+let pending=null;
+SC.name=[
+ [M("왜 불러 ㅋㅋㅋ 나 여기 있는데","干嘛叫我哈哈哈 我就在这呢")],
+ [M("응?? 갑자기 이름 부르면 심장 떨어지잖아 ㅋㅋㅋ","嗯？突然叫我名字会吓到心脏掉下来哈哈哈"),M("무슨 일이야 말해봐","怎么了 说吧")],
+ [M("제제 출동 ㅋㅋㅋ 3초 만에 답장했다 신기록임","제제出动哈哈哈 三秒就回复了 新纪录")],
+ [M("ㅋㅋㅋ 이름만 부르는 게 제일 무서운 거 알지? 내가 뭐 잘못했나 생각했네","哈哈哈 只叫名字最吓人你知道吧？我还在想自己是不是做错了什么")],
+ [M("네~ 말씀하세요 고객님 ㅋㅋㅋ","在～请说 顾客您好哈哈哈")],
+ [M("왜왜왜 ㅋㅋㅋ 밈 보내줄까? 이름 부르는 건 밈 달라는 신호 맞지?","怎么了怎么了哈哈哈 要发梗吗？叫名字就是想要梗的信号对吧？")],
+ [M("부르기만 하고 말은 안 해?? 궁금해서 잠 못 자겠다 ㅋㅋㅋ","只叫名字不说话？我好奇得睡不着了哈哈哈")],
+ [M("아 맞다 나 아까 레이스 얘기하다가 끊겼는데","对了我刚才说比赛说到一半被打断了"),M("어디까지 했더라 ㅋㅋㅋ 아 몰라 처음부터 다시 한다","说到哪了来着哈哈哈 算了重新从头讲")],
+ [M("제제 여기 있습니다~ 오늘의 용건을 말씀해주세요 ㅋㅋㅋ","제제在这里～请说今天的事由哈哈哈")],
+ [M("제이크가 나를 먼저 부르는 건 드문 일인데 ㅋㅋㅋ","杰克主动叫我可是稀罕事哈哈哈"),M("오늘 무슨 날이야?","今天是什么日子？")]
+];
+SC.jake=[
+ [M("갑자기 자기 이름은 왜 써 ㅋㅋㅋ 자기소개야?","怎么突然写自己的名字哈哈哈 在自我介绍吗？")],
+ [M("제이크 맞지?? 이름 적는 거 보니까 확인 절차 같은데 ㅋㅋㅋ","你是杰克对吧？写名字像是在做身份确认哈哈哈")],
+ [M("제이크~ 제이크~ 불러도 대답 안 하더니 이제 자기가 쓰네 ㅋㅋㅋ","杰克～杰克～叫你不回 现在自己写起来了哈哈哈")],
+ [M("뭐야 이름만 적고 끝이야? 문장으로 말해 문장으로 ㅋㅋㅋ","什么啊只写名字就结束了？用句子说 用句子说哈哈哈")],
+ [M("혹시 폰 주운 사람이 이름 확인하는 중이야?? ㅋㅋㅋ 설마","难道是捡到手机的人在确认名字？哈哈哈 不会吧")]
+];
+SC.def.push(
+ [M("ㅋㅋㅋㅋ 나 지금 갑자기 생각난 밈 있는데","哈哈哈哈 我突然想到一个梗"),M("나: 오늘은 진짜 안 웃는다 / 3초 뒤: 이미 웃는 중","我：今天绝对不笑／三秒后：已经在笑了")],
+ [M("제이크 말 짧아서 나만 계속 떠드는 느낌인데 괜찮아 난 혼자서도 잘 떠들거든 ㅋㅋㅋ","杰克话太少 感觉一直是我在说 不过没关系 我一个人也能说个不停哈哈哈")],
+ [M("오 그렇구나~ 근데 나 오늘 진짜 웃긴 일 있었는데 들어볼래?","哦原来如此～我今天真的碰到好笑的事 要不要听？")],
+ [M("아 그거 나도 알아 ㅋㅋㅋ 완전 공감","啊这个我也知道哈哈哈 完全共鸣"),M("근데 나는 좀 다르게 생각해 ㅋㅋㅋ 아니다 똑같다","不过我的想法有点不一样哈哈哈 不对一样")],
+ [M("잠깐만 이거 메모해둘게 ㅋㅋㅋ 제이크가 이렇게 말한 거 기념일로","等一下我把这个记下来哈哈哈 杰克这么说了 要当纪念日")],
+ [M("헐 진짜?? 대박 ㅋㅋㅋ 그래서 어떻게 됐는데","天哪真的？？太厉害了哈哈哈 然后呢")],
+ [M("흠 일리 있네 ㅋㅋㅋ 오늘 제이크 철학자 같다","嗯有道理哈哈哈 今天的杰克像个哲学家")]
+);
+SC.cold.push(
+ [M("ㅇㅇ 하나에 나는 문단을 쓰는데 이 불균형 어쩔 거야 ㅋㅋㅋ","你回一个“嗯” 我写一整段 这个不平衡怎么办哈哈哈")],
+ [M("읽씹은 아니니까 용서해줄게 ㅋㅋㅋ 단답도 답은 답이지","没有已读不回 所以原谅你哈哈哈 简短回复也算回复")],
+ [M("알겠어 오늘은 ㅇㅇ 한 번 인정 내일은 두 글자 도전! ㅋㅋㅋ","知道了 今天的“嗯”我认了 明天挑战两个字！哈哈哈")],
+ [M("제이크 지금 폰 보면서 웃고 있는 거 알고 있음 ㅋㅋㅋ","我知道杰克现在看着手机在笑哈哈哈")]
+);
+SC.hi.push(
+ [M("왔구나 ㅋㅋㅋ 나 방금까지 네 생각 안 함 진짜로","你来啦哈哈哈 我刚才一点都没想你 真的")],
+ [M("안녕~ 오늘 날씨가 내 기분 같아 ㅋㅋㅋ 정체불명","你好～今天的天气就像我的心情 来路不明哈哈哈")],
+ [M("하이 제이크 오늘의 첫 대사가 그거야?? 좀 더 신경 써 ㅋㅋㅋ","嗨杰克 今天的第一句台词就这个？？再用点心哈哈哈")],
+ [M("오 인사했다 ㅋㅋㅋ 기록 갱신 같은데?","哦打招呼了哈哈哈 好像刷新记录了")]
+);
+SC.who.push(
+ [M("제이크 폰 맞지? 아니면 해킹당한 거야?? 나 지금 좀 무서운데 ㅋㅋㅋ","这是杰克的手机吧？还是被黑了？我现在有点怕哈哈哈")],
+ [M("그럼 증명해봐 제이크만 아는 거 ㅋㅋㅋ 내가 제일 좋아하는 팀이 어디게?","那你证明一下 只有杰克知道的事哈哈哈 我最喜欢的车队是哪个？")]
+);
+const BAD=/아닌 것 같|누구세요|해킹|이름 확인|확인 절차|몰카|잘못 보낸|말투가 왜|말투 이상|이상한데|단답|ㅇㅇ 하나|ㅇㅇ이래|ㅇㅇ 말고|ㅇㅇ\?\?|ㅇㅇ'|ㅇㅇ 한 번|기록 갱신|해 서쪽|장문|두 글자|문장으로|말 짧아|읽씹|폰 주운|폰으로 말|증명해|자기소개|드문 일|성장했네|컨디션|신경 써|제이크 맞지|제이크 폰 맞지/;
+[SC,ANS].forEach(o=>{for(const k in o){o[k]=o[k].filter(g=>!g.some(m=>BAD.test(m.ko)))}});
+SC.who=[
+ [M("ㅋㅋㅋ 갑자기 무슨 소리야 제이크 맞잖아 장난치지 마","哈哈哈突然说什么呢 你就是杰克啊 别闹")],
+ [M("뭐야 ㅋㅋㅋ 오늘 컨셉 잡은 거야? 나도 같이 할까?","什么啊哈哈哈 今天在演什么设定吗？我也一起演？")],
+ [M("누구긴 누구야 우리 제이크지 ㅋㅋㅋ","还能是谁 我们的杰克呀哈哈哈")],
+ [M("ㅋㅋㅋ 그런 장난 재밌다 계속해봐","哈哈哈这种玩笑好玩 继续")]
+];
+SC.cold.push(
+ [M("ㅋㅋㅋ 응응 알겠어","哈哈哈嗯嗯知道了"),M("그래서 오늘은 어땠어? 나 얘기하고 싶은 거 많은데","所以今天过得怎么样？我有好多想说的","today")],
+ [M("오케이 ㅋㅋㅋ 너 지금 뭐 해?","OK哈哈哈 你现在在干嘛？","doing")],
+ [M("ㅎㅎ 그래 그래 ㅋㅋㅋ 나 갑자기 생각났는데","哈哈好好 我突然想到")],
+ [M("ㅋㅋㅋ 인정 인정","哈哈哈 认同认同")],
+ [M("좋아 좋아 ㅋㅋㅋ 그럼 이따 또 얘기하자","好好哈哈哈 那待会儿再聊")]
+);
+SC.jake.push(
+ [M("응 제이크~ 왜 불러?","嗯杰克～怎么叫我？")],
+ [M("ㅋㅋㅋ 이름 쓰고 뭐 할 말 있어? 말해봐","哈哈哈 写了名字有话要说吗？说吧")],
+ [M("제이크 왔다~ 오늘은 무슨 얘기할까","杰克来了～今天聊点什么")],
+ [M("ㅋㅋㅋ 응 나 여기 있어 말해","哈哈哈嗯 我在这 你说")]
+);
+SC.hi.push(
+ [M("오 제이크 왔다~ ㅋㅋㅋ 마침 심심했는데","哦杰克来了～哈哈哈 正好无聊")],
+ [M("안녕~ 오늘 하루는 어땠어?","你好～今天过得怎么样？","today")]
+);
+SC.def.push(
+ [M("오 그래? ㅋㅋㅋ 더 얘기해줘 궁금해","哦是吗？哈哈哈 多说点 我好奇")],
+ [M("아 진짜? ㅋㅋㅋ 나도 비슷한 적 있는데","啊真的吗？哈哈哈 我也有过类似的事"),M("그때 완전 웃겼어","当时真的超好笑")]
+);
+SC.bye.push([M("잘 자 제이크~ 내일 또 얘기하자 ㅋㅋㅋ","晚安杰克～明天再聊哈哈哈")]);
+ANS.doing=[[M("오 {t}?? 재밌겠다 ㅋㅋㅋ 나도 끼워줘","哦 {t}？？听着好玩哈哈哈 带我一个")],[M("{t} 하고 있었구나 ㅋㅋㅋ 나는 지금 레이스 클립 보는 중","原来在{t}啊哈哈哈 我正在看比赛片段")]];
+ANS.today.push([M("오 {t}~ 좋은데? ㅋㅋㅋ 더 얘기해줘","哦 {t}～不错嘛哈哈哈 多说点")]);
+SC.tease=[
+ [M("야 너 지금 나 놀리는 거지?? ㅋㅋㅋ 다 보여","喂你现在是在逗我吧？？哈哈哈 我都看出来了"),M("근데 인정 나 좀 시끄러운 편이긴 함","不过我承认 我是有点吵")],
+ [M("아 진짜 제이크 이럴 때만 말 많아 ㅋㅋㅋ 나 놀릴 때 제일 신나 보여","啊真是的杰克只有这时候话多哈哈哈 逗我的时候看起来最开心")],
+ [M("ㅋㅋㅋ 그래 그래 놀려라 나중에 레이스 같이 볼 때 다 갚을 거야","哈哈哈行行 你逗吧 以后一起看比赛我全还回来")],
+ [M("와 이 못된 놈 ㅋㅋㅋ 그래도 나 안 삐짐","哇这坏家伙哈哈哈 不过我不会生气")],
+ [M("진짜 얄밉다 ㅋㅋㅋ 근데 웃겨서 화도 못 내","真是欠揍哈哈哈 但好笑得连火都发不出来")],
+ [M("ㅋㅋㅋㅋ 제이크 오늘 장난 모드네 나도 받아칠게","哈哈哈杰克今天是玩笑模式 我也要还击了"),M("너 어제 아아 쏟은 거 다 알고 있음 😏","你昨天把冰美式洒了我可都知道")],
+ [M("아 몰라 ㅋㅋㅋ 억울한데 반박을 못 하겠음","啊不管了哈哈哈 很冤但反驳不了")]
+];
+SC.love.push(
+ [M("어? 뭐라고?? 나 방금 이어폰 꽂고 있었어 ㅋㅋㅋ 다시 말해봐","嗯？你说什么？？我刚才戴着耳机呢哈哈哈 再说一遍"),M("…아니다 말하지 마 그냥 들은 걸로 할게","……不对别说了 就当我听到了")],
+ [M("엥 갑자기?? 나 지금 컵라면 먹고 있었는데 국물 튀었어 ㅠㅠ","欸突然？？我正在吃杯面 汤溅出来了呜呜"),M("너 때문이야 책임져 ㅋㅋㅋ","都怪你 你要负责哈哈哈")],
+ [M("ㅋㅋㅋ 아 몰라 못 들었어 나 오늘 귀가 안 좋아","哈哈哈 不知道没听到 我今天耳朵不太好")]
+);
+SC.love2.push(
+ [M("…솔직히 말하면 처음부터 알고 있었어 ㅋㅋㅋ","……老实说 我一开始就知道了哈哈哈"),M("모르는 척한 거야 어떻게 대답할지 몰라서","装作不知道的 因为不知道该怎么回答")],
+ [M("아 나 지금 커피 쏟았어 ㅠㅠ 네 탓이야 ㅋㅋㅋ","啊我现在把咖啡洒了呜呜 都怪你哈哈哈"),M("휴지 어디 있지 손이 안 따라줌","纸巾在哪 手忙脚乱的")]
+);
+SC.love3.push(
+ [M("…솔직히 나 바보 아니야 다 알아 ㅋㅋㅋ 근데 지금 이 상태가 좋아","……说实话我不是傻瓜 我都知道哈哈哈 不过现在这样我就很喜欢")],
+ [M("밥은 같이 먹자 이번엔 내가 쏠게","饭我们一起吃吧 这次我请"),M("대신 그 얘기는 밥 먹고 나서 ㅋㅋㅋ","不过那件事等吃完饭再说哈哈哈")]
+);
+SC.fight=[
+ [M("오 붙자 ㅋㅋㅋ 근데 먼저 넘어지는 사람이 밥 쏘기 어때?","哦来啊哈哈哈 先倒下的人请吃饭怎么样？")],
+ [M("팔씨름 콜 ㅋㅋㅋ 나 은근 세다? 아 근데 손 잡아야 하네…","掰手腕 来哈哈哈 我其实很强的？啊不过要握手……"),M("아니 그냥 하자 빨리 ㅋㅋㅋ","没事就来吧 快点哈哈哈")],
+ [M("헤드락은 반칙이야 ㅋㅋㅋ 너무 가깝잖아","锁喉是犯规的哈哈哈 靠得太近了")],
+ [M("ㅋㅋㅋ 나 지금 소파 위에서 방어 자세 취함","哈哈哈 我现在在沙发上摆出防御姿势了")],
+ [M("싸움은 레이스로 해결하자 ㅋㅋㅋ 시뮬레이터로 붙을까?","打架还是用比赛解决吧哈哈哈 用模拟器比一场？")],
+ [M("좋아 대신 이기면 소원 하나 들어주기 ㅋㅋㅋ","好啊 不过赢的人可以让对方答应一个愿望哈哈哈"),M("…너무 진지하게 생각하지 마","……别想太认真")]
+];
+SC.together=[
+ [M("오 좋아 ㅋㅋㅋ 어디로 갈까? 내가 쏠게 (이번엔 진짜)","哦好啊哈哈哈 去哪吃？我请客（这次是真的）","menu")],
+ [M("너랑 먹으면 맛있긴 하지… 아니 메뉴가 좋다는 뜻이야 ㅋㅋㅋ","跟你一起吃是挺好吃的……不对 我是说菜单不错哈哈哈"),M("뭐 먹을래?","想吃什么？","menu")],
+ [M("치킨집 예약할까? 아니 그냥 편의점 라면도 좋음 ㅋㅋㅋ","要订炸鸡店吗？不对便利店泡面也行哈哈哈")],
+ [M("콜!! 대신 가위바위보로 계산 정하자 진 사람이 쏘는 걸로","好！不过用石头剪刀布决定谁付钱 输的人请")],
+ [M("같이 먹자 ㅋㅋㅋ 나 요즘 맛집 리스트 모아놨어","一起吃吧哈哈哈 我最近收集了好多美食清单")]
+];
+SC.story.push(
+ [M("어제 너랑 장난치다가 내가 소파에서 굴러떨어졌잖아 ㅋㅋㅋ 아직도 허리 아픔","昨天跟你闹着玩 我从沙发上滚下去了 腰到现在还疼哈哈哈"),M("책임져라 ㅋㅋㅋ 밥으로","你得负责哈哈哈 用饭来赔")],
+ [M("어제 같이 먹은 거 또 먹고 싶다 ㅋㅋㅋ 그 집 이름이 뭐였지?","想再吃一次昨天一起吃的那个哈哈哈 那家店叫什么来着？"),M("아 맞다 네가 계산했지 ㅋㅋㅋ 다음엔 내가 쏠게","对了是你付的钱 下次我请哈哈哈")]
+);
+const bag={};let loveN=0;
+function pick(key,pool){let b=bag[key];if(!b||!b.length){b=pool.map((_,i)=>i).sort(()=>Math.random()-.5);bag[key]=b}return pool[b.pop()]}
+function scripted(t){
+  const raw=(t||"").trim();t=raw.toLowerCase();
+  let key="def";
+  for(const [k,ks] of RULES){if(ks.some(w=>t.indexOf(w)>-1)){key=k;break}}
+  const stripN=t.replace(/제이크|jake|杰克|제제|제이|jay|jeje|[~!?.,…ㅋㅎㅠ\s]/g,"");
+  if(/제이크|jake|杰克|제제|제이|jay|jeje/.test(t)&&stripN.length<=2)key=/제이크|jake|杰克/.test(t)?"jake":"name";
+  if(pending&&["who","love","bye","name","jake","tease","fight","together"].indexOf(key)<0){const pk=pending;pending=null;if(ANS[pk]){const sh=raw.replace(/\s+/g," ").slice(0,24);return pick("ans_"+pk,ANS[pk]).map(m=>M(m.ko.split("{t}").join(sh),m.zh.split("{t}").join(sh)))}}
+  if(key==="def"&&t.replace(/\s/g,"").length<=3)key="cold";
+  if(["def","cold","hi"].indexOf(key)>-1&&Math.random()<0.3)key="story";
+  if(key==="love"){loveN++;key=loveN<=1?"love":loveN===2?"love2":"love3"}
+  const out=pick(key,SC[key]).slice();
+  if(key==="story"&&Math.random()<0.5&&out.length<4)out.push(M("제이크는 오늘 뭐 했어?","杰克你今天做了什么？","today"));
+  if(key!=="sad"&&key!=="love3"&&key!=="story"&&!out.some(m=>m.meme)&&Math.random()<0.12)out.push(pick("memes",MEMES));
+  pending=null;for(let i=out.length-1;i>=0;i--){if(out[i].q){pending=out[i].q;break}}
+  return out;
+}
+// ================= 剧情引擎（不用 AI） =================
+const NR=(ko,zh)=>({n:1,ko,zh});
+const S=(ko,zh)=>({ko,zh});
+const C=(ko,zh,e,r,n)=>({ko,zh,e,r,n});
+const st={l:0,j:0,d:0,h:0,t:0,c:0,n:0,o:0,s:0,cc:0,ss:0,ap:0,gf:0,pr:0,cg:0,hm:0,ind:0,pk:0,bt:0,hn:0,sw:0,pl:0,sh:0,va:0,vb:0,jl:0,jk:0,op:0};
+const D=(ko,zh,x,r,n)=>({ko,zh,e:[0,0,0],x,r,n});
+const MN=(ko,zh,r,n)=>({ko,zh,e:[0,0,0],m:1,r,n});
+const STORY={
+ s1:{msgs:[],ch:[
+  C("9시쯤 끝나. 왜, 같이 밥 먹게?","九点左右结束。怎么，想一起吃饭？",[1,0,0],[S("어떻게 알았어?? ㅋㅋㅋ 역시 제이크는 눈치가 빨라","你怎么知道的？？哈哈哈 不愧是杰克 反应真快"),S("나 방금 새로운 식당 찾았음 레이스 중계 틀어주는 데야 ㅋㅋㅋ","我刚找到一家新店 会放比赛转播的哈哈哈")],"s2"),
+  C("왜, 또 나한테 얻어먹으려고?","怎么，又想让我请客？",[0,1,0],[S("와 어떻게 알았어 ㅋㅋㅋ 아니 오늘은 내가 쏠게!!","哇你怎么知道的哈哈哈 不对 今天我请！！"),S("(진짜임 지난번엔 가위바위보에서 져서 네가 낸 거고)","（真的 上次是石头剪刀布输了才是你付的）")],"s2"),
+  C("모르겠다. 피곤해서 오늘은 그냥 들어갈지도","不知道。有点累 今天可能直接回去",[0,0,1],[S("헐 안 돼 ㅠㅠ 그럼 내가 편의점 라면이라도 사 들고 갈게","啊不行呜呜 那我就买便利店的泡面带过去"),S("얼굴만 보고 가 알았지?","只看一眼脸就走 好不好？")],"s2")
+ ]},
+ s2:{msgs:[
+  NR("— 그날 밤, 스케줄이 끝난 뒤 —","——那天夜里 行程结束之后——"),
+  S("스케줄 끝났다!! 오늘 현장에서 있었던 일 들어봐 ㅋㅋㅋ","行程结束啦！！听我说今天现场发生的事哈哈哈"),
+  S("스태프님이 '제제 씨 대기 시간에 뭐 하세요?' 하길래 '레이스 하이라이트요' 했거든","工作人员问我“제제 你候场的时候做什么？” 我说“看比赛集锦”"),
+  S("그랬더니 '좋아하는 드라이버는요?' 하는 거야 나 거기서 20분 말함 ㅋㅋㅋ","结果他问“那你喜欢的车手是谁？” 我就在那里讲了二十分钟哈哈哈"),
+  S("스태프님 표정 아직도 기억남…","到现在还记得工作人员的表情……")
+ ],ch:[
+  C("20분이나? ㅋㅋ 그래도 네가 신나서 말하는 거 보고 싶었다","二十分钟？哈哈 不过我挺想看你兴奋地讲的样子",[1,0,0],[S("…뭐야 갑자기 그런 말 하지 마 ㅋㅋㅋ 귀 빨개짐","……什么啊突然说这种话 耳朵红了哈哈哈"),S("아 맞다 너 어제 그 파트 계속 틀리더니 오늘은 괜찮았어?","对了 你昨天那个部分一直出错 今天还好吗？")],"s3"),
+  C("스태프님 불쌍하다 ㅋㅋ 내일 사과 문자 보내라","工作人员好可怜哈哈 明天发条道歉信息吧",[0,1,0],[S("야 그건 좀 너무하잖아 ㅋㅋㅋ 나 최대한 짧게 말했는데?","喂这也太过分了哈哈哈 我已经尽量讲得简短了？"),S("…20분이 짧은 건 아니지만","……虽然二十分钟算不上短")],"s3"),
+  C("ㅋㅋ 그래. 나는 씻고 잘게","哈哈 好。我去洗澡睡了",[0,0,1],[S("엥 벌써?? 아 알겠어 ㅠㅠ 푹 자","欸已经要睡了？？好吧呜呜 好好睡"),S("내일 연습 때 나 졸면 네가 깨워줘 알았지?","明天练习如果我打瞌睡 你要叫醒我 好不好？")],"s3")
+ ]},
+ s3:{msgs:[
+  NR("— 다음 날, 연습실 —","——第二天 练习室——"),
+  S("제이크 너 내 물 뺏어 마신 거 알지?? ㅋㅋㅋ","杰克你偷喝我的水 我知道哦？？哈哈哈"),
+  S("복수할 거야 연습 끝나고 붙자","我要报仇 练习结束后来比一场"),
+  S("팔씨름이든 레슬링이든 달리기든!!","掰手腕、摔跤、跑步都行！！")
+ ],ch:[
+  C("좋아. 대신 내가 이기면 소원 하나","好啊。不过我赢了就得答应我一个愿望",[0,1,0],[S("소원?? 뭐 빌 건데 ㅋㅋㅋ 아 무섭다","愿望？？你要许什么哈哈哈 好怕"),S("나 이기면 네가 내일 아침에 아아 사 오기!","我赢了你明天早上就要买冰美式给我！")],"s4"),
+  C("붙기 전에 손목부터 풀어. 어제 안무 때 삐끗했잖아","比之前先活动一下手腕。你昨天跳舞时扭到了吧",[1,0,0],[S("…너 그걸 봤어?? 아무한테도 말 안 했는데","……你看到了？？我谁都没说过"),S("(잠깐 조용해짐)","（安静了一会儿）"),S("…고마워 ㅋㅋㅋ 아 분위기 뭐야 빨리 팔씨름이나 하자","……谢谢哈哈哈 啊这气氛是怎么回事 快点来掰手腕吧")],"s4"),
+  C("안 붙어. 귀찮아","不比。嫌麻烦",[0,0,1],[S("치사하다 ㅋㅋㅋ 그럼 내가 네 의자 뺏을 거야","小气哈哈哈 那我就把你的椅子抢走"),S("도망가도 소용없음 ㅋㅋㅋ","逃也没用哈哈哈")],"s4")
+ ]},
+ s4:{msgs:[
+  NR("— 주말, 그랑프리 날 —","——周末 大奖赛当天——"),
+  S("제이크 나 지금 레이스 시작 10분 전인데 심장 터질 것 같아","杰克 距离比赛开始还有十分钟 我心脏快炸了"),
+  S("같이 보기로 했잖아 간식은 내가 사 놨음 🍿","说好一起看的 零食我买好了"),
+  S("안 오면 나 혼자 소리 지르면서 볼 건데 옆집이 신고할지도 ㅋㅋㅋ","你不来我就一个人尖叫着看 邻居可能会报警哈哈哈")
+ ],ch:[
+  C("가는 중. 너 새벽 3시에 깰 줄 알고 알람도 맞춰놨어","在路上了。我知道你凌晨三点会醒 闹钟都帮你设好了",[1,0,0],[S("…너 내 알람까지 맞춰놓은 거야?? ㅋㅋㅋ","……你连我的闹钟都设了？？哈哈哈"),S("이상하게 감동임 아니 그냥 잘 챙겨준다는 뜻!","莫名有点感动 不对 我是说你很会照顾人！")],"s5"),
+  C("소리 줄이는 조건으로 간다 ㅋㅋ 그리고 팝콘은 달게","要调低音量才去哈哈 还有爆米花要甜的",[0,1,0],[S("조건이 너무 많다 ㅋㅋㅋ 근데 콜 팝콘은 달게 알겠음","条件太多了哈哈哈 不过OK 爆米花买甜的"),S("소리는… 약속 못 함","音量嘛……我不能保证")],"s5"),
+  C("미안, 못 가. 다음에 보자","抱歉 去不了。下次吧",[0,0,1],[S("아… 알겠어 ㅠㅠ","啊……知道了呜呜"),S("그럼 중계하면서 너한테 문자 보낼게 답장은 안 해도 돼 ㅋㅋㅋ","那我一边看一边发消息给你 不回也没关系哈哈哈")],"s5")
+ ]},
+ s5:{msgs:[
+  NR("— 레이스가 끝난 새벽 —","——比赛结束后的凌晨——"),
+  S("제이크","杰克"),
+  S("…아니다 아무것도 아님 ㅋㅋㅋ","……不对没什么哈哈哈"),
+  S("근데 사실 나 요즘 너랑 있으면 말이 더 많아지는 것 같아 원래도 많지만 ㅋㅋㅋ","不过其实我最近跟你在一起话变得更多了 虽然本来就很多哈哈哈"),
+  S("이상한 말 해도 도망가지 마?","我说了奇怪的话你可别跑掉？")
+ ],ch:[
+  C("도망 안 가. 말해봐","我不会跑。说吧",[2,0,0],[S("……","……"),S("…알겠어 잠깐만 숨 좀 쉴게","……知道了 等一下我喘口气")],"route"),
+  C("또 장난치는 거지? 졸려 ㅋㅋ","又在开玩笑吧？好困哈哈",[0,0,2],[S("아 ㅋㅋㅋ 그래 장난이었어","啊哈哈哈 对 是开玩笑的"),S("(…장난 아닌데)","（……其实不是开玩笑）")],"route"),
+  C("도망가면 잡을 거야. 팔씨름으로","你跑的话我就抓你。用掰手腕",[0,2,0],[S("와 이 사람 진짜 ㅋㅋㅋㅋ","哇这个人真是的哈哈哈哈"),S("좋아 그럼 이건 팔씨름으로 정하자","好 那这件事就用掰手腕来决定")],"route")
+ ]},
+ route:{msgs:[],go:()=>(st.l>=4&&st.l>=st.j&&st.l>=st.d)?"s6a":((st.d>=3&&st.d>st.j&&st.d>=st.l)?"end_b":"end_c")},
+ s6a:{msgs:[
+  S("…나 너 좋아해","……我喜欢你"),
+  S("장난 아니고 진짜로","不是开玩笑 是真的"),
+  S("같이 밥 먹고 연습하고 레이스 보는 거 다 좋아서 ㅋㅋㅋ 아 나 지금 손 떨려","一起吃饭、练习、看比赛 我全都喜欢哈哈哈 啊我现在手在抖"),
+  S("도망가지 마 제발","求你别跑")
+ ],ch:[
+  C("나도 좋아해. 아주 오래전부터","我也喜欢你。很久很久以前就是了",[0,0,0],[S("…진짜?? 방금 뭐라고 했어?? 나 지금 컵라면 쏟았음 ㅋㅋㅋ","……真的？？你刚说什么？？我把杯面洒了哈哈哈"),S("아니 쏟은 건 맞는데 그게 중요한 게 아니고","不对 洒了是真的 但这不是重点")],"end_a"),
+  C("당연히 알고 있었지. 너 바보인 척하는 거까지","当然知道。连你装傻都知道",[0,0,0],[S("…와 나 다 들켰네 ㅋㅋㅋ","……哇我全被看穿了哈哈哈"),S("알고 있었으면 빨리 말하지 이 나쁜 놈아 ㅠㅠ","知道的话早点说啊 你这坏家伙呜呜")],"end_a")
+ ]},
+ end_a:{msgs:[
+  S("나 계속 말하고 싶었는데 네가 도망갈까 봐 장난만 쳤어","我一直想说 又怕你跑掉 就只敢开玩笑"),
+  S("그럼 이제 같이 밥 먹는 거 매번 데이트인 거야? ㅋㅋㅋ","那以后一起吃饭每次都算约会了？哈哈哈"),
+  S("…내일부터 1일이다 알았지?","……从明天开始算第一天 好不好？"),
+  NR("— 그날 이후, 스케줄이 끝난 뒤 함께 먹는 밥은 조금 달라졌다 —","——那之后 行程结束一起吃的饭有了一点不同——")
+ ],end:["ENDING A · 오늘부터 1일 🍜","结局A·从今天起第一天"]},
+ end_b:{msgs:[
+  S("아 ㅋㅋㅋ 졸려서 헛소리했다 잊어줘!!","啊哈哈哈 困得说胡话了 忘了吧！！"),
+  S("근데 나 오늘 밥 제대로 못 먹었는데 내일 같이 먹을래?","不过我今天没好好吃饭 明天一起吃吗？"),
+  S("…내일도 같이 먹자 약속","……明天也一起吃吧 说好了"),
+  NR("— 제제는 그날 밤 메모장에 한 줄을 적었다. '다음엔 꼭 말하자.' —","——那天夜里 제제在备忘录里写下一行字：“下次一定要说出口。”——")
+ ],end:["ENDING B · 웃음으로 넘긴 밤 🌙","结局B·笑着带过的夜晚（暗恋继续）"]},
+ end_c:{msgs:[
+  S("좋아 그럼 이건 팔씨름으로 결판 짓자 ㅋㅋㅋ 내일 연습실에서!","好 那这件事就用掰手腕来分胜负哈哈哈 明天在练习室！"),
+  S("이기는 사람이 소원 하나!","赢的人可以许一个愿望！"),
+  S("…근데 손 잡는 거 조금 긴장되네 ㅋㅋㅋ 아니 그냥 긴장 푸는 중임","……不过握手有点紧张呢哈哈哈 不对 我只是在放松"),
+  NR("— 승부는 아직 정해지지 않았다. 둘 다 그 이유를 말하지 않았을 뿐 —","——胜负还没有定。只是两个人都没有说出理由——")
+ ],end:["ENDING C · 승부는 내일 💪","结局C·胜负明天再分（打闹暧昧）"]}
+};
+Object.assign(STORY,{
+ menu:{msgs:[NR("— 어떤 이야기를 볼까? —","——想看哪一个故事？——")],ch:[
+  MN("🍜 같이 밥 먹는 날들","一起吃饭的日子（打闹·暧昧·表白）",[NR("— 이야기 1 · 같이 밥 먹는 날들 —","——故事一·一起吃饭的日子——")],"s1"),
+  MN("💭 마음을 확인하고 싶어","想确认他的心意（제이크的试探）",[NR("— 이야기 2 · 마음 확인하기 —","——故事二·确认心意——")],"p1"),
+  MN("✈️ 제제가 출장을 갔다","제제出差了（分离不安）",[NR("— 이야기 3 · 출장 —","——故事三·出差——")],"t1")
+ ]},
+ // ---------- 故事二：제이크在摸索他喜不喜欢自己 ----------
+ p1:{msgs:[
+  NR("— 요즘 제이크는 제제가 한 말을 자꾸 곱씹는다. 그 말에 뜻이 있는 걸까, 아니면 그냥 제제니까 하는 말일까 —","——最近제이크总是反复琢磨제제说的话：是另有含义，还是他本来就这样？——"),
+  S("제이크 제이크!! 나 오늘 편의점에서 네가 좋아하는 젤리 봤는데 그냥 사 왔어 ㅋㅋㅋ","杰克杰克！！我今天在便利店看到你喜欢的软糖 就顺手买回来了哈哈哈"),
+  S("아니 그냥 눈에 띄어서!! 별 뜻 없음!!","不是 就是刚好看到！！没什么特别意思！！")
+ ],ch:[
+  D("나 주려고 산 거야? 내 생각 났어?","是买给我的？想到我了吗？",{h:1},[S("어?? 아니 그게… 사실 네 얼굴이 떠올랐어 ㅋㅋㅋ","欸？？不是 那个……其实是你的脸浮现在脑海里了哈哈哈"),S("아 몰라 이상한 말 했다 그냥 먹어!!","啊不管了 我说了奇怪的话 你就吃吧！！")],"p2"),
+  D("다른 멤버들 것도 샀어?","其他成员的也买了吗？",{t:1},[S("어?? 아 그게… 네 것만… 아니다 다 같이 먹으려고 샀어! 맞아 다 같이!!","欸？？啊那个……只有你的……不对 是想大家一起吃才买的！对 大家一起！！"),S("(…말해놓고 이상하네)","（……说完觉得有点怪）")],"p2"),
+  D("고마워. 잘 먹을게","谢谢。我会好好吃的",{c:1},[S("응응 ㅋㅋㅋ 맛있게 먹어","嗯嗯哈哈哈 好好吃"),S("…그게 다야? 아니다 아무것도 아님","……就这样？不对 没什么")],"p2")
+ ]},
+ p2:{msgs:[
+  NR("— 다음 날 저녁, 메시지 알림이 울렸다 —","——第二天傍晚 消息提示音响了——"),
+  S("제이크 너 아까 내 메시지 읽고 답 안 했지?? ㅋㅋㅋ 읽씹 증거 있음","杰克你刚才看了我的消息没回吧？？哈哈哈 我有已读不回的证据"),
+  S("나 그거 3분 동안 폰만 봤다 ㅋㅋㅋ 이게 뭐라고","我盯着手机看了整整三分钟哈哈哈 这有什么好等的")
+ ],ch:[
+  D("일부러 안 한 거 아니야. 네 메시지 기다리고 있었어","不是故意不回的。我一直在等你的消息",{h:1},[S("…기다렸다고?? 나를??","……你在等我？？等我的消息？？"),S("아 ㅋㅋㅋ 갑자기 말 잘한다 이 사람 ㅋㅋㅋ","啊哈哈哈 突然这么会说了 这个人")],"p3"),
+  D("너는 다른 사람 메시지에도 이렇게 바로 답해?","你对别人的消息也这么快回吗？",{t:1},[S("엥 갑자기 왜?? 그냥 내 폰이 손에 있어서 그런 건데","欸突然怎么了？？只是手机刚好在手里而已"),S("…근데 왜 물어봐? 이상하다 ㅋㅋㅋ","……不过你为什么问？有点奇怪哈哈哈")],"p3"),
+  D("바빴어","在忙",{c:1},[S("아 그랬구나 ㅋㅋㅋ 바쁜데 미안","啊这样啊哈哈哈 你忙还打扰你了抱歉"),S("(…아니 근데 3분이나?)","（……不过要忙三分钟吗？）")],"p3")
+ ]},
+ p3:{msgs:[
+  NR("— 연습이 끝난 뒤 —","——练习结束之后——"),
+  S("아 맞다 오늘 시우가 나한테 '형은 제이크 형이랑 너무 붙어 다녀요' 하면서 놀림 ㅋㅋㅋ","对了 今天시우还取笑我 说“哥你跟杰克哥黏得太紧了”哈哈哈"),
+  S("나 뭐라고 대답했는지 알아?","你知道我怎么回答的吗？")
+ ],ch:[
+  D("뭐라고 했는데?","你怎么说的？",{h:1},[S("'원래 친해서 그래' 라고 했지!","我说“本来就很熟嘛”！"),S("근데 말하고 나서 이상하게 심장이 빨리 뛰었음… 날씨 때문인가 ㅋㅋㅋ","不过说完以后心跳莫名地快……是因为天气吗哈哈哈")],"p4"),
+  D("일부러 나한테 말하는 거지? 떠보는 거야?","你是故意告诉我的吧？在试探我？",{t:1},[S("떠보다니 ㅋㅋㅋ 나 그런 거 못 해 거짓말하면 얼굴에 다 나옴","试探什么哈哈哈 我不会这种事 一说谎就全写在脸上"),S("…근데 오늘 네가 좀 날카롭다?","……不过你今天有点尖锐？")],"p4"),
+  D("시우가 눈치 빠르네","시우还挺会看眼色的",{c:1},[S("그치?? 걔 은근 예리해 ㅋㅋㅋ","对吧？？他其实很敏锐哈哈哈"),S("…제이크는 어떻게 생각해? 아니다 안 물어볼래","……杰克你怎么想？不对 我不问了")],"p4")
+ ]},
+ p4:{msgs:[
+  NR("— 늦은 밤, 제제에게서 메시지가 왔다 —","——深夜 收到了제제的消息——"),
+  S("제이크 너 요즘 나한테 뭐 물어볼 때 눈치 보는 거 알아?","杰克 你知道你最近问我事情的时候总是在看我脸色吗？"),
+  S("나 바보 아니거든 ㅋㅋㅋ 다 보여","我可不是傻瓜哦哈哈哈 我都看得出来"),
+  S("…궁금한 거 있으면 그냥 물어봐도 돼","……有想问的就直接问吧")
+ ],ch:[
+  D("나 너 좋아해. 너는 어때?","我喜欢你。你呢？",{h:2},[S("…","……"),S("…야 그걸 이렇게 갑자기 말하면 어떡해 ㅋㅋㅋ 나 지금 얼굴 터질 것 같아","……喂 你这样突然说出来我怎么办哈哈哈 我现在脸快要爆炸了")],"proute"),
+  D("아니야 아무것도. 잘 자","没有 没什么。晚安",{c:2},[S("…그래 알겠어 잘 자","……好吧 知道了 晚安"),S("(…물어보라고 했는데)","（……我明明说了可以问的）")],"proute"),
+  D("그럼 하나만. 나 말고 좋아하는 사람 있어?","那就问一个。除了我以外你有喜欢的人吗？",{t:2},[S("…그 질문은 좀 아니다","……这个问题有点不对"),S("나 지금 시험당하는 기분인데","我现在有种被考验的感觉")],"proute")
+ ]},
+ proute:{msgs:[],go:()=>st.t>=3?"end_pb":(st.h>=4?"end_pa":"end_pc")},
+ end_pa:{msgs:[
+  S("…나도 너 좋아해 ㅋㅋㅋ 근데 말하는 법을 몰랐어","……我也喜欢你哈哈哈 只是不知道该怎么说"),
+  S("네가 매번 물어볼 때마다 도망치고 싶었는데 사실 대답하고 싶었어","你每次问我的时候我都想逃 其实是想回答的"),
+  S("이제 확인됐지? 더 안 물어봐도 되지?","这下确认了吧？不用再问了吧？"),
+  NR("— 제이크가 한 달 동안 모은 단서들은, 결국 한 문장으로 끝났다 —","——제이크一个月来收集的线索 最后用一句话就结束了——")
+ ],end:["ENDING D · 확인 완료 ✔","结局D·确认完毕（互相喜欢）"]},
+ end_pb:{msgs:[
+  S("솔직히 말하면 나 요즘 네가 나 떠보는 것 같아서 좀 힘들었어","说实话 我最近觉得你在试探我 有点累"),
+  S("좋아하는데 확인받는 기분이라 자꾸 말이 꼬였어","明明喜欢 却有种被审查的感觉 话就总是说不顺"),
+  S("…이제 그냥 물어봐 나도 그냥 대답할게 돌려 말하지 말고","……以后直接问吧 我也直接回答 不要绕圈子"),
+  NR("— 둘은 처음으로 서로의 마음을 돌려 말하지 않고 이야기했다 —","——两个人第一次不绕弯子地聊起了彼此的心意——")
+ ],end:["ENDING E · 시험 말고 대화 🍵","结局E·不是试探 而是对话"]},
+ end_pc:{msgs:[
+  S("아 졸려서 헛소리했다 ㅋㅋㅋ 내일 또 얘기하자","啊困得说胡话了哈哈哈 明天再聊"),
+  S("…내일도 물어봐도 돼 나 도망 안 갈 거니까","……明天也可以问 我不会逃的"),
+  NR("— 제이크는 그날 밤 휴대폰 화면을 한참 바라보다가 잠들었다. 아직은 확신이 없다 —","——제이크那天夜里对着手机屏幕看了很久才睡着。他还没有确信——")
+ ],end:["ENDING F · 아직 모르는 척 🌫","结局F·还在假装不知道（继续摸索）"]},
+ // ---------- 故事三：제제出差 ----------
+ t1:{msgs:[
+  NR("— 제제는 다른 스케줄 때문에 지방으로 출장을 갔다. 3박 4일 —","——제제因为别的行程去外地出差了 三天四夜——"),
+  S("제이크 나 도착했음!! 여기 공기 진짜 다르다 ㅋㅋㅋ","杰克我到了！！这边的空气真的不一样哈哈哈"),
+  S("숙소 창문에서 산이 보여 너 보면 좋아할 텐데","宿舍窗外能看到山 你看到的话一定会喜欢"),
+  S("근데 와이파이가 느려서 답장 늦을 수도 있어 미안!","不过Wi-Fi很慢 回复可能会晚 抱歉！")
+ ],ch:[
+  D("도착했으면 연락 줘. 자주. 알겠지?","到了的话要联系我。要常常联系。知道吗？",{n:1},[S("알겠어 알겠어 ㅋㅋㅋ 자주 할게","知道了知道了哈哈哈 我会常常联系"),S("뭐야 오늘 좀 걱정 많은 사람 같네?","怎么了 今天你好像特别担心？")],"t2"),
+  D("벌써부터 좀 이상해. 네가 없으니까","才刚开始就有点怪怪的。你不在",{o:1},[S("…그래? 나도 방금 숙소 들어오는데 조금 허전했어","……是吗？我刚进宿舍的时候也觉得有点空落落的"),S("우리 맨날 같이 있었으니까 그렇겠지 ㅋㅋㅋ","大概是因为我们天天在一起吧哈哈哈")],"t2"),
+  D("응. 잘 다녀와","嗯。路上小心 好好工作",{s:1},[S("응!! 다녀올게 ㅋㅋㅋ","嗯！！我去去就回哈哈哈"),S("(…뭔가 더 말할 줄 알았는데)","（……我还以为你会多说几句）")],"t2")
+ ]},
+ t2:{msgs:[
+  NR("— 첫날 밤 —","——第一天夜里——"),
+  S("제이크 나 저녁에 회식이 있어서 한두 시간 연락 못 할 것 같아","杰克 我晚上有聚餐 可能有一两个小时联系不上"),
+  S("끝나면 바로 연락할게!! 걱정하지 마 ㅋㅋㅋ","结束就马上联系你！！别担心哈哈哈")
+ ],ch:[
+  D("알겠어. 근데 한 시간 지나면 내가 전화할 거야","知道了。但过一个小时我就会打电话",{n:1},[S("한 시간?? ㅋㅋㅋ 알겠어 그럼 최대한 빨리 나올게","一个小时？？哈哈哈 好吧 那我尽量早点出来"),S("근데 제이크 너 괜찮은 거 맞지?","不过杰克 你真的没事吧？")],"t3"),
+  D("솔직히 좀 불안해. 연락 못 한다니까 가슴이 답답해","说实话有点不安。听说联系不上就觉得胸口发闷",{o:1},[S("…말해줘서 고마워","……谢谢你告诉我"),S("그럼 지금 말해둘게 회식 끝나면 5분만이라도 전화하자 나도 네 목소리 듣고 자고 싶어","那我现在先说好 聚餐结束后哪怕只有五分钟也打个电话 我也想听着你的声音睡觉")],"t3"),
+  D("괜찮아 신경 쓰지 말고 놀다 와","没事 别在意 好好玩",{s:1},[S("응 ㅋㅋㅋ 고마워","嗯哈哈哈 谢谢"),S("…진짜 괜찮은 거 맞지?","……真的没事吧？")],"t3")
+ ]},
+ t3:{msgs:[
+  NR("— 둘째 날, 답장이 늦어진다 —","——第二天 回复变慢了——"),
+  S("미안 미안!! 촬영이 길어져서 폰을 가방에 뒀어 ㅠㅠ","抱歉抱歉！！拍摄时间拖长了 手机放在包里了呜呜"),
+  S("방금 확인했는데 메시지가 막 쌓여 있네 ㅋㅋㅋ","我刚看到 消息堆了好多哈哈哈")
+ ],ch:[
+  D("왜 이렇게 늦어? 나 계속 폰만 보고 있었어","怎么这么晚？我一直盯着手机看",{n:1},[S("미안해 ㅠㅠ 내가 다음엔 쉬는 시간마다 확인할게","对不起呜呜 下次每个休息时间我都会看一下"),S("근데 제이크 너 진짜 하루 종일 폰만 본 거야?","不过杰克 你真的一整天都盯着手机吗？")],"t4"),
+  D("괜찮아. 근데 하루에 한 번은 목소리 듣고 싶어. 전화 가능해?","没关系。不过我每天想听一次你的声音。能打电话吗？",{o:1},[S("당연하지!! 오늘 밤 9시 어때?","当然！！今晚九点怎么样？"),S("레이스 클립 틀어놓고 통화하자 ㅋㅋㅋ","边放比赛片段边通话吧哈哈哈")],"t4"),
+  D("아냐 괜찮아","没事 没关系",{s:1},[S("응 ㅋㅋㅋ 알겠어","嗯哈哈哈 知道了"),S("(…목소리가 좀 가라앉은 것 같은데)","（……他的声音好像有点低落）")],"t4")
+ ]},
+ t4:{msgs:[
+  NR("— 셋째 날 밤 —","——第三天夜里——"),
+  S("제이크 너 오늘 왜 이렇게 말이 짧아?","杰克 你今天怎么回得这么简短？"),
+  S("혹시 나 없어서 불안해?","是不是因为我不在 所以不安？"),
+  S("…나 알아 너 불안하면 말이 짧아지는 거","……我知道的 你不安的时候话就会变少")
+ ],ch:[
+  D("맞아. 불안해. 네가 어디 있는지 알고 싶어서 지금 당장 가고 싶어","对。不安。想知道你在哪 现在就想去找你",{n:2},[S("잠깐 지금 뭐라고 했어?? 너 지금 어디야?","等一下 你刚说什么？？你现在在哪？"),S("설마 기차역이야?? ㅋㅋㅋ 야 이 바보야","该不会在火车站吧？？哈哈哈 你这个笨蛋")],"troute"),
+  D("응 불안해. 그래서 매일 밤 영상통화하고 싶어. 같이 레이스 보면서","嗯 不安。所以想每天夜里视频通话。一起看比赛",{o:2},[S("…알겠어!! 약속 매일 밤 9시","……知道了！！约定好 每晚九点"),S("솔직히 말해줘서 고마워 이제 나도 마음이 놓여","谢谢你说实话 我现在也安心了")],"troute"),
+  D("아니야 괜찮아. 잘 자","没事 没关系。晚安",{s:2},[S("제이크","杰克"),S("나 다 알아 너 괜찮은 척하는 거","我都知道 你在假装没事"),S("지금 전화할게 받아","现在打给你 接电话")],"troute")
+ ]},
+ troute:{msgs:[],go:()=>(st.o>=st.n&&st.o>=st.s)?"end_g":(st.n>=st.s?"end_h":"end_i")},
+ end_g:{msgs:[
+  S("그럼 오늘부터 매일 밤 9시 영상통화 약속!!","那从今天起每天夜里九点视频通话 说定了！！"),
+  S("다음에 출장 가기 전에 우리 같이 계획 세우자 네가 덜 불안하게","下次出差之前 我们一起订个计划 让你少一点不安"),
+  S("돌아가면 네가 좋아하는 젤리 100개 사 갈게 ㅋㅋㅋ","回去的话我会带一百包你喜欢的软糖哈哈哈"),
+  NR("— 사흘 뒤, 돌아온 제제를 제이크는 현관 앞에서 한참 기다렸다 —","——三天后 제이크在玄关前等了很久 等回来的제제——")
+ ],end:["ENDING G · 매일 밤 9시 📞","结局G·每晚九点（把不安说出口）"]},
+ end_h:{msgs:[
+  S("거기 있어!! 움직이지 마!! 내가 마중 나갈게","待在那里！！别动！！我去接你"),
+  S("(헐레벌떡 뛰어가는 중)","（气喘吁吁地跑过去中）"),
+  NR("— 한밤의 정거장, 제제는 제이크를 보자마자 웃음부터 터뜨렸다 —","——深夜的车站 제제一看到제이크就先笑了出来——"),
+  S("다음엔 말하고 와 알았지? 심장 떨어질 뻔했어 ㅋㅋㅋ","下次先告诉我再来 好不好？吓得我心脏都快掉了哈哈哈"),
+  NR("— 그렇게 말하면서도 제제는 한동안 제이크의 소매를 놓지 않았다 —","——嘴上这么说 제제却好一阵子都没有松开제이크的衣袖——")
+ ],end:["ENDING H · 정거장에서 🚄","结局H·在车站（跑去找他）"]},
+ end_i:{msgs:[
+  S("…목소리 들려줘 5분만이라도 얘기하자","……让我听听你的声音 哪怕只聊五分钟"),
+  S("나 돌아가면 제일 먼저 너 보러 갈게","我回去以后 第一个就去见你"),
+  S("그동안은 매일 밤 전화하자 불안하면 불안하다고 말해줘","在那之前每晚都打电话吧 不安的时候 就告诉我你不安"),
+  NR("— 괜찮은 척이 풀린 밤, 제이크는 오랜만에 깊이 잠들었다 —","——不再假装没事的这一夜 제이크久违地睡得很沉——")
+ ],end:["ENDING I · 괜찮은 척 하지 마 🌙","结局I·不用假装没事"]}
+});
+Object.assign(STORY,{
+ // ---------- 加长：故事一、二、三各多一章 ----------
+ s3b:{msgs:[
+  NR("— 연습이 끝난 밤, 편의점 앞 —","——练习结束的夜里 便利店门口——"),
+  S("컵라면 두 개 샀어 하나는 네 거 ㅋㅋㅋ","买了两碗杯面 一碗是你的哈哈哈"),
+  S("근데 물 붓고 3분 기다려야 하잖아","可是倒水之后要等三分钟呢"),
+  S("그동안 뭐 할래?? 나는 하고 싶은 얘기가 열 개쯤 있는데 ㅋㅋㅋ","这期间做什么？？我大概有十件想说的事哈哈哈")
+ ],ch:[
+  C("그 3분 동안 네 얘기 듣고 싶어","这三分钟 我想听你说",[1,0,0],[S("…진짜? 그럼 열 개 다 말한다? 후회 없지? ㅋㅋㅋ","……真的？那我十件都说了哦？不后悔吧？哈哈哈"),S("첫 번째는 말이야 오늘 편의점 아저씨가…","第一件是 今天便利店大叔……")],"s4"),
+  C("3분 동안 팔씨름 한 판 하자","这三分钟来一局掰手腕",[0,1,0],[S("콜!! 근데 라면 불면 네 탓이다 ㅋㅋㅋ","好！！不过面泡烂了就怪你哈哈哈"),S("(…어? 손 잡는 거 생각보다 따뜻하네 아니 아무것도 아님)","（……欸？握手比想象中暖 不对 什么都没有）")],"s4"),
+  C("난 먼저 먹을래. 배고파","我先吃了。好饿",[0,0,1],[S("어?? 3분 안 지났는데?? 야 덜 익었어 ㅋㅋㅋ","欸？？还没到三分钟？？喂还没熟哈哈哈"),S("…뭐 너 급한 건 알겠다 그냥 먹자","……好吧知道你着急 那就直接吃吧")],"s4")
+ ]},
+ p3b:{msgs:[
+  NR("— 며칠 뒤, 제이가 이어폰을 한쪽 내밀었다 —","——几天后 제이递过来一只耳机——"),
+  S("제이크 내가 요즘 자꾸 듣는 노래 있는데 들어봐","杰克 我最近老是循环一首歌 你听听"),
+  S("가사가 좀 웃겨 ㅋㅋㅋ 근데 이상하게 계속 생각남","歌词有点好笑哈哈哈 可是莫名一直在想")
+ ],ch:[
+  D("가사 중에 어떤 부분이 제일 마음에 들어?","歌词里你最喜欢哪一句？",{h:1},[S("어… 마지막 부분? '옆에 있어도 자꾸 보고 싶다' 같은 거","呃……最后那段？像“明明就在身边 还是一直想见你”那种"),S("아 이상한 가사지?? 그냥 노래 얘기야 ㅋㅋㅋ","啊歌词很奇怪吧？？只是在说歌而已哈哈哈")],"p4"),
+  D("누구 생각하면서 듣는 거야?","你是想着谁在听的？",{t:1},[S("엥?? 누구 생각하긴 ㅋㅋㅋ 그냥 멜로디가 좋아서 듣는 건데","欸？？想着谁什么啊哈哈哈 只是旋律好听才听的"),S("…왜 그런 걸 물어봐 이상하게 긴장되잖아","……为什么问这种事 害我莫名紧张")],"p4"),
+  D("나중에 들어볼게","我之后再听",{c:1},[S("응 ㅋㅋㅋ 그래","嗯哈哈哈 好"),S("(…지금 같이 들으려고 했는데)","（……我是想现在一起听的）")],"p4")
+ ]},
+ t3b:{msgs:[
+  NR("— 셋째 날 낮, 제이에게서 메시지가 왔다 —","——第三天白天 收到了제이的消息——"),
+  S("여기 스태프님이 나보고 요즘 누구 생각 많이 하냐고 물어봤어 ㅋㅋㅋ","这边的工作人员问我最近是不是常想着谁哈哈哈"),
+  S("나 '집에 있는 사람 생각이요' 라고 대답했는데","我回答说“在想家里的人”"),
+  S("그게 누군지 너는 알지?","你知道那是谁吧？")
+ ],ch:[
+  D("그 말 나한테만 한 거 맞지? 다른 사람한테도 그러는 거 아니지?","这话只对我说的吧？不会也对别人这么说吧？",{n:1},[S("야 ㅋㅋㅋ 내가 누구한테 그런 말을 해","喂哈哈哈 我还能对谁说这种话"),S("…불안하면 그냥 말해 나 거짓말 못 하는 거 알잖아","……不安的话直接说嘛 你知道我不会说谎的")],"t4"),
+  D("…그 말 들으니까 조금 안심된다. 그래도 보고 싶어","……听你这么说有点安心了。不过还是想你",{o:1},[S("…나도 보고 싶어 ㅋㅋㅋ 아 이 말 처음 하네","……我也想你哈哈哈 啊这是我第一次说这句话"),S("이틀만 더 버텨 내가 젤리 사 갈게","再撑两天 我给你带软糖回去")],"t4"),
+  D("그래 ㅋㅋ","嗯哈哈",{s:1},[S("…응 ㅋㅋㅋ","……嗯哈哈哈"),S("(…방금 대답이 좀 짧았는데)","（……刚才的回答有点短）")],"t4")
+ ]},
+ // ---------- 故事四：闹别扭 ----------
+ q1:{msgs:[
+  NR("— 어제 연습이 끝나고 제이가 말없이 멤버들과 먼저 나갔다. 그 뒤로 제이크는 말이 없다 —","——昨天练习结束后 제이没打招呼就跟成员们先走了。从那以后 제이크就没怎么说话——"),
+  S("제이크 자?? 아니 안 자는 거 알아 읽음 떴어 ㅋㅋㅋ","杰克睡了吗？？不对 我知道你没睡 已读了哈哈哈"),
+  S("어제 내가 말도 없이 먼저 간 거 미안해","昨天我没打招呼就先走了 对不起"),
+  S("하준이가 갑자기 밥 먹자고 해서 정신없이 나갔어 ㅠㅠ","是하준突然说去吃饭 我就晕头转向地跟着出去了呜呜")
+ ],ch:[
+  D("응.","嗯。",{cc:1},[S("아 이거 화났다 ㅋㅋㅋ 단호한 '응.' 봐","啊这是生气了哈哈哈 你看这个干脆的“嗯。”"),S("나 혼내려면 직접 와서 해 ㅋㅋㅋ","要骂我就当面来骂哈哈哈")],"q2"),
+  D("괜찮아. 근데 말 안 하고 가서 좀 서운했어","没关系。不过你不说一声就走 我有点难过",{ss:1},[S("…서운했구나 미안 진짜 미안","……你难过了啊 对不起 真的对不起"),S("다음엔 꼭 말하고 갈게 약속","下次一定先说一声再走 我保证")],"q2"),
+  D("나한테 말할 시간은 없고 밥 먹을 시간은 있었어?","没时间跟我说一声 却有时间去吃饭？",{cc:1},[S("아 그건 좀 아픈데 ㅋㅋㅋ","啊这句有点扎心哈哈哈"),S("…맞는 말이라 할 말이 없다","……说得对 我无话可说")],"q2")
+ ]},
+ q2:{msgs:[
+  NR("— 다음 날 아침 —","——第二天早上——"),
+  S("제이크 나 아침에 네가 좋아하는 샌드위치 사 놨어","杰克 我早上买好了你喜欢的三明治"),
+  S("연습실 와서 먹어 안 오면 내가 두 개 다 먹을 거야 ㅋㅋㅋ","来练习室吃吧 不来的话我就两个都吃了哈哈哈")
+ ],ch:[
+  D("안 먹어","不吃",{cc:1},[S("엥 진짜?? 이거 네가 제일 좋아하는 건데","欸真的？？这可是你最喜欢的啊"),S("…그럼 책상 위에 올려놓을게 먹고 싶을 때 먹어","……那我放在你桌上 想吃的时候再吃")],"q3"),
+  D("…고마워. 먹을게","……谢谢。我吃",{ss:1},[S("진짜?? ㅋㅋㅋ 아 다행이다","真的？？哈哈哈 太好了"),S("이따 같이 밥 먹자 이번엔 내가 말하고 가는 거 확인해 ㅋㅋㅋ","待会儿一起吃饭 这次你可以确认我有先说一声哈哈哈")],"q3"),
+  D("바빠서 못 가","忙 去不了",{cc:1},[S("아… 그래","啊……这样啊"),S("…바쁘면 어쩔 수 없지 ㅋㅋㅋ","……忙的话也没办法嘛哈哈哈")],"q3")
+ ]},
+ q3:{msgs:[
+  NR("— 사흘째, 연습실 —","——第三天 练习室——"),
+  S("제이크 나 물 한 병 가져왔는데 마실래? 네가 좋아하는 맛이야","杰克 我带了一瓶水 要喝吗？是你喜欢的口味"),
+  S("어제부터 계속 말이 없는데… 나 어떡하면 돼?","从昨天起你一直不说话……我该怎么办才好？")
+ ],ch:[
+  D("몰라. 알아서 해","不知道。你自己看着办",{cc:1},[S("…알았어","……知道了"),S("그럼 알아서 할게","那我就自己看着办")],"qr"),
+  D("……미안. 나도 어떻게 말해야 할지 몰랐어","……对不起。我也不知道该怎么开口",{ss:1},[S("…아니야 내가 먼저 미안해","……不 是我先该说对不起"),S("우리 둘 다 바보 같네 ㅋㅋㅋ","我们两个都好傻哈哈哈")],"qr"),
+  D("(대답하지 않는다)","（不回答）",{cc:1},[S("…","……"),S("읽었으면서 대답은 안 하네","明明看了却不回答")],"qr")
+ ]},
+ qr:{msgs:[],go:()=>st.cc>=3?"qa1":"qb1"},
+ qb1:{msgs:[
+  S("진짜 미안해 다음엔 꼭 말하고 갈게","真的对不起 下次一定说一声再走"),
+  S("그리고 서운하면 그냥 말해줘 난 눈치가 없어서 몰라 ㅋㅋㅋ","还有 难过的话就直接告诉我 我没眼力见 不知道的哈哈哈")
+ ],ch:[
+  D("나도 차갑게 해서 미안. 사실 네가 다른 애들이랑 있는 게 부러웠어","我也对不起 那么冷淡。其实我羡慕你和别人在一起",{ss:2},[S("…부러웠다고?? 나를?? 아니 나를 부러워하는 게 아니라… 아","……羡慕？？羡慕我？？不 不是羡慕我而是……啊"),S("알겠다 무슨 뜻인지 ㅋㅋㅋ 다음엔 너도 같이 가","明白了 你的意思哈哈哈 下次你也一起去")],"end_ja"),
+  D("괜찮아. 대신 오늘 밥은 네가 사","没关系。不过今天的饭你请",{ss:1},[S("콜!! 곱창 어때?","好！！吃烤肠怎么样？"),S("아 근데 곱창은 네가 싫어하지 ㅋㅋㅋ 네가 고른 걸로 하자","啊不过你不喜欢烤肠哈哈哈 就吃你选的吧")],"end_ja")
+ ]},
+ qa1:{msgs:[
+  NR("— 사흘 동안 풀리지 않은 침묵. 제이는 처음으로 먼저 말을 걸지 않았다 —","——三天没有化解的沉默。제이第一次没有主动开口——"),
+  S("알겠어","知道了"),
+  S("나만 노력하는 것 같아서 좀 지쳤어","觉得好像只有我在努力 有点累了"),
+  S("오늘은 애들이랑 밥 먹을게 혼자 있고 싶으면 그렇게 해","今天我跟大家一起吃饭 你想一个人待着就那样吧"),
+  NR("— 그날 밤, 단톡방에 알림이 떴다. 하준: '오늘 제이 형이랑 다 같이 나가요!' —","——那天夜里 群聊弹出了提示。하준：“今天我们和제이哥一起出去！”——"),
+  NR("— 제제의 이름 옆에는 읽음 표시조차 뜨지 않는다 —","——제제的名字旁边 连“已读”标记都没有了——")
+ ],ch:[
+  D("미안해. 내가 너무 차갑게 굴었어. 얘기 좀 할 수 있을까?","对不起。我对你太冷淡了。我们能谈谈吗？",{ap:1},[S("(읽음 표시가 뜨지 않는다)","（没有出现已读标记）")],"qa2"),
+  D("어디야? 내가 갈게","你在哪？我去找你",{gf:1},[S("(전화를 걸었지만 받지 않는다)","（打了电话 但没有人接）")],"qa2"),
+  D("…됐어. 알아서 하라지","……算了。随他去",{pr:1},[],"qa2")
+ ]},
+ qa2:{msgs:[],go:()=>st.gf>0?"qgo":(st.ap>0?"qtext":"qpride")},
+ qpride:{msgs:[
+  NR("— 한 시간 뒤, 단톡방에 사진이 올라왔다. 제이가 웃고 있었다 —","——一小时后 群聊里传来一张照片。제이在笑——"),
+  NR("— 그 웃음이 이상하게 오래 눈에 남았다. 제이크는 휴대폰을 들었다 —","——那个笑容莫名地留在眼里久久不去。제이크拿起了手机——")
+ ],ch:[
+  D("…미안해. 지금 어디야? 내가 갈게","……对不起。你现在在哪？我去找你",{gf:1},[],"qgo"),
+  D("미안해. 내가 너무 늦었지. 얘기 좀 할 수 있을까?","对不起。我太迟了吧。我们能谈谈吗？",{ap:1},[],"qtext")
+ ]},
+ qtext:{msgs:[
+  S("…읽었어","……我看到了"),
+  S("지금은 좀 시간이 필요해","现在需要一点时间"),
+  S("내일 얘기하자 …사과해줘서 고마워","明天再谈吧 ……谢谢你道歉"),
+  NR("— 답장은 짧았지만, 읽음 표시는 오래도록 꺼지지 않았다 —","——回复很短 但已读的标记久久没有消失——")
+ ],end:["ENDING L · 하루만 더 🌫","结局L·再给一天"]},
+ qgo:{msgs:[
+  S("…진짜 와?","……你真的来？"),
+  S("어딘데?? 하준이한테 위치 물어봤어?","在哪？？你问하준位置了吗？"),
+  NR("— 비가 그친 밤거리. 제이는 우산도 없이 뛰어나와 제이크 앞에서 멈춰 섰다 —","——雨停的夜路。제이连伞都没带跑了出来 在제이크面前停住了脚步——"),
+  S("…바보야 연락도 안 받더니 왜 왔어","……笨蛋 不接电话 为什么来了"),
+  S("…와줘서 고마워","……谢谢你来了"),
+  NR("— 그날 밤, 둘은 사과 대신 어깨를 나란히 하고 한참을 걸었다 —","——那天夜里 两个人没有多说道歉 只是肩并肩走了很久——")
+ ],end:["ENDING K · 뒤늦게 달려간 밤 🌧","结局K·迟了一步却跑去找他的夜晚"]},
+ end_ja:{msgs:[
+  S("나 그냥 네가 말 안 하는 게 제일 무서웠어","我最怕的就是你不说话"),
+  S("다음부터는 싸우더라도 일단 말은 하자 응?","以后就算吵架 也先开口说话 好吗？"),
+  S("그리고 말하고 나가는 거 오늘부터 철저히 지킨다 ㅋㅋㅋ","还有 出门前先打招呼这件事 从今天起严格遵守哈哈哈"),
+  NR("— 사흘 만에 둘은 같은 컵라면을 나눠 먹었다 —","——三天后 两个人终于分吃了同一碗杯面——")
+ ],end:["ENDING J · 서로 먼저 풀어준 밤 🍰","结局J·互相先伸手的夜晚"]},
+ // ---------- 故事五：제이크告白 ----------
+ cf1:{msgs:[
+  NR("— 제이크는 한 달 동안 마음속으로 연습했다. 오늘은 말하기로 했다 —","——제이크在心里练习了一个月。今天决定说出口——"),
+  S("제이크!! 나 방금 새로운 레이스 하이라이트 발견했는데 같이 볼래?","杰克！！我刚发现了新的比赛集锦 要不要一起看？"),
+  S("아 맞다 너 오늘 할 말 있다고 했지? 뭔데??","对了 你今天说有话要对我说？是什么？")
+ ],ch:[
+  D("…하이라이트 먼저 보자. 말은 그 다음에","……先看集锦吧。话等下再说",{hm:1},[S("ㅋㅋㅋ 알겠어 그럼 20분만 보자","哈哈哈 好 那就看二十分钟"),S("…근데 너 목소리가 평소랑 다른데?","……不过你的声音跟平时不一样？")],"cf2"),
+  D("지금 말할게. 근데 놀리지 마","现在就说。但是不许笑我",{cg:1},[S("놀리면 내가 사람이 아니다","我要是笑你我就不是人"),S("…진지한 거구나 잠깐만 앉을게 ㅋㅋㅋ","……是认真的呀 等一下我先坐下")],"cf2"),
+  D("아니, 별거 아니야. 밥 먹자","不 没什么大事。吃饭吧",{ind:1},[S("엥?? 별거 아닌데 한 달 전부터 이상했어?","欸？？没什么的话 你从一个月前就开始怪怪的？"),S("…알겠어 말하고 싶을 때 말해 기다릴게","……好吧 想说的时候再说 我等你")],"cf2")
+ ]},
+ cf2:{msgs:[
+  NR("— 저녁, 연습실을 나와 둘이 걷는 길 —","——傍晚 走出练习室 两个人一起走的路上——"),
+  S("오늘 하늘 봐 별 보인다 ㅋㅋㅋ 서울에서 별 보는 거 처음임","你看今天的天空 能看到星星哈哈哈 我第一次在首尔看到星星"),
+  S("제이크 너 아까부터 계속 입 열었다 닫았다 하는데 뭐 먹고 싶은 거야?? ㅋㅋㅋ","杰克 你从刚才一直张嘴又闭嘴 是想吃什么吗？？哈哈哈")
+ ],ch:[
+  D("먹고 싶은 건 없고. 할 말이 있어. 끝까지 들어줘","没有想吃的。我有话要说。请听我说完",{cg:1},[S("…알겠어 끝까지 들을게","……好 我会听完"),S("(…왜 내가 더 긴장되지?)","（……为什么我反而更紧张？）")],"cf3"),
+  D("소원 걸린 팔씨름 한 판 하고 말해줄게","来一局赌愿望的掰手腕 然后我再告诉你",{hm:1},[S("뭐야 갑자기?? ㅋㅋㅋ 콜 근데 지면 말해주는 거다?","什么啊突然？？哈哈哈 好 不过输了就要说哦？"),S("(…근데 손 잡는 거 오랜만이네)","（……不过好久没握手了）")],"cf3"),
+  D("…별이 예쁘네. 이런 날은 네 옆이 좋다","……星星好漂亮。这种日子待在你旁边最好",{ind:1},[S("어?? 갑자기 시인이야?? ㅋㅋㅋ","欸？？突然变诗人了？？哈哈哈"),S("…근데 나도 방금 좀 좋았어","……不过我刚才也觉得有点好")],"cf3")
+ ]},
+ cf3:{msgs:[
+  NR("— 걸음을 멈춘 가로등 아래 —","——停下脚步的路灯下——"),
+  S("…잠깐만 나 심장 소리 들려? ㅋㅋㅋ","……等一下 你听得到我的心跳声吗？哈哈哈"),
+  S("말해봐 도망 안 가","说吧 我不会跑")
+ ],ch:[
+  D("나 너 좋아해. 친구 말고, 그런 의미로","我喜欢你。不是朋友 是那种意思",{cg:2},[S("…","……"),S("…와 진짜 말했다","……哇真的说出来了")],"cfroute"),
+  D("나랑 사귀자. 거절하면 팔씨름으로 정하자","跟我交往吧。拒绝的话就用掰手腕决定",{hm:2},[S("ㅋㅋㅋㅋㅋ 아니 그게 뭐야","哈哈哈哈哈 不是这是什么啊"),S("…근데 너 지금 진심이야?","……不过你现在是认真的吗？")],"cfroute"),
+  D("…밥 먹을 때마다 네 옆자리가 제일 좋아. 그게 내가 하고 싶은 말이야","……每次吃饭 你旁边的位子最好。这就是我想说的话",{ind:2},[S("…","……"),S("…방금 그 말 지금 이해 중이야 잠깐만","……我正在理解你刚才那句话 等一下")],"cfroute")
+ ]},
+ cfroute:{msgs:[],go:()=>(st.cg>=st.hm&&st.cg>=st.ind)?"end_ma":(st.hm>=st.ind?"end_mb":"end_mc")},
+ end_ma:{msgs:[
+  S("…나도 좋아해 ㅋㅋㅋ 진짜로","……我也喜欢你哈哈哈 是真的"),
+  S("사실 네가 먼저 말해줘서 다행이야 내가 먼저 말했으면 장난으로 넘겼을 거야","其实你先说出口真是太好了 要是我先说 大概会当成玩笑带过去"),
+  S("그럼 이제 밥 먹으러 갈까? …우리 첫 데이트?","那我们现在去吃饭吧？……我们的第一次约会？"),
+  NR("— 별이 보이는 서울의 밤, 둘의 걸음은 조금 가까워졌다 —","——能看见星星的首尔夜晚 两个人的脚步靠得近了一点——")
+ ],end:["ENDING M · 오늘부터 우리 💛","结局M·从今天起是我们"]},
+ end_mb:{msgs:[
+  S("아니 그걸 장난처럼 하면 어떡해 ㅋㅋㅋ","喂你把这种话说得像开玩笑 让我怎么办哈哈哈"),
+  S("…진짜로 다시 말해줘 나 지금 웃음 참는 거 아니야","……认真地再说一遍 我现在不是在忍笑"),
+  NR("— 제이크는 숨을 한 번 고르고 처음부터 다시 말했다 —","——제이크深呼吸了一下 重新从头说了一遍——"),
+  S("…좋아 나도","……好 我也是"),
+  S("근데 팔씨름은 해야 해 약속이니까 ㅋㅋㅋ","不过掰手腕还是要比的 说好了哈哈哈")
+ ],end:["ENDING N · 두 번째 고백 🎬","结局N·第二次告白"]},
+ end_mc:{msgs:[
+  S("…방금 한 말 오늘 밤에 계속 곱씹어볼게","……你刚才说的话 我今晚会反复琢磨"),
+  S("나 대답 잘 못하잖아 내일 같은 자리에서 제대로 말할게","我不擅长回答 明天在同一个地方好好告诉你"),
+  S("도망 안 가 약속","我不会逃 说好了"),
+  NR("— 그날 밤 제이는 한참 동안 잠들지 못했다. 내일이 올 때까지 —","——那天夜里 제이很久都没睡着。一直到明天到来——")
+ ],end:["ENDING O · 답은 내일 🌙","结局O·答案留到明天"]},
+ // ---------- 故事六：제이常和别的成员出去 ----------
+ ot1:{msgs:[
+  NR("— 요즘 제이는 멤버들과 자주 밖에 나간다. 제이크는 이유를 모르고, 묻는 법도 모른다 —","——最近제이常常和成员们出去。제이크不知道原因 也不知道该怎么问——"),
+  S("제이크!! 나 지금 하준이랑 오락실 왔는데 레이싱 게임 있다 ㅋㅋㅋ","杰克！！我现在和하준来了游戏厅 这里有赛车游戏哈哈哈"),
+  S("아 잠깐만 하준이 부른다 이따 얘기해!","啊等一下 하준在叫我 等下再聊！")
+ ],ch:[
+  D("누구랑 있어?","跟谁在一起？",{pk:1},[S("하준이랑 시우랑 건우 ㅋㅋㅋ 왜?","하준、시우和건우哈哈哈 怎么了？"),S("아 너도 올래? …아니 너 피곤하다고 했나","对了你也来吗？……不对你说你累来着")],"ot2"),
+  D("재밌게 놀아","好好玩",{bt:1},[S("응!! 고마워 ㅋㅋㅋ","嗯！！谢谢哈哈哈"),S("(…뭔가 한 마디 더 하려던 것 같은데)","（……他好像本来还想再说一句）")],"ot2"),
+  D("나도 같이 가면 안 돼?","我不能一起去吗？",{hn:1},[S("어?? 되지!! 당연하지!! 근데 지금 와 줄 수 있어?","欸？？可以啊！！当然可以！！不过你现在能来吗？"),S("아니다 오늘은 쉬어 다음엔 내가 먼저 부를게","不对今天你休息吧 下次我先叫你")],"ot2")
+ ]},
+ ot2:{msgs:[
+  NR("— 다음 날 —","——第二天——"),
+  S("나 이한이랑 시장 가는 중!! 너 먹고 싶은 거 있어?","我正和이한去市场！！你有想吃的吗？"),
+  S("아 이한이가 길을 몰라서 지금 지도 보는 중이야 ㅋㅋㅋ","啊이한不认路 正在看地图哈哈哈")
+ ],ch:[
+  D("시장에서 뭐 해? 사진 보내봐","在市场做什么？发张照片给我看看",{pk:1},[S("사진?? 지금 손에 호떡 들고 있어서 못 찍어 ㅋㅋㅋ","照片？？我现在手里拿着糖饼拍不了哈哈哈"),S("왜 그렇게 궁금해?? 네가 뭐 숨기는 것 같은데?","你为什么这么好奇？？感觉你在藏什么？")],"ot3"),
+  D("응. 필요 없어","嗯。不用了",{bt:1},[S("그래?? 알겠어 ㅋㅋㅋ","是吗？？好哦哈哈哈"),S("…진짜 필요 없는 거 맞지?","……真的不需要吗？")],"ot3"),
+  D("요즘 나보다 다른 애들이랑 더 많이 있는 것 같아서 좀 그래","最近你好像和别人在一起的时间比和我还多 有点那个",{hn:1},[S("…그렇게 느꼈어?? 아 몰랐다","……你是这样觉得的？？啊我都不知道"),S("미안 나 신나면 정신 없어지는 거 알지?","对不起 你知道我一兴奋就晕头转向的吧？")],"ot3")
+ ]},
+ ot3:{msgs:[
+  NR("— 저녁, 제이크가 하루 있었던 일을 조금씩 말하기 시작했다 —","——傍晚 제이크开始一点一点说起今天发生的事——"),
+  S("아 맞다 너 오늘 뭐 했어? 나 방금 건우 말에 웃느라 못 들었어","对了你今天做了什么？我刚才被건우的话逗笑了没听清"),
+  S("다시 말해줘!! 아 잠깐 폰이 울려서","再说一次！！啊等一下 手机在响")
+ ],ch:[
+  D("지금 뭐 하는데? 누구한테서 연락 온 거야?","你现在在做什么？是谁联系你？",{pk:1},[S("엥 그냥 시우가 단톡에 뭐 올렸어 ㅋㅋㅋ","欸只是시우在群里发了东西哈哈哈"),S("너 오늘따라 되게 이것저것 물어보네?","你今天怎么问东问西的？")],"ot4"),
+  D("아니야 다음에 말할게","没事 下次再说",{bt:1},[S("엥 지금 말해도 되는데?? 괜찮아?","欸现在说也可以啊？？没事吗？"),S("…알겠어 말하고 싶을 때 말해","……好吧 想说的时候再说")],"ot4"),
+  D("내 말 듣고 있어? 나 오늘 좀 서운해","你在听我说吗？我今天有点难过",{hn:1},[S("…미안 나 듣고 있었는데 듣는 척했던 것 같아","……对不起 我明明在听 却好像只是装作在听"),S("다시 말해줘 이번엔 폰 내려놓고 들을게","再说一次 这次我把手机放下来听")],"ot4")
+ ]},
+ ot4:{msgs:[
+  NR("— 밤, 제이가 갑자기 조용해졌다 —","——夜里 제이突然安静了下来——"),
+  S("…제이크 너 오늘 계속 이것저것 물어보는 거 알아?","……杰克 你知道你今天一直在问东问西吗？"),
+  S("혹시 나 요즘 너한테 소홀했어?","难道我最近冷落你了？")
+ ],ch:[
+  D("응. 좀 서운했어. 같이 있는 시간이 줄어서","嗯。有点难过。因为在一起的时间变少了",{hn:2},[S("…","……"),S("…말해줘서 고마워","……谢谢你告诉我")],"otroute"),
+  D("아니야 그냥 궁금해서. 지금은 누구랑 있어?","没有 只是好奇。现在跟谁在一起？",{pk:2},[S("ㅋㅋㅋ 또 물어본다","哈哈哈 又问了"),S("(…이 사람 왜 이렇게 신경 쓰이게 하지)","（……这个人怎么这么让我在意）")],"otroute"),
+  D("아니야 괜찮아. 잘 자","没事 没关系。晚安",{bt:2},[S("…그래 잘 자","……好 晚安"),S("(…안 괜찮은 목소린데)","（……这声音听起来可不像没事）")],"otroute")
+ ]},
+ otroute:{msgs:[],go:()=>(st.hn>=st.pk&&st.hn>=st.bt)?"end_oa":(st.pk>=st.bt?"end_ob":"end_oc")},
+ end_oa:{msgs:[
+  S("…미안 진짜 미안","……对不起 真的对不起"),
+  S("재밌어서 정신없이 놀다가 네가 안 보이는 줄도 몰랐어","玩得太开心 都没发现你不在身边"),
+  S("앞으로 나갈 때는 너한테 먼저 물어볼게 같이 갈래?","以后出去之前我会先问你 要不要一起去？"),
+  S("그리고 서운하면 오늘처럼 바로 말해줘 알았지?","还有 难过的话 像今天这样直接告诉我 好吗？"),
+  NR("— 다음 날, 제이는 단톡방에 '오늘은 제이크도 같이 가요' 라고 먼저 적었다 —","——第二天 제이先在群里写道：“今天제이크也一起去”——")
+ ],end:["ENDING P · 서운하다고 말한 날 🍰","结局P·说出“我难过了”的那天"]},
+ end_ob:{msgs:[
+  S("알겠다 ㅋㅋㅋ 네가 왜 자꾸 물어봤는지","明白了哈哈哈 你为什么一直问"),
+  S("그렇게 궁금하면 다음엔 같이 가자 내가 먼저 부를게","那么好奇的话 下次一起去 我先叫你"),
+  S("(…근데 나 지금 좀 기분 좋은 이유가 뭐지?)","（……不过我现在有点开心 是什么原因呢？）"),
+  NR("— 제이는 그날 처음으로 휴대폰을 내려놓고 제이크의 이야기를 끝까지 들었다 —","——那天 제이第一次放下手机 把제이크的话听到了最后——")
+ ],end:["ENDING Q · 눈치챈 사람 👀","结局Q·察觉到的人"]},
+ end_oc:{msgs:[
+  S("문 열어 나 지금 네 숙소 앞이야","开门 我现在在你宿舍门口"),
+  S("너 괜찮은 척하는 거 다 알아 밥은 먹었어?","我知道你在装没事 吃饭了吗？"),
+  S("건우가 알려준 집에서 포장해 왔어 같이 먹자","在건우推荐的店打包带来了 一起吃吧"),
+  NR("— 문 너머로 들리는 봉지 소리에 제이크는 저도 모르게 웃음이 났다 —","——隔着门听到塑料袋的声音 제이크不自觉地笑了——")
+ ],end:["ENDING R · 도시락을 든 사람 🍱","结局R·拎着饭盒的人"]}
+});
+// 接入新章节、新路线
+STORY.s3.ch.forEach(c=>c.n="s3b");
+STORY.p3.ch.forEach(c=>c.n="p3b");
+STORY.t3.ch.forEach(c=>c.n="t3b");
+STORY.route.go=()=>(st.l>=5&&st.l>=st.j&&st.l>=st.d)?"s6a":((st.d>=4&&st.d>st.j&&st.d>=st.l)?"end_b":"end_c");
+STORY.menu.ch=[
+ MN("🍜 같이 밥 먹는 날들","一起吃饭的日子（打闹·暧昧·表白）",[NR("— 이야기 1 · 같이 밥 먹는 날들 —","——故事一·一起吃饭的日子——")],"s1"),
+ MN("💭 마음을 확인하고 싶어","想确认他的心意（제이크的试探）",[NR("— 이야기 2 · 마음 확인하기 —","——故事二·确认心意——")],"p1"),
+ MN("✈️ 제제가 출장을 갔다","제제出差了（分离不安）",[NR("— 이야기 3 · 출장 —","——故事三·出差——")],"t1"),
+ MN("🌧 제이크랑 제제가 다퉜다","闹别扭了（冷战·和好）",[NR("— 이야기 4 · 냉전 —","——故事四·冷战——")],"q1"),
+ MN("💌 오늘은 고백하기로 했다","今天决定告白（제이크告白）",[NR("— 이야기 5 · 고백 —","——故事五·告白——")],"cf1"),
+ MN("👀 제제가 자꾸 밖에 나간다","제제总是和别人出去（别别扭扭）",[NR("— 이야기 6 · 요즘 제이는 —","——故事六·最近的제이——")],"ot1")
+];
+// ---------- 加长：每条线再多两章 ----------
+Object.assign(STORY,{
+ s2b:{msgs:[
+  NR("— 다음 날 점심시간 —","——第二天午饭时间——"),
+  S("제이크 점메추 해줘 ㅠㅠ 나 메뉴 고르는 데 20분 썼어","杰克帮我推荐午饭呜呜 我选菜单已经花了二十分钟"),
+  S("김치찌개 vs 돈까스 vs 파스타 vs 마라탕","泡菜汤 vs 炸猪排 vs 意面 vs 麻辣烫"),
+  S("네가 고르면 그걸로 간다 책임은 네가 져 ㅋㅋㅋ","你选哪个就吃哪个 责任你来负哈哈哈")
+ ],ch:[
+  C("김치찌개. 너 어제 목 잠긴 것 같더라","泡菜汤。你昨天好像嗓子有点哑",[1,0,0],[S("…너 그걸 들었어?? 나 말 한 마디도 안 했는데","……你听出来了？？我明明一句话都没提"),S("뜨끈한 거 먹으면 낫겠다 고마워 ㅋㅋㅋ","吃点热的就会好了 谢谢哈哈哈")],"s3"),
+  C("마라탕. 땀 뻘뻘 흘리는 네 얼굴 보고 싶어서","麻辣烫。想看你满头大汗的样子",[0,1,0],[S("야 이 나쁜 놈 ㅋㅋㅋ 나 매운 거 약한 거 알면서","喂你这坏家伙哈哈哈 明明知道我不能吃辣"),S("좋아 대신 내가 울면 네가 휴지 사 와","行 不过我哭了你要去买纸巾")],"s3"),
+  C("아무거나. 난 상관없어","随便。我无所谓",[0,0,1],[S("아무거나가 제일 어렵다고 ㅠㅠ","“随便”才是最难的呀呜呜"),S("그럼 내가 정한다 후회 없기!","那我来决定 不许后悔哦！")],"s3")
+ ]},
+ s4b:{msgs:[
+  NR("— 레이스가 끝나고, 허기진 새벽 —","——比赛结束后 饥肠辘辘的凌晨——"),
+  S("와 진짜 마지막 랩 봤어?? 나 아직도 손 떨려 ㅋㅋㅋ","哇你看到最后一圈了吗？？我现在手还在抖哈哈哈"),
+  S("배고프다 근데 이 시간에 먹으면 안 되는데","好饿 可是这个点吃东西不行啊"),
+  S("…라면 끓일까?","……要煮泡面吗？")
+ ],ch:[
+  C("내가 끓일게. 넌 앉아 있어. 계란은 풀어줄까?","我来煮。你坐着。要打个蛋吗？",[1,0,0],[S("어?? 네가 끓여준다고?? 오늘 무슨 날이야 ㅋㅋㅋ","欸？？你要煮给我吃？？今天是什么日子哈哈哈"),S("계란은 반숙으로… 아 맞다 너 내 취향 다 알지 ㅋㅋㅋ","蛋要半熟的……对了你什么都知道我的口味哈哈哈")],"s5"),
+  C("라면 끓이기 내기하자. 지는 사람이 설거지","来比煮泡面。输的人洗碗",[0,1,0],[S("콜!! 나 라면 끓이는 건 자신 있다 ㅋㅋㅋ","好！！煮泡面我可是有自信的哈哈哈"),S("근데 경기 방식은 정하자 물 양 기준으로? 시간 기준으로? 아 몰라 일단 시작!","不过规则要定一下 看水量？还是看时间？啊不管了先开始！")],"s5"),
+  C("난 졸려. 먼저 잘게","我困了。先睡了",[0,0,1],[S("엥 벌써?? 라면 안 먹고?? ㅠㅠ","欸已经要睡了？？不吃泡面吗？？呜呜"),S("…알겠어 푹 자 내일 아침에 남은 거 먹을게","……好吧 好好睡 明天早上我吃剩下的")],"s5")
+ ]},
+ p1b:{msgs:[
+  NR("— 며칠 뒤, 연습실 구석 —","——几天后 练习室的角落——"),
+  S("아 맞다 제이크 나 지난번에 네가 한 말 계속 생각했는데","对了杰克 我一直在想你上次说的话"),
+  S("…아니 별거 아니고 그냥 이상하게 기억에 남아서","……不是什么大事 就是莫名地一直记着")
+ ],ch:[
+  D("내가 뭐라고 했는데? 기억해?","我说了什么？你还记得吗？",{h:1},[S("'네 메시지 기다리고 있었어' 라고 했잖아","你说“我一直在等你的消息”呀"),S("…그 말 듣고 한동안 폰만 보게 되더라 ㅋㅋㅋ 아 이상한 말 했다","……听了那句话 我有一阵子老是盯着手机哈哈哈 啊说了奇怪的话")],"p2"),
+  D("그 말 때문에 다른 사람들이랑 얘기한 거야?","因为这句话 你跟别人聊过了？",{t:1},[S("아니?? 누구한테 얘기해 이런 걸","没有？？这种事能跟谁说"),S("…근데 왜 갑자기 심문하는 느낌이야 ㅋㅋㅋ","……不过怎么突然有种被审问的感觉哈哈哈")],"p2"),
+  D("별거 아니니까 잊어","没什么大不了的 忘了吧",{c:1},[S("그래?? 알겠어 ㅋㅋㅋ","是吗？？好哦哈哈哈"),S("(…잊을 수 있을지는 모르겠지만)","（……虽然不知道能不能忘掉）")],"p2")
+ ]},
+ p2b:{msgs:[
+  NR("— 어느 날 밤, 단톡방 —","——某天夜里 群聊——"),
+  S("나 오늘 단톡에서 하준이가 '제이 형은 요즘 제이크 형 얘기만 해요' 래 ㅋㅋㅋ","我今天在群里 하준说“제이哥最近净在讲杰克哥的事”哈哈哈"),
+  S("내가 그렇게 얘기 많이 했나?? 나 기억 안 나는데","我有那么常说吗？？我自己都不记得了")
+ ],ch:[
+  D("…나도 네 얘기 많이 해. 그래서 알아","……我也常常说起你。所以我知道",{h:1},[S("…진짜? 무슨 얘기?? 아 아니다 묻지 말까","……真的？说什么？？啊不对 还是别问了"),S("(…잠깐 얼굴이 뜨거워졌는데 방이 더운 건가)","（……脸突然发烫 是房间太热了吗）")],"p3"),
+  D("정말? 무슨 얘기를 했는데? 다 말해봐","真的吗？说了什么？全告诉我",{t:1},[S("엥 다 말하라니 ㅋㅋㅋ 기억 안 난다니까","欸要我全说出来啊哈哈哈 我说了不记得了"),S("…너 오늘 진짜 형사 같아","……你今天真的像个刑警")],"p3"),
+  D("ㅋㅋ 그렇구나","哈哈 这样啊",{c:1},[S("응 ㅋㅋㅋ 그렇대","嗯哈哈哈 他是这么说的"),S("…반응이 그게 다야? 아니다 아무것도 아님","……你的反应就这样？不对 没什么")],"p3")
+ ]},
+ t2b:{msgs:[
+  NR("— 둘째 날 아침 —","——第二天早上——"),
+  S("제이크 잘 잤어?? 나는 베개가 너무 높아서 목 아파 ㅋㅋㅋ","杰克睡得好吗？？我枕头太高 脖子好痛哈哈哈"),
+  S("근데 너 어제 몇 시에 잤어? 읽음이 새벽 2시던데","不过你昨晚几点睡的？已读显示是凌晨两点")
+ ],ch:[
+  D("네 연락 기다리느라 못 잤어. 오늘은 언제 시간 돼?","我在等你的消息所以没睡。今天什么时候有空？",{n:1},[S("엥 기다렸다고?? 나 자고 있을 줄 알고 안 했는데 ㅠㅠ","欸你在等？？我以为你睡了才没发呜呜"),S("앞으론 자기 전에 꼭 '잘 자' 보낼게 약속","以后睡前一定发“晚安”给你 说好了")],"t3"),
+  D("솔직히 잘 못 잤어. 네가 없으니까 방이 너무 조용해","说实话没睡好。你不在 房间太安静了",{o:1},[S("…나도 숙소가 너무 조용해서 이상했어","……我也觉得宿舍太安静 怪怪的"),S("우리 원래 밤마다 떠들었잖아 ㅋㅋㅋ 오늘 밤엔 전화로 떠들자","我们以前每晚都吵吵闹闹的哈哈哈 今晚打电话继续吵")],"t3"),
+  D("잘 잤어","睡得很好",{s:1},[S("거짓말 ㅋㅋㅋ 읽음이 새벽 2시인데","骗人哈哈哈 已读明明是凌晨两点"),S("…뭐 말하고 싶지 않으면 안 해도 돼","……不想说的话也没关系")],"t3")
+ ]},
+ t3c:{msgs:[
+  NR("— 셋째 날 저녁, 비 오는 지방 —","——第三天傍晚 下着雨的外地——"),
+  S("여기 비 와서 촬영 취소됐어 ㅠㅠ 숙소에서 레이스 다시보기 중","这边下雨 拍摄取消了呜呜 我在宿舍重看比赛"),
+  S("…근데 혼자 보니까 재미없다","……不过一个人看一点都不好玩"),
+  S("너랑 같이 볼 때가 더 소리 지르게 돼","跟你一起看的时候 我才会叫得更大声")
+ ],ch:[
+  D("그럼 내가 지금 갈까? 기차 있을 텐데","那我现在过去？应该还有火车",{n:1},[S("야 야 잠깐 ㅋㅋㅋ 비 오는데 위험해","喂喂等一下哈哈哈 下雨了很危险"),S("마음은 고맙지만 일단 진정해 알았지?","心意我领了 不过先冷静一下 好不好？")],"t4"),
+  D("화면 공유로 같이 보자. 지금 틀어","用屏幕共享一起看吧。现在开",{o:1},[S("오 좋은 생각이다!! 3초 뒤에 같이 재생!","哦好主意！！三秒后一起播放！"),S("하나 둘 셋!! …아 늦었다 다시!!","一二三！！……啊慢了 重来！！")],"t4"),
+  D("비 오는 날은 쉬는 게 좋지. 푹 쉬어","下雨天就该休息。好好歇着",{s:1},[S("응 ㅋㅋㅋ 알겠어","嗯哈哈哈 知道了"),S("(…같이 보자는 말을 기다렸는데)","（……我还以为你会说一起看）")],"t4")
+ ]},
+ q1b:{msgs:[
+  NR("— 그날 오후, 제이크의 책상 위에 —","——那天下午 제이크的桌上——"),
+  S("야 네 책상 위에 젤리 올려놨는데 봤어?","喂 我在你桌上放了软糖 你看到了吗？"),
+  S("화해 선물 아니고 그냥… 화해 선물이야 ㅋㅋㅋ","不是和好礼物 只是……是和好礼物啦哈哈哈")
+ ],ch:[
+  D("필요 없어. 도로 가져가","不需要。拿回去",{cc:1},[S("엥?? 이거 네가 제일 좋아하는 건데","欸？？这可是你最喜欢的啊"),S("…알았어 가져갈게","……知道了 我拿走")],"q2"),
+  D("고마워. 근데 젤리로 풀 일은 아니야","谢谢。但这事不是用软糖就能解决的",{ss:1},[S("…맞아 젤리로 풀 일 아니지 ㅋㅋㅋ","……对 不是软糖能解决的哈哈哈"),S("그래도 일단 먹고 얘기하자","不过先吃了再谈")],"q2"),
+  D("…놔두고 가","……放着吧",{},[S("응 ㅋㅋㅋ 놔두고 갈게","嗯哈哈哈 我放下了"),S("(…가져가라고는 안 했네)","（……他没让我拿走呢）")],"q2")
+ ]},
+ q2b:{msgs:[
+  NR("— 저녁 식사 시간 —","——晚饭时间——"),
+  S("나 오늘 일부러 네 옆자리에 앉았는데 알았어?","我今天故意坐在你旁边 你发现了吗？"),
+  S("…아무 말 안 해도 돼 그냥 옆에만 있을게","……不用说话也没关系 我就待在旁边")
+ ],ch:[
+  D("자리 옮길게","我换个位子",{cc:1},[S("…어","……哦"),S("그래 알겠어","好 知道了")],"q3"),
+  D("…앉아 있어도 돼","……你坐着没关系",{ss:1},[S("…고마워","……谢谢"),S("(…숨을 한 번 크게 쉰다)","（……深深地吐了一口气）")],"q3"),
+  D("……","……",{cc:1},[S("…","……"),S("읽씹은 아니지?? 말은 안 해도 돼","不是已读不回吧？？不说话也行")],"q3")
+ ]},
+ cf1b:{msgs:[
+  NR("— 연습이 끝난 뒤, 둘만 남은 연습실 —","——练习结束后 只剩两个人的练习室——"),
+  S("너 오늘 이상하게 조용하다 ㅋㅋㅋ","你今天安静得好奇怪哈哈哈"),
+  S("평소엔 내가 말 걸 때마다 한 마디씩 하면서","平时我每次搭话你都会回一句的"),
+  S("혹시 무슨 일 있었어? 내가 뭐 잘못했어?","是不是出了什么事？我做错了什么吗？")
+ ],ch:[
+  D("아니. 오히려 네가 잘못한 게 없어서 문제야","不是。问题恰恰是你什么都没做错",{cg:1},[S("…그게 무슨 말이야 ㅋㅋㅋ 잘못 안 했는데 문제라고?","……这是什么意思哈哈哈 没做错反而有问题？"),S("(…이상하게 가슴이 빨리 뛴다)","（……心跳莫名地变快了）")],"cf2"),
+  D("네가 오늘 너무 시끄러웠어. 벌로 아아 사","你今天太吵了。罚你请我喝冰美式",{hm:1},[S("야!! 억울해 나 오늘 말 별로 안 했는데 ㅋㅋㅋ","喂！！好冤 我今天明明没说多少话哈哈哈"),S("…근데 사줄게 대신 네가 이유를 말해줘야 해","……不过我请 但你得告诉我理由")],"cf2"),
+  D("그냥 피곤해서. 이따 얘기하자","只是累了。晚点再说",{ind:1},[S("알겠어 ㅋㅋㅋ 그럼 이따 꼭 말해줘","好哈哈哈 那待会儿一定要告诉我"),S("나 기다리는 거 은근 잘해","我其实很会等的")],"cf2")
+ ]},
+ cf2b:{msgs:[
+  NR("— 편의점 앞, 음료를 고르는 시간 —","——便利店前 挑饮料的时间——"),
+  S("내가 사줄게 뭐 마실래? 네가 좋아하는 거 알아 ㅋㅋㅋ","我请你 想喝什么？我知道你喜欢哪个哈哈哈"),
+  S("…그러고 보니 내가 네 취향을 다 알고 있네","……这么一说 你的口味我全都知道"),
+  S("신기하다 우리 몇 년을 같이 있었더라","好神奇 我们到底一起过了多少年")
+ ],ch:[
+  D("그래서 말하려는 거야. 그 몇 년 동안 쭉 같은 마음이었다고","所以我才想说。这么多年来 我的心意一直没变",{cg:1},[S("…","……"),S("…잠깐 음료수 먼저 계산하고 올게 심장이 이상해","……我先去结账 心脏怪怪的")],"cf3"),
+  D("그럼 내 취향도 알겠네? 맞히면 소원 하나","那你也知道我的喜好吧？猜对了就实现一个愿望",{hm:1},[S("콜 ㅋㅋㅋ 너는 단 거 좋아하는데 아닌 척하지!","好哈哈哈 你喜欢甜的却装作不喜欢！"),S("…맞지?? 맞았지?? 소원 뭐 빌까","……对吧？？猜中了吧？？愿望许什么好呢")],"cf3"),
+  D("…(음료를 받으며 웃는다)","……（接过饮料笑了）",{ind:1},[S("왜 웃어?? 내가 뭐 웃겼어?","你笑什么？？我说了什么好笑的？"),S("…근데 네가 웃으니까 나도 좋다","……不过你笑了我也开心")],"cf3")
+ ]},
+ ot1b:{msgs:[
+  NR("— 다음 날 아침, 연습실 —","——第二天早上 练习室——"),
+  S("제이크!! 나 오는 길에 이한이랑 커피 사 왔는데 네 건 안 샀어 미안 ㅠㅠ","杰克！！我来的路上和이한买了咖啡 没买你的 对不起呜呜"),
+  S("네가 뭘 마실지 몰라서 못 샀어 ㅋㅋㅋ","我不知道你想喝什么 所以没买哈哈哈")
+ ],ch:[
+  D("이한이랑 둘이서만 갔어?","就你和이한两个人去的？",{pk:1},[S("어?? 시우도 있었는데 ㅋㅋㅋ 왜?","欸？？시우也在啊哈哈哈 怎么了？"),S("너 요즘 사람 수 세는 거 취미야?","你最近是不是爱上数人头了？")],"ot2"),
+  D("괜찮아. 물 마시면 돼","没事。喝水就行",{bt:1},[S("그래?? 알겠어 ㅋㅋㅋ","是吗？？好哦哈哈哈"),S("(…내가 그걸 몰랐다니)","（……我居然不知道）")],"ot2"),
+  D("내가 뭘 마시는지 모르겠어? 좀 서운하다","你不知道我喝什么吗？有点难过",{hn:1},[S("…어 진짜 몰랐네 미안","……啊 我真的没想起来 对不起"),S("가르쳐줘 이제부터 꼭 외울게","告诉我 从现在起我一定背下来")],"ot2")
+ ]},
+ ot3b:{msgs:[
+  NR("— 늦은 밤, 숙소 복도 —","——深夜 宿舍走廊——"),
+  S("제이크 아직 안 자?? 나 방금 들어왔어 건우랑 놀다가","杰克还没睡吗？？我刚回来 跟건우玩去了"),
+  S("근데 너 방 불 켜져 있네 기다린 거야?","不过你房间的灯亮着 是在等我吗？")
+ ],ch:[
+  D("응. 네가 안 오니까 기다렸어. 같이 얘기하고 싶어서","嗯。你没回来所以我在等。想跟你聊聊",{hn:1},[S("…미안 몰랐어 그럼 지금 얘기하자","……对不起我不知道 那现在就聊吧"),S("컵라면 하나 끓일게 오늘은 내가 쏜다","我煮一碗泡面 今天我请")],"ot4"),
+  D("누구랑 갔어? 어디 갔다 왔어?","跟谁去的？去了哪里？",{pk:1},[S("아 ㅋㅋㅋ 또 시작이다 그냥 PC방이야","啊哈哈哈 又来了 只是去了网吧而已"),S("…근데 네가 왜 이렇게 궁금해하는지 나도 궁금해","……不过我也好奇你为什么这么想知道")],"ot4"),
+  D("아니. 책 읽고 있었어","没有。我在看书",{bt:1},[S("책?? 이 시간에?? ㅋㅋㅋ","书？？这个点？？哈哈哈"),S("…그래 알겠어 일찍 자","……好吧 早点睡")],"ot4")
+ ]}
+});
+// 接入新章节
+[["s2","s2b"],["s2b","s3"],["s4","s4b"],["s4b","s5"],
+ ["p1","p1b"],["p1b","p2"],["p2","p2b"],["p2b","p3"],
+ ["t2","t2b"],["t2b","t3"],["t3b","t3c"],["t3c","t4"],
+ ["q1","q1b"],["q1b","q2"],["q2","q2b"],["q2b","q3"],
+ ["cf1","cf1b"],["cf1b","cf2"],["cf2","cf2b"],["cf2b","cf3"],
+ ["ot1","ot1b"],["ot1b","ot2"],["ot3","ot3b"],["ot3b","ot4"]
+].forEach(([a,b])=>STORY[a].ch.forEach(c=>c.n=b));
+STORY.route.go=()=>(st.l>=5&&st.l>=st.j&&st.l>=st.d)?"s6a":((st.d>=4&&st.d>st.j&&st.d>=st.l)?"end_b":"end_c");
+STORY.proute.go=()=>st.t>=4?"end_pb":(st.h>=4?"end_pa":"end_pc");
+STORY.qr.go=()=>st.cc>=4?"qa1":"qb1";
+// ---------- 后续篇：첫 데이트 ----------
+Object.assign(STORY,{
+ d1:{msgs:[
+  NR("— 사귀기 시작하고 처음 맞는 쉬는 날 —","——在一起之后 迎来的第一个休息日——"),
+  S("제이크 우리 오늘 뭐 해?? 아 맞다 우리 사귀는 거 맞지?? 아직도 실감이 안 나 ㅋㅋㅋ","杰克 我们今天做什么？？对了 我们是在交往没错吧？？我还是没有实感哈哈哈"),
+  S("'데이트' 라는 단어 말하는 것만으로 귀가 빨개져 ㅋㅋㅋ","光是说出“约会”这个词 耳朵就红了哈哈哈"),
+  S("어디 갈까? 한강? 영화? 아니면 레이싱 시뮬레이터 카페?","去哪里好？汉江？电影？还是赛车模拟器咖啡厅？")
+ ],ch:[
+  D("한강 산책. 편의점 라면 먹으면서","去汉江散步。边吃便利店泡面",{sw:1,va:1},[S("오 그거 좋다!! 우리 원래 맨날 먹던 건데 장소만 바뀌는 거네 ㅋㅋㅋ","哦好主意！！我们本来就天天吃 只是换了个地方哈哈哈"),S("근데 이상하게 이게 더 설렌다","可是不知为什么 这样反而更心动")],"d2"),
+  D("시뮬레이터 카페. 지는 사람이 밥 사기","模拟器咖啡厅。输的人请吃饭",{pl:1,vb:1},[S("콜!!! 나 레이스 많이 봤으니까 자신 있어 ㅋㅋㅋ","好！！！我看了那么多比赛 有自信哈哈哈"),S("…아 근데 보는 거랑 하는 건 다르려나","……不过看和玩应该不是一回事吧")],"d2"),
+  D("너 가고 싶은 데 가자. 난 어디든 괜찮아","去你想去的地方。我哪里都可以",{sh:1},[S("어디든 괜찮다는 게 제일 어려워 ㅠㅠ","“哪里都可以”才是最难的呀呜呜"),S("알겠어 그럼 내가 정하는 걸로 일단 걷다가 생각하자","好吧 那我来决定 先走走再想")],"d2")
+ ]},
+ d2:{msgs:[
+  NR("— 약속 당일, 집합 30분 전 —","——约会当天 集合前三十分钟——"),
+  S("나 옷 열 번 갈아입었다 ㅋㅋㅋ 결국 맨날 입는 후드티로 입음","我换了十次衣服哈哈哈 最后还是穿了天天穿的连帽衫"),
+  S("너는 뭐 입어?? 아니 알려주지 마 놀랄래","你穿什么？？不对 别告诉我 我要吓一跳"),
+  S("…근데 나 심장 터질 것 같아","……不过我心脏快要炸了")
+ ],ch:[
+  D("나도 긴장돼. 근데 빨리 보고 싶어","我也紧张。不过很想快点见到你",{sw:1},[S("…나도 ㅋㅋㅋ 아 이런 말 하니까 더 떨린다","……我也是哈哈哈 啊说了这种话更紧张了"),S("빨리 와 나 지금 먼저 가서 기다리는 중이야","快来 我已经先到了在等你")],"d3"),
+  D("후드티 입을 줄 알았어. 내가 맞혔다 ㅋㅋ","我就知道你会穿连帽衫。被我猜中了哈哈",{pl:1},[S("야 너무 예측 가능한가?? 나 좀 서운한데 ㅋㅋㅋ","喂我有这么好猜吗？？有点受伤哈哈哈"),S("그럼 너도 맞혀봐 내가 신발은 뭘 신었게","那你也猜猜 我穿了什么鞋")],"d3"),
+  D("…나 지금 집 앞에서 세 번 돌아갔다 들어왔어","……我在家门口折返了三次",{sh:1},[S("ㅋㅋㅋㅋㅋ 너 진짜 귀엽다 아니 웃기다 아니 귀엽다","哈哈哈哈哈 你真的好可爱 不对好好笑 不对好可爱"),S("괜찮아 나도 세 번까지는 아니고 두 번 돌아갔어","没关系 我虽然没有三次 但也折返了两次")],"d3")
+ ]},
+ d3:{msgs:[
+  NR("— 약속 장소, 서로를 먼저 발견한 순간 —","——约定的地点 彼此先看到对方的瞬间——"),
+  S("야 거기서 손 흔들지 마!! 창피해 ㅋㅋㅋ","喂别在那里挥手！！好丢脸哈哈哈"),
+  S("…근데 너 오늘 좀 다르다? 머리했어?","……不过你今天有点不一样？是不是做了头发？"),
+  S("아니 그냥… 오늘 되게 멋있어 보인다고 ㅋㅋㅋ","不是 就是……你今天看起来特别帅哈哈哈")
+ ],ch:[
+  D("너도. 멋있어서 말이 안 나왔어","你也是。帅得我说不出话来",{sw:1},[S("야!! 갑자기 그러면 어떡해 ㅋㅋㅋ","喂！！你突然这样说让我怎么办哈哈哈"),S("나 지금 얼굴 빨개진 거 보이지?? 보지 마!!","我现在脸红了你看得到吧？？别看！！")],"d4"),
+  D("당연하지. 오늘을 위해 어제 팩했어","当然啦。为了今天我昨天还敷了面膜",{pl:1},[S("진짜?? 나도 할걸 ㅋㅋㅋ 아니 거짓말이지?","真的？？我也该敷的哈哈哈 不对 你在说谎吧？"),S("…근데 믿을 것 같아서 더 웃기다","……不过我好像信了 更好笑了")],"d4"),
+  D("…고마워. 아 어디 볼지 몰라서 신발 보고 있어","……谢谢。啊我不知道该看哪里 就在看鞋子",{sh:1},[S("ㅋㅋㅋㅋ 신발 예쁘지?? 나도 눈 둘 데 없어서 하늘 보는 중","哈哈哈哈 鞋子好看吧？？我也不知道看哪里 在看天空"),S("우리 둘 다 이상하다 ㅋㅋㅋ","我们两个都好奇怪哈哈哈")],"d4")
+ ]},
+ d4:{msgs:()=>st.vb?[
+  NR("— 레이싱 시뮬레이터 카페 —","——赛车模拟器咖啡厅——"),
+  S("야 이거 생각보다 어렵다 ㅋㅋㅋ 나 첫 코너에서 벽 박았어","喂这比想象中难哈哈哈 我第一个弯就撞墙了"),
+  S("제이크 너는 어떻게 그렇게 잘 해?? 혹시 몰래 연습했어?","杰克你怎么这么厉害？？是不是偷偷练过？")
+ ]:(st.va?[
+  NR("— 한강, 편의점 라면을 들고 벤치에 나란히 앉아 —","——汉江边 捧着便利店泡面并肩坐在长椅上——"),
+  S("바람 좋다 ㅋㅋㅋ 라면 국물 식기 전에 먹자","风好舒服哈哈哈 趁汤没凉快吃"),
+  S("…근데 우리 지금 데이트 맞지? 나 아직도 믿기지 않아","……不过我们现在是在约会没错吧？我还是不敢相信")
+ ]:[
+  NR("— 어디로 갈지 못 정해서 일단 걷는 길 —","——没决定好去哪 先走着的路上——"),
+  S("우리 어디 가지?? 나 계획 짜 놓은 게 있는데 다 까먹었어 ㅋㅋㅋ","我们去哪？？我本来做了计划 全忘了哈哈哈"),
+  S("그냥 걷자 걷다 보면 뭐 나오겠지","那就走走吧 走着走着总会有点什么")
+ ]),ch:[
+  D("(손을 가볍게 잡는다) …이거 해도 돼?","（轻轻握住他的手）……这样可以吗？",{sw:1},[S("…","……"),S("…응 ㅋㅋㅋ 되는데 나 갑자기 손에 땀나는 것 같아","……嗯哈哈哈 可以 不过我手好像突然出汗了")],"d5"),
+  D("손 말고 팔씨름하자 ㅋㅋ","别牵手 来掰手腕吧哈哈",{pl:1},[S("야 이 상황에서?? ㅋㅋㅋ 좋아 콜","喂这种场合？？哈哈哈 好 来"),S("…근데 이거 사실 손 잡는 거잖아 아 몰라 시작!","……不过这其实也是在牵手吧 啊不管了开始！")],"d5"),
+  D("…(말없이 가까이 앉는다)","……（默默地坐得更近了一点）",{sh:1},[S("어?? 가깝다 ㅋㅋㅋ","欸？？好近哈哈哈"),S("…나 지금 숨 쉬는 거 맞나 ㅋㅋㅋ","……我现在有在呼吸吗哈哈哈")],"d5")
+ ]},
+ d5:{msgs:[
+  NR("— 저녁, 늘 먹던 식당 —","——傍晚 常去的那家餐厅——"),
+  S("오늘은 내가 쏜다 …아니 가위바위보 하자","今天我请 ……不对 来猜拳吧"),
+  S("같이 밥 먹는 건 똑같은데 왜 오늘은 맛을 모르겠지 ㅋㅋㅋ","明明还是一起吃饭 为什么今天尝不出味道哈哈哈")
+ ],ch:[
+  D("네가 옆에 있어서 그런 거 아닐까","会不会是因为你在我旁边",{sw:1},[S("…야 그런 말은 예고하고 해 ㅋㅋㅋ","……喂 这种话要先预告一下哈哈哈"),S("나 지금 숟가락 떨어뜨릴 뻔했어","我刚才差点把勺子掉了")],"d6"),
+  D("내 거 한 입 줄게. 아~","分你一口我的。啊——",{pl:1},[S("엥?? 여기서?? 사람들 보잖아 ㅋㅋㅋ","欸？？在这里？？大家都在看啊哈哈哈"),S("…그래도 먹을래 아~","……不过我还是要吃 啊——")],"d6"),
+  D("…나도 맛을 모르겠어","……我也尝不出味道",{sh:1},[S("우리 둘 다 맛을 모르는데 계속 먹고 있네 ㅋㅋㅋ","我们两个都尝不出味道 却一直在吃哈哈哈"),S("그래도 이게 제일 맛있는 밥 같아","不过这好像是最好吃的一顿饭")],"d6")
+ ]},
+ d6:{msgs:[
+  NR("— 데이트가 끝나고, 집으로 돌아가는 길 —","——约会结束 回家的路上——"),
+  S("오늘 하루가 너무 빨리 갔다 ㅠㅠ","今天一天过得好快呜呜"),
+  S("나 사실 오늘 계속 웃었는데 얼굴 근육 아프다 ㅋㅋㅋ","其实我今天一直在笑 脸部肌肉都酸了哈哈哈"),
+  S("…다음에 또 하자 약속","……下次再约吧 说好了")
+ ],ch:[
+  D("나도 하루 종일 웃었어. 다음엔 더 오래 보자","我也笑了一整天。下次见更久一点",{sw:1},[S("진짜?? 그럼 다음엔 아침부터 보자","真的？？那下次从早上就见面"),S("…집에 가기 싫다 ㅋㅋㅋ","……不想回家了哈哈哈")],"droute"),
+  D("다음 데이트는 지는 사람이 소원 하나 들어주기","下次约会 输的人要实现一个愿望",{pl:1},[S("좋아!! 근데 뭘로 겨뤄?? 팔씨름? 레이스? 라면 끓이기?","好！！不过比什么？？掰手腕？比赛？煮泡面？"),S("셋 다 하자 ㅋㅋㅋ","三个都来哈哈哈")],"droute"),
+  D("…(고개를 끄덕인다) 응. 약속","……（点点头）嗯。说好了",{sh:1},[S("어?? 대답이 너무 작아 ㅋㅋㅋ","欸？？回答好小声哈哈哈"),S("…근데 들었어 약속 맞지?","……不过我听到了 说好了对吧？")],"droute")
+ ]},
+ droute:{msgs:[],go:()=>(st.sw>=st.pl&&st.sw>=st.sh)?"end_ds":(st.pl>=st.sh?"end_dt":"end_du")},
+ end_ds:{msgs:[
+  S("…오늘 진짜 좋았어","……今天真的很开心"),
+  S("집에 가기 싫다 ㅋㅋㅋ 이런 말 하는 내가 낯설다","不想回家哈哈哈 说这种话的自己好陌生"),
+  S("다음 주에도 시간 비워놔 알았지?","下周的时间也空出来 好不好？"),
+  NR("— 손끝이 닿은 채로 걸은 길은 평소보다 훨씬 짧게 느껴졌다 —","——手指相触地走过的路 比平时短了许多——")
+ ],end:["ENDING S · 손끝이 닿은 밤 🌃","结局S·指尖相触的夜晚"]},
+ end_dt:{msgs:[
+  S("팔씨름 하자고 했는데 왜 손을 놓지 않아? ㅋㅋㅋ","明明说好要掰手腕 你怎么不松手？哈哈哈"),
+  S("…나도 놓기 싫긴 해 이건 비밀","……我也不想松开 这个是秘密"),
+  S("결판은 다음 데이트에서!! 지면 소원 하나!","胜负留到下次约会！！输的人要实现一个愿望！"),
+  NR("— 승부를 핑계로 잡은 손은, 헤어질 때까지 풀리지 않았다 —","——借着比赛当借口牵起的手 直到分开都没有松开——")
+ ],end:["ENDING T · 팔씨름 말고 손잡기 🤝","结局T·不是掰手腕 是牵手"]},
+ end_du:{msgs:[
+  S("나 오늘 진짜 어설펐지?? ㅋㅋㅋ 음료도 쏟고 말도 꼬이고","我今天是不是笨手笨脚的？？饮料也洒了 话也说不顺"),
+  S("근데 이상하게 기분 좋다 너도 그랬어?","可是莫名地很开心 你呢？"),
+  S("다음엔 더 잘할게 …아니 어설퍼도 같이 있으면 되지","下次我会做得更好……不对 笨拙也没关系 只要在一起就好"),
+  NR("— 서툴렀던 하루는, 오히려 오래 기억에 남는 하루가 되었다 —","——笨拙的一天 反而成了会长久记得的一天——")
+ ],end:["ENDING U · 서툰 데이트 🍀","结局U·笨拙的约会"]}
+});
+["end_a","end_pa","end_ma","end_mb"].forEach(k=>STORY[k].seq=1);
+STORY.menu.ch.push(MN("💛 후속편 · 첫 데이트","后续篇·第一次约会（在一起之后）",[NR("— 후속편 · 첫 데이트 —","——后续篇·第一次约会——")],"d1"));
+// ---------- 故事七：澳洲巡演·Golden Gaytime ----------
+Object.assign(STORY,{
+ a1:{msgs:[
+  NR("— 멜버른 공연 다음 날 아침, 숙소 로비 —","——墨尔本演出第二天早上 宿舍大厅——"),
+  S("제이크 일어났어?? 나 시차 때문에 새벽 4시에 눈 떴다 ㅋㅋㅋ","杰克醒了吗？？我因为时差凌晨四点就睁眼了哈哈哈"),
+  S("오전 스케줄 없대!! 매니저님이 오후 이동 전까지는 자유시간이래","上午没有行程！！经纪人说下午转场之前是自由时间"),
+  S("호주 오기 전에 약속했잖아 공연 다음 날은 둘이서만 돌아다니기로!!","来澳洲之前说好的 演出后第二天两个人单独到处逛！！"),
+  S("오늘이 그날이야 약속 지킬 거지?? ㅋㅋㅋ","今天就是那一天 你会遵守约定吧？？哈哈哈")
+ ],ch:[
+  D("좋아. 5분 뒤에 로비","好。五分钟后大厅见",{sw:1},[S("진짜?? 빠르다 ㅋㅋㅋ 나 양말 한 짝만 신고 있는데","真的？？好快哈哈哈 我现在只穿了一只袜子"),S("기다려 금방 갈게!!","等我 马上到！！")],"a2"),
+  D("그럼 모자 눌러쓰고 가자. 오늘은 우리 둘만의 날이니까","那就压低帽子出发吧。今天是我们两个人的日子",{pl:1},[S("오 스파이 같다 ㅋㅋㅋ 나 검은 마스크 있어","哦像间谍一样哈哈哈 我有黑口罩"),S("작전명은 '자유시간 작전'으로 하자!","作战代号就叫“自由时间行动”吧！")],"a2"),
+  D("…매니저님한테 말은 하고 가야 하지 않을까?","……不用跟经纪人说一声吗？",{sh:1},[S("역시 너는 책임감 있다 ㅋㅋㅋ 문자 하나만 남기고 가자","不愧是你 很有责任感哈哈哈 留一条消息再走吧"),S("'점심 전까지 돌아옵니다' 이렇게 보내면 되지?","发“午饭前回来”这样就可以吧？")],"a2")
+ ]},
+ a2:{msgs:[
+  NR("— 이른 아침, 아직 선선한 거리 —","——清晨 还有些凉意的街道——"),
+  S("와 공기 진짜 좋다 ㅋㅋㅋ 서울이랑 느낌이 완전 달라","哇空气真好哈哈哈 感觉跟首尔完全不一样"),
+  S("저기 편의점 앞에 아이스크림 냉동고 있다!! 호주 아이스크림이 유명하대","那边便利店门口有冰淇淋冷冻柜！！听说澳洲的冰淇淋很有名"),
+  S("아 맞다 제이크 단 거 안 좋아하지?","对了杰克 你不喜欢甜的吧？")
+ ],ch:[
+  D("…안 좋아해. 안 먹어","……不喜欢。不吃",{sh:1},[S("그래?? ㅋㅋㅋ 근데 어제 비행기에서 내 젤리 세 개 먹었잖아","是吗？？哈哈哈 可是你昨天在飞机上吃了我三颗软糖啊"),S("그건 젤리라서 다르다고?? 그럼 아이스크림은?? 아 몰라 일단 구경은 하자","那是软糖所以不一样？？那冰淇淋呢？？啊不管了先去看看")],"a3"),
+  D("안 좋아하는데 네가 먹는다면 구경은 해줄게","不喜欢 不过你要吃的话我可以陪你看看",{pl:1},[S("오 구경만 해준대 ㅋㅋㅋ 고마워서 눈물 날 뻔","哦说只陪我看看哈哈哈 我感动得差点哭了"),S("자 가자 혹시 마음 바뀌면 말해","走吧 万一你改变主意就说一声")],"a3"),
+  D("솔직히… 먹어보고 싶긴 해","说实话……我有点想尝尝",{sw:1},[S("어?? 방금 뭐라고 했어?? 단 거 싫어하는 사람이 ㅋㅋㅋ","欸？？你刚才说什么？？不是不爱吃甜的人吗哈哈哈"),S("알겠어 비밀로 해줄게 대신 같이 먹는 거다","知道了我替你保密 不过要一起吃")],"a3")
+ ]},
+ a3:{msgs:[
+  NR("— 냉동고 앞, 두 사람이 같은 아이스크림을 동시에 집어 든 순간 —","——冷冻柜前 两个人同时拿起了同一款冰淇淋——"),
+  S("야 이거 봐 '골든 게이타임' ㅋㅋㅋ","喂你看这个“Golden Gaytime”哈哈哈"),
+  S("이름이 이래도 호주에서는 국민 아이스크림이래 비스킷 부스러기 들어 있대","名字虽然这样 在澳洲可是国民冰淇淋 听说有饼干碎"),
+  S("…살 거야? 이름 때문에 못 사면 지는 거 알지?","……要买吗？因为名字不敢买的话就输了 你知道吧？")
+ ],ch:[
+  D("이름 따위가 뭐라고. 살게","名字算什么。我买",{sw:1},[S("오 당당하다 ㅋㅋㅋ 역시 제이크","哦理直气壮哈哈哈 不愧是杰克"),S("그럼 나도 사야지 둘이 같이 사면 하나도 안 부끄러워","那我也要买 两个人一起买就一点都不丢脸了")],"a4"),
+  D("누가 이름 때문에 겁먹어. 두 개 사자","谁会因为名字害怕。买两个",{pl:1},[S("좋아 그럼 선언한다 우리 둘 다 이거 먹는다 도망 금지","好 那我宣布 我们两个都吃这个 不许逃"),S("먼저 포기하는 사람이 오늘 점심 사기!","先放弃的人请今天的午饭！")],"a4"),
+  D("…근데 이거 계산할 때 이름 말해야 하는 거 아니야?","……不过结账的时候不是要说名字吗？",{sh:1},[S("…그러네?? 아 그건 생각 못 했다 ㅋㅋㅋ","……对哦？？啊这个我没想到哈哈哈"),S("가위바위보로 정하자 지는 사람이 말하기","用猜拳决定 输的人来说")],"a4")
+ ]},
+ a4:{msgs:[
+  NR("— 계산대 앞, 가위바위보 —","——收银台前 猜拳——"),
+  S("자 가위바위보!! 지는 사람이 계산대에서 이름 크게 말하기","来 猜拳！！输的人在收银台大声说名字"),
+  S("준비됐지?? 하나 둘 셋!!","准备好了吧？？一二三！！")
+ ],ch:[
+  D("가위","剪刀",{pl:1},[S("나 보 냈는데 ㅋㅋㅋ 이겼다!! …아니 네가 이긴 거네?? 아 헷갈려 ㅠㅠ","我出的是布哈哈哈 赢了！！……不对是你赢了？？啊搞糊涂了呜呜"),S("에이 몰라 내가 말할게!!","哎不管了 我来说！！")],"a5"),
+  D("바위","石头",{sh:1},[S("아 나 가위 냈다 ㅠㅠ 졌다","啊我出了剪刀呜呜 输了"),S("…알겠어 말한다 사람들 쳐다보면 네가 책임져 ㅋㅋㅋ","……知道了 我去说 要是大家看过来你要负责哈哈哈")],"a5"),
+  D("보","布",{sw:1},[S("비겼다?? 다시!! …또 비겼다 ㅋㅋㅋ","平局？？再来！！……又平局了哈哈哈"),S("우리 너무 잘 맞는 거 아니야?? 그냥 같이 말하자","我们是不是太有默契了？？干脆一起说吧")],"a5")
+ ]},
+ a5:{msgs:[
+  NR("— 계산을 마치고 나온 길가, 포장을 벗기며 —","——结完账走到路边 撕开包装——"),
+  S("방금 점원 표정 봤어?? 참는 거 다 보였어 ㅋㅋㅋ","你看到刚才店员的表情了吗？？明显在忍笑哈哈哈"),
+  S("자 하나 둘 셋에 같이 먹는다 알았지?","来 数到三一起吃 好不好？"),
+  S("…와 이거 진짜 맛있다 ㅋㅋㅋ 바삭하고 달콤하고","……哇这个真的好吃哈哈哈 又脆又甜"),
+  S("너 단 거 안 좋아한다며?? 표정 보니까 좋아하는데?? ㅋㅋㅋ","你不是说不爱吃甜的吗？？看你的表情明明很喜欢啊？？哈哈哈")
+ ],ch:[
+  D("…맛있어. 인정","……好吃。我认了",{sw:1},[S("하하하 드디어 인정했다!! 역사적인 순간이야 ㅋㅋㅋ","哈哈哈 终于承认了！！历史性的一刻哈哈哈"),S("이건 기록으로 남겨야 해 '제이크는 단 걸 좋아한다'","这要记录下来 “杰克喜欢甜食”")],"a6"),
+  D("아니야. 그냥 비스킷이 맛있는 거야","不是。只是饼干碎好吃",{pl:1},[S("비스킷 부스러기까지 다 먹고 있잖아 ㅋㅋㅋ 증거 확보","你明明连饼干碎也吃光了哈哈哈 证据确凿"),S("자백해 지금 자백하면 선처해줄게","快招供 现在招供可以从宽处理")],"a6"),
+  D("…한 입만 더","……再来一口",{sh:1},[S("한 입만?? 이미 세 입째인데 ㅋㅋㅋ","就一口？？已经是第三口了哈哈哈"),S("괜찮아 많이 먹어 내가 사는 거니까 …아니 가위바위보 져서 내가 계산한 거니까","没关系多吃点 我请的……不对是猜拳输了才由我结的账")],"a6")
+ ]},
+ a6:{msgs:[
+  NR("— 아이스크림을 들고 걸어간 곳엔 작은 배들이 줄지어 떠 있었다 —","——拿着冰淇淋走到的地方 一排小船正漂在水面上——"),
+  S("와… 여기 봐 배가 엄청 많아","哇……你看这里 好多船"),
+  S("바다 냄새 난다 ㅋㅋㅋ 아침 햇빛이 물 위에서 반짝거려","有海的味道哈哈哈 早晨的阳光在水面上闪闪发光"),
+  S("우리 여기서 잠깐 쉴까? 아이스크림 아직 남았잖아","我们在这里歇一会儿吧？冰淇淋还没吃完呢")
+ ],ch:[
+  D("저기 벤치에 앉자. 배 구경하면서 남은 거 먹자","去那边长椅坐吧。边看船边把剩下的吃完",{sw:1},[S("좋아 ㅋㅋㅋ 앉자 …근데 벤치가 좀 좁네","好哈哈哈 坐吧 ……不过长椅有点窄呢"),S("(…어깨가 닿는다)","（……肩膀碰到了）")],"aroute"),
+  D("배 이름 맞히기 내기하자","来打赌猜船的名字",{pl:1},[S("콜!! 저 파란 배는 '제이호'다 ㅋㅋㅋ","好！！那艘蓝色的船叫“제이号”哈哈哈"),S("그럼 저건 '제이크호'로 하자 맞히면 아이스크림 하나 더!","那那艘就叫“제이크号” 猜中的人再加一个冰淇淋！")],"aroute"),
+  D("…바람 때문에 머리 엉망이야. 보지 마","……风把头发吹乱了。不许看",{sh:1},[S("ㅋㅋㅋ 안 봐 안 봐 …근데 귀엽다","哈哈哈不看不看……不过很可爱"),S("아니 웃기다 아니 …아무튼 괜찮아","不对是好笑 不对……总之没关系")],"aroute")
+ ]},
+ aroute:{msgs:[],go:()=>(st.sw>=st.pl&&st.sw>=st.sh)?"end_av":(st.pl>=st.sh?"end_aw":"end_ax")},
+ end_av:{msgs:[
+  S("…야 여기 진짜 예쁘다","……喂 这里真的好漂亮"),
+  S("아침에 몰래 나온 거 후회 없다 오늘 오래 기억날 것 같아","早上偷偷溜出来一点不后悔 今天大概会记很久"),
+  S("다음 투어 때도 또 둘이 나오자 이제 이름 때문에 겁먹는 일은 없을 거야 ㅋㅋㅋ","下次巡演也再两个人溜出来吧 再也不会因为名字害怕了哈哈哈"),
+  NR("— 바다 위로 햇빛이 번지고, 남은 아이스크림은 둘 사이에서 천천히 녹아내렸다 —","——阳光在海面上扩散开来 剩下的冰淇淋在两人之间慢慢融化——")
+ ],end:["ENDING V · 골든 타임 🍦","结局V·黄金时刻（海边长椅）"]},
+ end_aw:{msgs:[
+  S("내 배가 이겼다!! 아이스크림 하나 더 사줘 ㅋㅋㅋ","我的船赢了！！再请我一个冰淇淋哈哈哈"),
+  S("…근데 사실 배보다 네 반응 구경하는 게 더 재밌었어","……不过其实比起看船 我更喜欢看你的反应"),
+  S("가자 한 개 더 먹으러 이번엔 이름 크게 말하는 거 네가 해","走吧再去吃一个 这次轮到你大声说名字"),
+  NR("— 오전의 항구에는, 이름을 크게 외치는 웃음소리가 한동안 이어졌다 —","——上午的港口 久久回荡着大声喊出名字的笑声——")
+ ],end:["ENDING W · 누가 먼저 먹나 🏁","结局W·比赛一样的早晨（玩闹）"]},
+ end_ax:{msgs:[
+  S("제이크 사실 말이야","杰克 其实啊"),
+  S("너 단 거 좋아하는 거 나만 알고 있을게 비밀이야","你喜欢甜食这件事 我自己知道就好 是秘密"),
+  S("대신 다음엔 '안 좋아해' 말고 '먹고 싶어' 라고 말해줘 알겠지?","不过下次别说“不喜欢” 要说“想吃” 好吗？"),
+  NR("— 안 좋아한다던 사람의 손에는, 어느새 아이스크림 막대기만 남아 있었다 —","——说着不喜欢的人 手里不知不觉只剩下了冰淇淋的小棍——")
+ ],end:["ENDING X · 달지 않다고 한 사람 🤫","结局X·说不爱吃甜的人"]}
+});
+STORY.menu.ch.push(MN("🇦🇺 멜버른 투어 · 아이스크림","墨尔本巡演·说好一起出门的那天",[NR("— 이야기 7 · 멜버른 —","——故事七·墨尔本——")],"a1"));
+// ---------- 故事八：西雅图铁板烧（惊喜）/ 故事九：맥스냐 나냐 ----------
+Object.assign(STORY,{
+ sa1:{msgs:[
+  NR("— 미국 투어 중 시애틀, 공연 다음 날 저녁 —","——美国巡演途中的西雅图 演出后第二天傍晚——"),
+  S("제이크 우리 시애틀에서 철판구이 먹으러 가자!!","杰克 我们在西雅图去吃铁板烧吧！！"),
+  S("셰프님이 눈앞에서 불쇼 해준대 양파 화산 알지?? ㅋㅋㅋ","听说厨师会在面前表演火焰秀 洋葱火山你知道吧？？哈哈哈"),
+  S("…그리고 이건 데이트야 공식적인 데이트","……还有 这是约会 正式的约会")
+ ],ch:[
+  D("공식 데이트 좋지. 예약은 내가 할게","正式约会很好。预约我来订",{sw:1},[S("오 예약까지?? 이 사람 오늘 진심이네 ㅋㅋㅋ","哦连预约都要订？？这个人今天是认真的呢哈哈哈"),S("그럼 나는 입을 옷 고르는 데 한 시간 쓸게","那我就花一小时挑衣服")],"sa2"),
+  D("불쇼 중에 새우 받아먹기 내기하자","来赌火焰秀时谁能接住虾",{pl:1},[S("콜!! 나 던지는 거 받는 건 자신 있어 ㅋㅋㅋ","好！！接东西我可是有自信的哈哈哈"),S("지는 사람이 디저트 사기!","输的人请甜点！")],"sa2"),
+  D("…사람 많은 데서 데이트하는 거 좀 쑥스러운데","……在人多的地方约会有点害羞",{sh:1},[S("괜찮아 다들 불쇼 보느라 우리 안 봐 ㅋㅋㅋ","没事 大家都忙着看火焰秀 没人看我们哈哈哈"),S("…그래도 내 얼굴은 빨개질 것 같지만","……不过我的脸大概还是会红")],"sa2")
+ ]},
+ sa2:{msgs:[
+  NR("— 철판 앞 카운터 자리, 나란히 앉아 —","——铁板前的吧台座位 并肩坐下——"),
+  S("와 철판 뜨겁다 ㅋㅋㅋ 셰프님 칼 돌리는 거 봐","哇铁板好烫哈哈哈 你看厨师在转刀"),
+  S("근데 우리 옆에 다른 손님들도 있는데 손은 어디 둬야 해?? ㅋㅋㅋ","不过我们旁边还有别的客人 手要放哪里啊？？哈哈哈")
+ ],ch:[
+  D("(식탁 아래에서 슬쩍 손을 잡는다)","（在桌子下面悄悄牵住他的手）",{sw:1},[S("……","……"),S("…이거 불쇼보다 심장이 더 뜨겁다 ㅋㅋㅋ","……这个比火焰秀更让我心跳加速哈哈哈")],"sa3"),
+  D("손은 젓가락에. 나머지는 나한테 맡겨","手放在筷子上。其他的交给我",{pl:1},[S("무슨 말이야 그게 ㅋㅋㅋ 멋있는 척하는 거지","你这话什么意思哈哈哈 是在装帅吧"),S("…근데 좀 멋있었다","……不过有点帅")],"sa3"),
+  D("…난 메뉴판에 두고 있어","……我就放在菜单上",{sh:1},[S("메뉴판 이미 다 읽었잖아 ㅋㅋㅋ 세 번째야","菜单你都看完了哈哈哈 这是第三遍了"),S("…귀 빨개진 거 다 보여 귀여워","……耳朵红了我都看见了 好可爱")],"sa3")
+ ]},
+ sa3:{msgs:[
+  NR("— 셰프의 불쇼, 양파 화산이 불을 뿜는 순간 —","——厨师的火焰秀 洋葱火山喷出火焰的瞬间——"),
+  S("와아아 불 올라온다!! 제이크 봐봐 불 진짜 높다!!","哇啊啊火冒起来了！！杰克你看火真高！！"),
+  S("셰프님이 새우 던진대!! 입 벌려 입 벌려!!","厨师要扔虾了！！张嘴张嘴！！")
+ ],ch:[
+  D("불 가까워. 내 쪽으로 와","火太近了。到我这边来",{sw:1},[S("…어 알겠어 ㅋㅋㅋ 근데 새우는 어떡해","……嗯知道了哈哈哈 不过虾怎么办"),S("아 괜찮아 네 쪽에서도 받을 수 있어","啊没关系 在你这边也接得到")],"sa4"),
+  D("(입을 크게 벌린다) 아~","（张大嘴巴）啊——",{pl:1},[S("ㅋㅋㅋㅋㅋ 야 진짜 벌렸어?? 받았다!! 대박!!","哈哈哈哈哈 喂你真的张嘴了？？接到了！！太厉害了！！"),S("내가 졌다 ㅋㅋㅋ 디저트는 내가 산다","我输了哈哈哈 甜点我请")],"sa4"),
+  D("…(메뉴판 뒤로 몸을 숨긴다)","……（躲到菜单后面）",{sh:1},[S("야 거기 숨는다고 안 보이는 게 아니야 ㅋㅋㅋ","喂你躲在那里也不是看不见哈哈哈"),S("나 지금 웃느라 새우 놓쳤어 ㅠㅠ","我笑得把虾都漏接了呜呜")],"sa4")
+ ]},
+ sa4:{msgs:[
+  NR("— 마지막 코스, 셰프가 접시를 내려놓으며 윙크했다 —","——最后一道菜 厨师放下盘子时对他们眨了眨眼——"),
+  S("어? 이거 우리가 주문한 거 아닌데?? 접시에 뭐 써 있어","欸？这不是我们点的吧？？盘子上写了什么"),
+  S("'Happy 1st month' …","“Happy 1st month”……"),
+  S("…미안 사실 내가 몰래 부탁했어 우리 한 달 기념일이잖아","……对不起其实是我偷偷拜托的 今天是我们的一个月纪念日"),
+  S("깜짝 선물 성공이지?? ㅋㅋㅋ 표정 봐","惊喜成功了吧？？哈哈哈 你看你的表情")
+ ],ch:[
+  D("…고마워. 나는 기념일인 줄도 몰랐어. 미안","……谢谢。我都不知道是纪念日。对不起",{sw:1},[S("아니야 네가 같이 와준 것만으로도 충분해","不会啦 你肯来就已经足够了"),S("다음엔 네가 나 놀라게 해줘 기다릴게 ㅋㅋㅋ","下次换你来吓我 我等着哈哈哈")],"saroute"),
+  D("이 접시 사진 찍어도 돼? 평생 간직할래","可以拍这个盘子吗？我要留一辈子",{pl:1},[S("ㅋㅋㅋ 접시를 간직한다고?? 소스 지워지기 전에 빨리 찍어","哈哈哈 要留盘子？？趁酱汁没糊掉快拍"),S("내 얼굴은 빼고 찍어 눈 풀렸어 ㅋㅋㅋ","别拍到我的脸 眼神都放空了哈哈哈")],"saroute"),
+  D("…(말없이 접시를 한참 바라본다)","……（默默地盯着盘子看了很久）",{sh:1},[S("어?? 울어?? 아니지?? 아니라고 해줘 ㅋㅋㅋ","欸？？哭了？？没有吧？？说没有啊哈哈哈"),S("…나도 눈이 이상해졌잖아 ㅠㅠ","……害我的眼睛也怪怪的了呜呜")],"saroute")
+ ]},
+ saroute:{msgs:[],go:()=>(st.sw>=st.pl&&st.sw>=st.sh)?"end_sa1":(st.pl>=st.sh?"end_sa2":"end_sa3")},
+ end_sa1:{msgs:[
+  S("우리 한 달 기념으로 다음 달엔 두 달 기념일도 철판구이 먹자","为了庆祝一个月 下个月的两个月纪念日也来吃铁板烧吧"),
+  S("그땐 내가 아니라 네가 셰프님한테 부탁해야 해 알겠지? ㅋㅋㅋ","到时候不是我 而是你去拜托厨师 知道了吗？哈哈哈"),
+  NR("— 접시 위의 소스 글씨가 지워질 때까지, 두 사람은 한참을 그대로 앉아 있었다 —","——直到盘子上的酱汁字迹慢慢模糊 两个人都久久地坐着没有动——")
+ ],end:["ENDING EX1 · 소스로 쓴 한 달 🍤","结局EX1·用酱汁写下的一个月"]},
+ end_sa2:{msgs:[
+  S("오늘의 승자는 새우를 받아먹은 너!! 디저트는 내가 쏜다","今天的赢家是接到虾的你！！甜点我请"),
+  S("…근데 사실 지는 것도 나쁘지 않았어 이런 하루가 되니까","……不过其实输了也不赖 因为换来了这样的一天"),
+  NR("— 불쇼가 끝난 뒤에도 웃음소리는 한참 철판 위에 남아 있었다 —","——火焰秀结束后 笑声还久久留在铁板的上方——")
+ ],end:["ENDING EX2 · 새우를 놓친 사람 🔥","结局EX2·漏接了虾的人"]},
+ end_sa3:{msgs:[
+  S("…나도 이런 기념일이 처음이라서 어떻게 해야 할지 몰랐어","……我也是第一次过这种纪念日 不知道该怎么做才好"),
+  S("근데 네가 울 것 같은 얼굴을 하니까 괜찮아졌어 ㅋㅋㅋ","不过看到你快哭的表情 我就没事了哈哈哈"),
+  NR("— 접시는 비었지만, 오래 남을 한 장면이 되었다 —","——盘子空了 却成了一幅会长久留下的画面——")
+ ],end:["ENDING EX3 · 접시가 오래 남았다 🥹","结局EX3·盘子留了很久"]},
+ // ---------- 맥스냐 나냐 ----------
+ jf1:{msgs:[
+  NR("— 그랑프리 주말을 앞둔 거실 —","——大奖赛周末前的客厅——"),
+  S("제이크 제이크 이번 주말 그랑프리 알지?? 나 맥스 응원 준비 다 했어","杰克杰克 这周末的大奖赛你知道吧？？我给马克斯加油的东西全准备好了"),
+  S("응원 수건이랑 모자랑… 이름 쓴 팻말도 만들었어 ㅋㅋㅋ","加油毛巾、帽子……还做了写名字的牌子哈哈哈"),
+  S("나 오늘 맥스 얘기 스무 번쯤 한 것 같은데 괜찮지??","我今天大概说了二十次马克斯 你不介意吧？？")
+ ],ch:[
+  D("스무 번이나? 세어봤어?","二十次？你数过了？",{jk:1},[S("아니 네가 세고 있을 것 같아서 ㅋㅋㅋ","不是 我觉得你可能在数哈哈哈"),S("…진짜 세고 있었어?? 대박","……你真的在数？？厉害了")],"jf2"),
+  D("맥스, 맥스, 맥스. 이제 귀에 딱지 앉겠다","马克斯 马克斯 马克斯。耳朵都要起茧了",{jl:1},[S("엥?? 싫었어?? 미안 나 신나서 ㅠㅠ","欸？？你不喜欢？？对不起我太兴奋了呜呜"),S("…그래도 같이 보는 건 좋아하지?","……不过一起看你还是喜欢的吧？")],"jf2"),
+  D("괜찮아. 대신 내 얘기도 스무 번 해줘","没关系。不过也要说我二十次",{op:1},[S("야 ㅋㅋㅋ 그건 어렵다 아니 쉬운가?? 제이크 제이크 제이크 …한 번","喂哈哈哈 这个有点难 不对很简单？？杰克杰克杰克……一次"),S("아 이거 생각보다 안 어렵네 …아니 어렵다 심장이","啊这个比想象中不难……不对 难 因为心脏")],"jf2")
+ ]},
+ jf2:{msgs:[
+  NR("— 저녁 식사 중에도 —","——吃晚饭的时候也是——"),
+  S("그리고 이번 레이스는 추월이 진짜 볼만하대 ㅋㅋㅋ 하이라이트 봤는데","而且听说这次比赛的超车特别好看哈哈哈 我看了集锦"),
+  S("맥스 응원 팻말에는 '앞으로 가!!' 라고 쓰려고","给马克斯的牌子上我想写“向前冲！！”"),
+  S("제이크 너도 하나 만들어줄까? 너는 뭐라고 쓸래?","杰克你要不要也做一个？你想写什么？")
+ ],ch:[
+  D("'제이는 나랑만 본다' 라고 쓸래 ㅋㅋ","我要写“제이只跟我一起看”哈哈",{jk:1},[S("야 ㅋㅋㅋ 그걸 들고 서 있으면 사람들이 이상하게 본다","喂哈哈哈 举着那个站着会被大家奇怪地看"),S("…근데 나는 좀 마음에 든다","……不过我有点喜欢")],"jf3"),
+  D("난 안 만들어. 어차피 네 눈엔 맥스만 보이잖아","我不做。反正你眼里只有马克斯",{jl:1},[S("…어?? 그런 거 아닌데","……欸？？不是那样的啊"),S("(…표정이 갑자기 조용해졌다)","（……表情突然安静了下来）")],"jf3"),
+  D("…'제이 옆자리는 내 자리' 라고 쓸래","……我要写“제이旁边的位子是我的”",{op:1},[S("…","……"),S("…야 그런 걸 이렇게 밥 먹다가 말하면 어떡해 ㅋㅋㅋ 체하겠다","……喂 这种话在吃饭时说出来我怎么办哈哈哈 要噎住了")],"jf3")
+ ]},
+ jf3:{msgs:[
+  NR("— 늦은 밤, 휴대폰 속에서 레이스 하이라이트가 흘러나온다 —","——深夜 手机里播放着比赛集锦——"),
+  S("봐봐 방금 이 코너 진짜 멋있지?? 맥스는 진짜 대단해 ㅋㅋㅋ","你看刚才这个弯道是不是超帅？？马克斯真的太厉害了哈哈哈"),
+  S("아 나 오늘 하루 종일 맥스 생각만 했나 봐","我今天好像一整天都在想马克斯")
+ ],ch:[
+  D("솔직하게 물을게. 맥스냐 나냐 하나만 골라. 진지한 질문이야","我直接问了。马克斯还是我 选一个。这是认真的问题",{op:2},[S("…어?? 잠깐 너 지금 진짜 질투하는 거야?? 맥스한테??","……欸？？等一下你现在是在吃醋吗？？对马克斯？？"),S("아 이거 어떡하지 나 지금 웃음이 나는데 웃으면 안 되는 거지?? ㅋㅋㅋ","啊怎么办 我现在想笑 可是不能笑对吧？？哈哈哈")],"jf4"),
+  D("맥스냐 나냐. 대답 틀리면 팔씨름이다","马克斯还是我。答错就掰手腕",{jk:2},[S("야 ㅋㅋㅋㅋ 그 질문은 함정이잖아","喂哈哈哈哈 这个问题是陷阱啊"),S("좋아 대답할게 …잠깐 마음의 준비 좀","好 我来回答……等一下让我做点心理准备")],"jf4"),
+  D("…아니야 됐어","……没事 算了",{jl:2},[S("엥 갑자기?? 왜 그래 삐졌어??","欸突然？？怎么了 生气了？？"),S("…말해줘 나 눈치 없어서 말 안 하면 몰라","……告诉我吧 我没眼力见 不说我是不会知道的")],"jf4")
+ ]},
+ jf4:{msgs:[
+  S("야 걔는 화면 안에 있는 사람이고 넌 내 옆에 있는 사람인데 비교가 돼??","喂 他是屏幕里的人 你是我身边的人 这两个能比吗？？"),
+  S("…근데 장난으로라도 하나만 고르라면","……不过就算是开玩笑 要选一个的话"),
+  S("(한참 뜸 들인다)","（拖了很久才说）"),
+  S("…당연히 너지 바보야 ㅋㅋㅋ","……当然是你啦笨蛋哈哈哈"),
+  S("그리고 사실 이거 말 안 하려고 했는데","还有 其实这件事我本来不打算说的"),
+  S("이번 그랑프리 티켓 두 장 샀어 …너랑 같이 가려고","我买了这次大奖赛的两张票……想跟你一起去"),
+  S("그래서 맥스 얘기 그렇게 많이 한 거야 네가 같이 가서 지루하지 않게 ㅋㅋㅋ","所以才说那么多马克斯的事 想让你一起去的时候不无聊哈哈哈")
+ ],ch:[
+  D("…그런 줄 모르고 질투해서 미안. 같이 가자","……不知道是这样还吃醋了 对不起。一起去吧",{op:1},[S("미안할 게 뭐 있어 질투해줘서 좀 좋았어 ㅋㅋㅋ","有什么好对不起的 你吃醋我还有点开心哈哈哈"),S("아 이 말 하면 안 되는데","啊这话不该说的")],"jroute"),
+  D("그럼 응원 팻말은 내가 들어줄게. 네 이름으로","那加油牌我来举。写你的名字",{jk:1},[S("내 이름?? 맥스 말고?? ㅋㅋㅋ","我的名字？？不是马克斯？？哈哈哈"),S("그럼 둘 다 써서 두 개 들자 오른손엔 맥스 왼손엔 너","那就两个都写 举两个吧 右手是马克斯 左手是你")],"jroute"),
+  D("…나 지금 좀 부끄러워서 말이 안 나와","……我现在有点害羞 说不出话",{jl:1},[S("ㅋㅋㅋ 괜찮아 말 안 해도 돼","哈哈哈没关系 不说也行"),S("오늘은 내가 하루 종일 네 얘기만 할게 …아 근데 뭐라고 하지","今天换我一整天只说你的事……啊不过该说什么呢")],"jroute")
+ ]},
+ jroute:{msgs:[],go:()=>(st.op>=st.jk&&st.op>=st.jl)?"end_j1":(st.jk>=st.jl?"end_j2":"end_j3")},
+ end_j1:{msgs:[
+  S("…그럼 이제 같이 가는 거 확정!!","……那么一起去就这么定了！！"),
+  S("팻말에 '제이크 옆자리'도 써 넣자 내 자리랑 네 자리 이름표","牌子上也写上“제이크旁边的位子” 我的位子和你的位子都贴上名牌"),
+  NR("— 그랑프리 당일, 응원석 맨 앞줄에는 이름이 적힌 팻말이 두 개 나란히 들려 있었다 —","——大奖赛当天 观众席最前排 举着两块写着名字的牌子——")
+ ],end:["ENDING EX4 · 맥스냐 나냐 🏎️","结局EX4·马克斯还是我"]},
+ end_j2:{msgs:[
+  S("정했어 맥스는 취미, 너는 일상!!","决定了 马克斯是爱好 你是日常！！"),
+  S("취미는 가끔 설레고 일상은 매일 좋은 거잖아 ㅋㅋㅋ 그러니까 지는 건 맥스야","爱好偶尔心动 日常天天都好 所以输的是马克斯哈哈哈"),
+  NR("— 오른손엔 맥스, 왼손엔 제이크. 팻말 두 개를 든 두 사람은 레이스보다 더 큰 소리로 웃었다 —","——右手是马克斯 左手是제이크。举着两块牌子的两个人 笑得比比赛的引擎声还大——")
+ ],end:["ENDING EX5 · 팻말 두 개 🪧","结局EX5·两块加油牌"]},
+ end_j3:{msgs:[
+  S("미안 내가 너무 맥스 얘기만 했지","对不起 我是不是只顾着说马克斯了"),
+  S("오늘은 약속대로 네 얘기만 할게 …제이크는 라면 끓일 때 계란을 꼭 풀어 넣고","今天说好了只说你的事……제이크煮泡面一定会打蛋进去"),
+  S("…또 뭐였더라 아 스무 개가 이렇게 어렵나 ㅋㅋㅋ","……还有什么来着 啊说满二十件原来这么难哈哈哈"),
+  NR("— 스무 개를 채우기 전에 먼저 웃음이 터졌고, 삐진 사람도 어느새 같이 웃고 있었다 —","——还没说满二十件 就先笑了出来 生气的人也不知不觉跟着笑了——")
+ ],end:["ENDING EX6 · 삐진 사람 달래기 🍰","结局EX6·哄好生气的人"]}
+});
+STORY.menu.ch.push(MN("🍤 시애틀 철판구이 데이트","西雅图铁板烧约会（在一起之后·惊喜）",[NR("— 이야기 8 · 시애틀 —","——故事八·西雅图——")],"sa1"));
+STORY.menu.ch.push(MN("🏎️ 맥스냐 나냐","马克斯还是我（제이크吃醋）",[NR("— 이야기 9 · 맥스냐 나냐 —","——故事九·马克斯还是我——")],"jf1"));
+["end_ds","end_dt","end_du"].forEach(k=>STORY[k].seq2=1);
+let busy=false,started=false,cur=null;
+const HIST0=hist.slice();
+function nap(ms){return new Promise(r=>setTimeout(r,ms))}
+async function sayMsg(m){
+  if(m.n){
+    const d=document.createElement("div");d.className="day nar";
+    const k=document.createElement("div");k.textContent=m.ko;d.appendChild(k);
+    const z=document.createElement("div");z.className="zh";z.textContent=m.zh;d.appendChild(z);
+    $("msgs").appendChild(d);scrollDown();await nap(1400);return;
+  }
+  await nap(400+Math.random()*400);
+  const t=document.createElement("div");t.className="b";t.innerHTML='<div class="bub dots"><span></span><span></span><span></span></div>';
+  $("msgs").appendChild(t);scrollDown();
+  await nap(700+Math.min(2000,m.ko.length*50)+Math.random()*500);
+  t.remove();addMsg("o",m.ko,m.zh||"");
+  hist.push({r:"o",ko:m.ko,zh:m.zh||""});$("lastp").textContent=m.ko;
+  await nap(400+Math.random()*600);
+}
+async function play(id){
+  const sc=STORY[id];cur=id;busy=true;
+  for(const m of (typeof sc.msgs==="function"?sc.msgs():(sc.msgs||[])))await sayMsg(m);
+  if(sc.go)return play(sc.go());
+  if(sc.end){busy=false;showEnd(sc);return}
+  busy=false;showChoices(sc.ch);
+}
+function showChoices(ch){
+  const box=$("choices");box.innerHTML="";
+  ch.forEach(c=>{
+    const b=document.createElement("button");b.className="cho";
+    const k=document.createElement("div");k.textContent=c.ko;b.appendChild(k);
+    const z=document.createElement("div");z.className="zh";z.textContent=c.zh;b.appendChild(z);
+    b.onclick=()=>pickChoice(c);box.appendChild(b);
+  });
+  box.style.display="flex";scrollDown();
+}
+async function pickChoice(c){
+  if(busy)return;busy=true;
+  const box=$("choices");box.style.display="none";box.innerHTML="";
+  if(!c.m){addMsg("me",c.ko,c.zh);hist.push({r:"me",ko:c.ko,zh:c.zh})}
+  st.l+=c.e[0];st.j+=c.e[1];st.d+=c.e[2];
+  if(c.x)for(const k in c.x)st[k]=(st[k]||0)+c.x[k];
+  for(const m of c.r)await sayMsg(m);
+  await play(c.n);
+}
+function showEnd(sc){
+  const card=document.createElement("div");card.className="endcard";
+  const t=document.createElement("b");t.textContent=sc.end[0];card.appendChild(t);
+  const z=document.createElement("div");z.className="zh";z.textContent=sc.end[1];card.appendChild(z);
+  const h=document.createElement("div");h.style.cssText="font-size:12px;color:#777;margin-top:8px";h.textContent="换一种选择，会有不同的结局";card.appendChild(h);
+  if(sc.seq){const q=document.createElement("button");q.textContent="후속편 · 데이트 ▶";q.style.marginRight="6px";q.onclick=()=>{["sw","pl","sh","va","vb"].forEach(k=>st[k]=0);card.querySelectorAll("button").forEach(x=>x.remove());play("d1")};card.appendChild(q)}
+  if(sc.seq2){const q=document.createElement("button");q.textContent="후속편 · 시애틀 ▶";q.style.marginRight="6px";q.onclick=()=>{["sw","pl","sh"].forEach(k=>st[k]=0);card.querySelectorAll("button").forEach(x=>x.remove());play("sa1")};card.appendChild(q)}
+  const b=document.createElement("button");b.textContent="다른 이야기 보기 ↻";b.onclick=restart;card.appendChild(b);
+  $("msgs").appendChild(card);scrollDown();
+}
+function restart(){
+  for(const k in st)st[k]=0;hist.length=0;HIST0.forEach(h=>hist.push(h));
+  const m=$("msgs");m.innerHTML="";
+  const d=document.createElement("div");d.className="day";d.textContent="오늘";m.appendChild(d);
+  HIST0.forEach((h,i)=>addMsg(h.r==="me"?"me":"o",h.ko,h.zh,"오전 1:"+pad(10+i*3)));
+  $("lastp").textContent="오늘 몇 시에 끝나?";$("choices").style.display="none";$("choices").innerHTML="";
+  busy=false;setTimeout(()=>play("menu"),400);
+}
+// 自由聊天（关键词台词，不用 AI）
+async function send(){
+  const v=$("inp").value.trim();if(!v||busy)return;
+  $("inp").value="";addMsg("me",v,"");hist.push({r:"me",ko:v,zh:""});
+  $("lastp").textContent=v;busy=true;
+  const out=scripted(v).filter(m=>m.ko||m.meme);
+  for(const m of out.slice(0,5))await sayMsg(m.ko?m:{ko:m.meme,zh:m.memezh||""});
+  busy=false;$("inp").focus();
+}
+// ================= 静态聊天室 =================
+const CHATS={
+ grp:{name:"나가지❌❌ (6)",grp:1,msgs:[
+  ["하준","내일 스케줄 변경됐어요 7시 집합!!","明天行程变了 七点集合！！"],
+  ["제이","7시??? 나 어제 레이스 보느라 3시에 잤는데 ㅋㅋㅋㅋ","七点？？？我昨天看比赛三点才睡 哈哈哈哈"],
+  ["시우","제이 형 맨날 새벽에 레이스 보잖아요","제이哥每天凌晨都在看比赛啊"],
+  ["이한","제이크 형은 읽씹이야?? ㅋㅋㅋ","杰克哥是已读不回吗？？哈哈哈"],
+  ["me","읽었음. 제이는 알람 세 개 맞춰도 못 일어나","看了。제이设三个闹钟也起不来"],
+  ["제이","야!!! 그건 비밀이잖아!!","喂！！！那是秘密啊！！"],
+  ["건우","ㅋㅋㅋㅋㅋ 형들 오늘도 평화롭네요","哈哈哈哈哈 哥哥们今天也很和平呢"],
+  ["하준","그래서 내일 7시 다들 올 수 있죠?","所以明天七点大家都能来吧？"],
+  ["제이","갈게!! 대신 제이크가 깨워줘 ㅋㅋㅋ","会去的！！不过要杰克叫我起床哈哈哈"],
+  ["me","전화 한 번만 한다","只打一次电话"],
+  ["제이","한 번이면 충분해!! 나 믿어!!","一次就够了！！相信我！！"]
+ ]},
+ mom:{name:"Mom",msgs:[
+  ["Mom","아들 밥은 먹었어?","儿子 吃饭了吗？"],
+  ["me","응 먹었어 ㅋㅋ","嗯 吃了"],
+  ["Mom","요즘 너무 말랐더라 챙겨 먹어","最近看你瘦了好多 要好好吃饭"],
+  ["Mom","엄마가 김치 보냈어 택배 확인해","妈妈寄了泡菜 记得查收快递"],
+  ["me","택배 왔어 고마워","快递到了 谢谢"],
+  ["Mom","제이랑 같이 밥 먹니? 걔는 잘 먹지?","你和제이一起吃饭吗？他吃得很好吧？"],
+  ["me","응 맨날 같이 먹어 걔가 제일 많이 먹어","嗯 天天一起吃 他吃得最多"],
+  ["Mom","그래 서로 잘 챙겨주고 ❤️","好 互相多照顾 ❤️"]
+ ]},
+ mgr:{name:"매니저님",msgs:[
+  ["매니저님","내일 7시 숙소 앞 픽업입니다","明天七点宿舍门口接送"],
+  ["me","네 확인했습니다","好的 收到了"],
+  ["매니저님","제이크 씨 스케줄표 확인하셨죠?","杰克 你看过行程表了吧？"],
+  ["me","네 방금 봤어요","嗯 刚看了"],
+  ["매니저님","제이 씨가 전화를 안 받으면 문 좀 두드려 주세요 ㅎㅎ","如果제이不接电话 麻烦你去敲一下门哈哈"],
+  ["me","항상 그래요 ㅋㅋ","他一直都这样哈哈"],
+  ["매니저님","오늘도 수고 많으셨습니다!","今天辛苦了！"]
+ ]}
+};
+function openChat(k){
+  const c=CHATS[k];$("vname").textContent=c.name;
+  const box=$("vmsgs");box.innerHTML="";
+  c.msgs.forEach(([who,ko,zh],i)=>{
+    const me=who==="me";
+    if(c.grp&&!me){const nmEl=document.createElement("div");nmEl.className="nm";nmEl.textContent=who;box.appendChild(nmEl)}
+    const w=document.createElement("div");w.className="b "+(me?"me":"");
+    const bub=document.createElement("div");bub.className="bub";
+    const kk=document.createElement("div");kk.textContent=ko;bub.appendChild(kk);
+    const z=document.createElement("div");z.className="zh";z.textContent=zh;bub.appendChild(z);
+    const tm=document.createElement("span");tm.className="tm";tm.textContent="오후 "+(6+Math.floor(i/4))+":"+pad(10+i*5%50);
+    w.appendChild(bub);w.appendChild(tm);box.appendChild(w);
+  });
+  show("view");box.scrollTop=box.scrollHeight;
+}
+// ================= 相册 =================
+// 想换成自己的照片：把图片命名为 photos/01.jpg … photos/09.jpg 放进仓库的 photos 文件夹即可；没有图片时显示示意图
+const ALB=[
+ ["01","🤳","제제 · 연습실 셀카","제제·练习室自拍","#ffd1dc,#e8638f"],
+ ["02","🎧","제이크 · 대기실","제이크·休息室","#cfe3ff,#5b86c9"],
+ ["03","🍙","둘이 · 편의점 앞","两个人·便利店门口","#ffe8a8,#e8a33b"],
+ ["04","📺","제제 · 새벽 레이스","제제·凌晨看比赛","#26356b,#c0262d"],
+ ["05","🎶","제이크 · 이어폰 한쪽","제이크·分你一边耳机","#d9d0ff,#7a63d6"],
+ ["06","🍜","둘이 · 식당 맞은편","两个人·餐厅对面","#ffd9a0,#e8743b"],
+ ["07","📣","제제 · 응원 연습 중","제제·练习加油喊话","#c9f0d2,#4ea86a"],
+ ["08","😪","제이크 · 졸린 얼굴","제이크·困困的脸","#e6e6f0,#8a8aa8"],
+ ["09","🌙","둘이 · 연습 끝나고","两个人·练习结束后","#3b3f78,#101433"]
+];
+function artFor(item,cls){
+  const box=document.createElement("div");box.className=cls;
+  const [id,em,ko,zh,bg]=item;const c=bg.split(",");
+  box.style.background="linear-gradient(160deg,"+c[0]+","+c[1]+")";
+  const e=document.createElement("span");e.textContent=em;box.appendChild(e);
+  const im=new Image();im.onerror=()=>im.remove();im.src="photos/"+id+".jpg";box.appendChild(im);
+  return box;
+}
+function buildAlbum(){
+  const g=$("grid");g.innerHTML="";
+  ALB.forEach((it,i)=>{
+    const t=artFor(it,"tile");
+    const sm=document.createElement("small");sm.textContent=it[2];t.appendChild(sm);
+    t.onclick=()=>openPhoto(i);g.appendChild(t);
+  });
+}
+function openPhoto(i){
+  const it=ALB[i],v=$("viewer");v.innerHTML="";
+  v.appendChild(artFor(it,"big"));
+  const k=document.createElement("div");k.style.cssText="margin-top:14px;font-size:16px";k.textContent=it[2];v.appendChild(k);
+  const z=document.createElement("div");z.style.cssText="margin-top:4px;font-size:13px;opacity:.8";z.textContent=it[3];v.appendChild(z);
+  const x=document.createElement("div");x.style.cssText="margin-top:18px;font-size:13px;opacity:.7";x.textContent="点击任意处关闭";v.appendChild(x);
+  v.style.display="flex";
+}
+
+const NOTES=[
+ {t:"제제 먹일 것",tz:"要给제제买的吃的",d:"어제",ko:"- 아메리카노 말고 달달한 거 (바닐라 라떼)\n- 밥 안 먹으면 잔소리함 → 간식 챙기기\n- 절대 본인한테 말하지 말 것",zh:"- 不要美式，要甜的（香草拿铁）\n- 他不吃饭就会念叨→要备点零食\n- 绝对不能告诉他本人"},
+ {t:"제제 밈 목록 (안 웃었음)",tz:"제제发的梗清单（没笑）",d:"월요일",ko:"1. 새벽 3시 레이스 밈 — 안 웃었음\n2. 고양이 밈 — 안 웃었음 (저장함)\n3. 맥스 밈 — 안 웃었음 (3번 봄)\n4. 오늘 거 — 안 웃었음…… 조금 웃음",zh:"1. 凌晨三点的赛车梗 — 没笑\n2. 猫咪梗 — 没笑（存了）\n3. 马克斯的梗 — 没笑（看了3遍）\n4. 今天的 — 没笑……稍微笑了一点"},
+ {t:"답장 연습",tz:"回复练习",d:"일요일",ko:"ㅇㅇ 말고\n'보고 싶다'는 아직 무리\n'좋아' 정도는...?\n→ 결국 'ㅇㅇ' 보냄. 바보냐 나",zh:"不要只回“嗯”\n“想你”还早了点\n“喜欢”的话……可以吧？\n→ 结果还是发了“嗯”。我是傻子吗"},
+ {t:"제제가 한 말",tz:"제제说过的话",d:"지난주",ko:"\"제이크는 차갑다고 하는데 사실 고양이 같아\"\n…아니거든.\n(맞는 듯)",zh:"“杰克嘴上说冷，其实像只猫”\n…才不是呢。\n（好像是）"},
+ {t:"일정",tz:"行程",d:"지난주",ko:"다음 주 레이스 다시보기 같이 보기로 함\n안 간다고 했지만 시간 비워둠\n이어폰 한쪽씩 나눠 끼기 가능?",zh:"和제제约好下周一起看比赛回放\n虽然说了不去，还是把时间空出来了\n耳机一人戴一边的话可以吗？"},
+ {t:"자기 전에",tz:"睡前",d:"월요일",ko:"오늘도 답장 늦었다\n내일은 먼저 연락해야지\n...못 할 듯\n근데 해야지",zh:"今天也回晚了\n明天要先联系他才行\n…好像做不到\n但是要做"}
+];
+function openNote(i){const n=NOTES[i];const b=$("nbody");b.innerHTML="";const h=document.createElement("div");h.style.cssText="font-size:20px;font-weight:700;color:#222";h.textContent=n.t;const d=document.createElement("div");d.style.cssText="font-size:12px;color:#999;margin:4px 0 14px";d.textContent=n.d;const k=document.createElement("div");k.style.cssText="font-size:16px;line-height:1.7;color:#222;white-space:pre-wrap";k.textContent=n.ko;const z=document.createElement("div");z.className="zh";z.style.cssText="font-size:14px;line-height:1.7;white-space:pre-wrap;margin-top:14px";z.textContent=n.tz+"\n"+n.zh;[h,d,k,z].forEach(x=>b.appendChild(x));show("note")}
+NOTES.forEach((n,i)=>{const c=document.createElement("div");c.style.cssText="background:#fff;border-radius:12px;padding:12px 14px;margin-bottom:10px;cursor:pointer;color:#222";const t=document.createElement("div");t.style.fontWeight="700";t.textContent=n.t;const p=document.createElement("div");p.style.cssText="font-size:12px;color:#8a8a8a;margin-top:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis";p.textContent=n.d+"  "+n.ko.split("\n")[0];const z=document.createElement("div");z.className="zh";z.textContent=n.tz;c.appendChild(t);c.appendChild(p);c.appendChild(z);c.onclick=()=>openNote(i);$("nlist").appendChild(c)});
+let pin="";
+const KS=[["1",""],["2","ABC"],["3","DEF"],["4","GHI"],["5","JKL"],["6","MNO"],["7","PQRS"],["8","TUV"],["9","WXYZ"],["",""],["0",""],["del",""]];
+KS.forEach(([k,l])=>{const d=document.createElement("div");d.className="key"+(k===""?" e":k==="del"?" t":"");
+  if(k==="del"){d.textContent="⌫"}else if(k){d.innerHTML=k+(l?"<small>"+l+"</small>":"")}
+  if(k)d.onclick=()=>key(k);$("keys").appendChild(d)});
+function drawPin(){[...$("pd").children].forEach((c,i)=>c.className=i<pin.length?"f":"")}
+function openPad(){$("lk1").style.display="none";$("pad").style.display="flex";pin="";$("ptl").textContent="암호 입력";drawPin()}
+function closePad(){$("pad").style.display="none";$("lk1").style.display="flex"}
+function key(k){
+  if(pin.length>=4)return;
+  if(k==="del")pin=pin.slice(0,-1);else pin+=k;
+  drawPin();
+  if(pin.length===4){
+    if(pin==="0420"){setTimeout(()=>{closePad();show("home")},180)}
+    else{$("pd").classList.add("shake");$("ptl").textContent="암호가 틀렸습니다. 다시 시도";setTimeout(()=>{$("pd").classList.remove("shake");pin="";drawPin()},450)}
+  }
+}
+$("send").onclick=send;
+$("inp").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.isComposing)send()});
+document.body.classList.add("tr");document.querySelectorAll(".trb").forEach(b=>b.textContent="中 隐藏");$("trbtn").textContent="中 隐藏";
+buildAlbum();
+show("lock");
+</script>
+</body>
+</html>
